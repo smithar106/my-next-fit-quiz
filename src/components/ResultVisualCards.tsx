@@ -14,37 +14,51 @@ interface Props {
   accent: string;
 }
 
-// Tags in Supabase are stored as jsonb objects: [{id, category, label}, ...]
-// Filter syntax: .filter('tags', 'cs', '[{"id":"style_minimalist"}]')
+// Tags in Supabase: [{id, category, label}, ...]
+// Filter: .filter('tags', 'cs', '[{"id":"style_minimalist"}]')
 async function fetchImageForCard(query: string[]): Promise<string | null> {
-  if (!supabase || !query.length) return null;
-  try {
-    // Try all tags together first
-    let q = supabase.from('items').select('image_url').not('image_url', 'is', null);
-    for (const tagId of query) {
-      q = q.filter('tags', 'cs', `[{"id":"${tagId}"}]`);
-    }
-    const { data, error } = await q.limit(20);
+  if (!supabase) return null;
 
-    if (!error && data?.length) {
+  // Try each tag individually, most specific first, return first hit
+  for (const tagId of query) {
+    try {
+      const { data } = await supabase
+        .from('items')
+        .select('image_url')
+        .filter('tags', 'cs', `[{"id":"${tagId}"}]`)
+        .not('image_url', 'is', null)
+        .not('image_url', 'like', '%picsum%')
+        .not('image_url', 'like', '%loremflickr%')
+        .limit(30);
+
+      if (data?.length) {
+        const pick = data[Math.floor(Math.random() * data.length)];
+        const url = (pick as { image_url: string }).image_url;
+        if (url) return url;
+      }
+    } catch {
+      // try next tag
+    }
+  }
+
+  // Hard fallback: any real item image
+  try {
+    const { data } = await supabase
+      .from('items')
+      .select('image_url')
+      .not('image_url', 'is', null)
+      .not('image_url', 'like', '%picsum%')
+      .not('image_url', 'like', '%loremflickr%')
+      .limit(50)
+      .order('created_at', { ascending: false });
+
+    if (data?.length) {
       const pick = data[Math.floor(Math.random() * data.length)];
       return (pick as { image_url: string }).image_url ?? null;
     }
+  } catch {}
 
-    // Fallback: first tag only
-    const { data: fallback } = await supabase
-      .from('items')
-      .select('image_url')
-      .filter('tags', 'cs', `[{"id":"${query[0]}"}]`)
-      .not('image_url', 'is', null)
-      .limit(20);
-
-    if (!fallback?.length) return null;
-    const pick = fallback[Math.floor(Math.random() * fallback.length)];
-    return (pick as { image_url: string }).image_url ?? null;
-  } catch {
-    return null;
-  }
+  return null;
 }
 
 export default function ResultVisualCards({ cards, accent }: Props) {
@@ -56,9 +70,7 @@ export default function ResultVisualCards({ cards, accent }: Props) {
     let cancelled = false;
     async function loadImages() {
       const results = await Promise.all(
-        cards.map(card =>
-          card.query ? fetchImageForCard(card.query) : Promise.resolve(null)
-        )
+        cards.map(card => fetchImageForCard(card.query ?? []))
       );
       if (!cancelled) {
         setImages(results.map(url => ({ url, loaded: false })));
@@ -77,7 +89,7 @@ export default function ResultVisualCards({ cards, accent }: Props) {
       <div className="grid grid-cols-2 gap-3">
         {cards.map((card, i) => {
           const img = images[i];
-          const showImage = img?.url && img.loaded;
+          const showImage = !!(img?.url && img.loaded);
 
           return (
             <div
@@ -85,7 +97,6 @@ export default function ResultVisualCards({ cards, accent }: Props) {
               className="relative rounded-2xl overflow-hidden flex flex-col justify-end"
               style={{ aspectRatio: '3/4', background: card.gradient }}
             >
-              {/* Real product image — fades in when loaded */}
               {img?.url && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -93,27 +104,19 @@ export default function ResultVisualCards({ cards, accent }: Props) {
                   alt={card.label}
                   onLoad={() =>
                     setImages(prev =>
-                      prev.map((p, idx) =>
-                        idx === i ? { ...p, loaded: true } : p
-                      )
+                      prev.map((p, idx) => idx === i ? { ...p, loaded: true } : p)
                     )
                   }
                   onError={() =>
                     setImages(prev =>
-                      prev.map((p, idx) =>
-                        idx === i ? { ...p, url: null } : p
-                      )
+                      prev.map((p, idx) => idx === i ? { ...p, url: null } : p)
                     )
                   }
                   className="absolute inset-0 w-full h-full object-cover"
-                  style={{
-                    opacity: showImage ? 1 : 0,
-                    transition: 'opacity 0.4s ease',
-                  }}
+                  style={{ opacity: showImage ? 1 : 0, transition: 'opacity 0.4s ease' }}
                 />
               )}
 
-              {/* Gradient overlay — always present for text legibility */}
               <div
                 className="absolute inset-0"
                 style={{
@@ -123,7 +126,6 @@ export default function ResultVisualCards({ cards, accent }: Props) {
                 }}
               />
 
-              {/* Label */}
               <div className="relative px-3 pb-3">
                 <p className="text-white text-[12px] font-semibold leading-tight drop-shadow-sm">
                   {card.label}

@@ -14,12 +14,17 @@ interface Props {
   accent: string;
 }
 
-// Tags in Supabase: [{id, category, label}, ...]
-// Filter: .filter('tags', 'cs', '[{"id":"style_minimalist"}]')
-async function fetchImageForCard(query: string[]): Promise<string | null> {
+async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promise<string | null> {
   if (!supabase) return null;
 
-  // Try each tag individually, most specific first, return first hit
+  const pickUnused = (data: { image_url: string }[]): string | null => {
+    const shuffled = [...data].sort(() => Math.random() - 0.5);
+    for (const item of shuffled) {
+      if (item.image_url && !usedUrls.has(item.image_url)) return item.image_url;
+    }
+    return null;
+  };
+
   for (const tagId of query) {
     try {
       const { data } = await supabase
@@ -29,11 +34,10 @@ async function fetchImageForCard(query: string[]): Promise<string | null> {
         .not('image_url', 'is', null)
         .not('image_url', 'like', '%picsum%')
         .not('image_url', 'like', '%loremflickr%')
-        .limit(30);
+        .limit(50);
 
       if (data?.length) {
-        const pick = data[Math.floor(Math.random() * data.length)];
-        const url = (pick as { image_url: string }).image_url;
+        const url = pickUnused(data as { image_url: string }[]);
         if (url) return url;
       }
     } catch {
@@ -41,7 +45,7 @@ async function fetchImageForCard(query: string[]): Promise<string | null> {
     }
   }
 
-  // Hard fallback: any real item image
+  // Hard fallback: any real item image not yet used
   try {
     const { data } = await supabase
       .from('items')
@@ -49,12 +53,12 @@ async function fetchImageForCard(query: string[]): Promise<string | null> {
       .not('image_url', 'is', null)
       .not('image_url', 'like', '%picsum%')
       .not('image_url', 'like', '%loremflickr%')
-      .limit(50)
+      .limit(100)
       .order('created_at', { ascending: false });
 
     if (data?.length) {
-      const pick = data[Math.floor(Math.random() * data.length)];
-      return (pick as { image_url: string }).image_url ?? null;
+      const url = pickUnused(data as { image_url: string }[]);
+      return url;
     }
   } catch {}
 
@@ -69,9 +73,13 @@ export default function ResultVisualCards({ cards, accent }: Props) {
   useEffect(() => {
     let cancelled = false;
     async function loadImages() {
-      const results = await Promise.all(
-        cards.map(card => fetchImageForCard(card.query ?? []))
-      );
+      const usedUrls = new Set<string>();
+      const results: (string | null)[] = [];
+      for (const card of cards) {
+        const url = await fetchImageForCard(card.query ?? [], usedUrls);
+        if (url) usedUrls.add(url);
+        results.push(url);
+      }
       if (!cancelled) {
         setImages(results.map(url => ({ url, loaded: false })));
       }

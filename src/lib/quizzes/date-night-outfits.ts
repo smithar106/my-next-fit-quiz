@@ -243,10 +243,10 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         'A wrap dress in a rich jewel tone with a small evening bag',
       ],
       visualCards: [
-        { label: 'Dinner Out Look', gradient: 'linear-gradient(145deg, #D4A0FC 0%, #A040E8 100%)', tags: ['elegant', 'romantic'] },
-        { label: 'Jewel Tone Dress Edit', gradient: 'linear-gradient(145deg, #C084FC 0%, #8040D0 100%)', tags: ['occasion', 'feminine'] },
-        { label: 'Blazer + Wide Leg Night', gradient: 'linear-gradient(145deg, #E0B8FF 0%, #B060F0 100%)', tags: ['polished', 'elevated'] },
-        { label: 'Wrap + Evening Bag', gradient: 'linear-gradient(145deg, #ECD4FF 0%, #C884FC 100%)', tags: ['timeless', 'romantic'] },
+        { label: 'Dinner Out Look', gradient: 'linear-gradient(145deg, #D4A0FC 0%, #A040E8 100%)', tags: ['elegant', 'romantic'], query: ['style_luxury', 'occ_evening'] },
+        { label: 'Jewel Tone Dress Edit', gradient: 'linear-gradient(145deg, #C084FC 0%, #8040D0 100%)', tags: ['occasion', 'feminine'], query: ['style_bohemian', 'color_bright'] },
+        { label: 'Blazer + Wide Leg Night', gradient: 'linear-gradient(145deg, #E0B8FF 0%, #B060F0 100%)', tags: ['polished', 'elevated'], query: ['style_classic', 'fit_tailored'] },
+        { label: 'Wrap + Evening Bag', gradient: 'linear-gradient(145deg, #ECD4FF 0%, #C884FC 100%)', tags: ['timeless', 'romantic'], query: ['style_classic', 'occ_evening'] },
       ],
       whyMyNextFit:
         'My Next Fit finds the pieces that feel as intentional and beautiful as your date night energy.',
@@ -269,10 +269,10 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         'A slip skirt + a cropped leather jacket + clean sneakers — elevated casual',
       ],
       visualCards: [
-        { label: 'Rooftop Date Edit', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['cool', 'effortless'] },
-        { label: 'Jeans + Blazer Night', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['casual', 'elevated'] },
-        { label: 'Slip Skirt + Leather', gradient: 'linear-gradient(145deg, #C0FBE0 0%, #6EE7B7 100%)', tags: ['cool', 'downtown'] },
-        { label: 'Ankle Boot Moment', gradient: 'linear-gradient(145deg, #B0F5D8 0%, #40D088 100%)', tags: ['edge', 'cool'] },
+        { label: 'Rooftop Date Edit', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['cool', 'effortless'], query: ['style_minimalist', 'occ_casual'] },
+        { label: 'Jeans + Blazer Night', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['casual', 'elevated'], query: ['style_classic', 'occ_casual'] },
+        { label: 'Slip Skirt + Leather', gradient: 'linear-gradient(145deg, #C0FBE0 0%, #6EE7B7 100%)', tags: ['cool', 'downtown'], query: ['style_streetwear', 'style_classic'] },
+        { label: 'Ankle Boot Moment', gradient: 'linear-gradient(145deg, #B0F5D8 0%, #40D088 100%)', tags: ['edge', 'cool'], query: ['style_streetwear', 'occ_casual'] },
       ],
       whyMyNextFit:
         'My Next Fit matches your effortless aesthetic and finds the pieces that look good without overthinking.',
@@ -295,10 +295,10 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         'Structured trousers in a bold color + a fitted top + statement earrings',
       ],
       visualCards: [
-        { label: 'Red Mini Dress Edit', gradient: 'linear-gradient(145deg, #F87171 0%, #D83030 100%)', tags: ['bold', 'statement'] },
-        { label: 'Cobalt Night Look', gradient: 'linear-gradient(145deg, #FCA0A0 0%, #E85050 100%)', tags: ['color', 'memorable'] },
-        { label: 'Print + Texture Moment', gradient: 'linear-gradient(145deg, #FCC0C0 0%, #F06060 100%)', tags: ['unexpected', 'bold'] },
-        { label: 'Statement Earring Edit', gradient: 'linear-gradient(145deg, #FFD0D0 0%, #F88080 100%)', tags: ['finish', 'dramatic'] },
+        { label: 'Red Mini Dress Edit', gradient: 'linear-gradient(145deg, #F87171 0%, #D83030 100%)', tags: ['bold', 'statement'], query: ['style_bold', 'color_red'] },
+        { label: 'Cobalt Night Look', gradient: 'linear-gradient(145deg, #FCA0A0 0%, #E85050 100%)', tags: ['color', 'memorable'], query: ['style_bold', 'color_blue'] },
+        { label: 'Print + Texture Moment', gradient: 'linear-gradient(145deg, #FCC0C0 0%, #F06060 100%)', tags: ['unexpected', 'bold'], query: ['style_bold', 'color_bright'] },
+        { label: 'Statement Earring Edit', gradient: 'linear-gradient(145deg, #FFD0D0 0%, #F88080 100%)', tags: ['finish', 'dramatic'], query: ['style_bold', 'occ_evening'] },
       ],
       whyMyNextFit:
         'My Next Fit learns what bold means to you specifically and finds the pieces that hit exactly that note.',
@@ -321,10 +321,10 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         'Linen wide-leg pants + a fitted cami + kitten heels + soft hoops',
       ],
       visualCards: [
-        { label: 'Floral Midi Date Look', gradient: 'linear-gradient(145deg, #F9A8D4 0%, #E868A8 100%)', tags: ['soft', 'feminine'] },
-        { label: 'Blush Wrap Dress', gradient: 'linear-gradient(145deg, #FCC0DC 0%, #F080B8 100%)', tags: ['romantic', 'warm'] },
-        { label: 'Ballet Flat Edit', gradient: 'linear-gradient(145deg, #FFD4E8 0%, #F8A0C8 100%)', tags: ['delicate', 'sweet'] },
-        { label: 'Linen Cami + Heels', gradient: 'linear-gradient(145deg, #FFE4F0 0%, #FAB8D8 100%)', tags: ['soft', 'elevated'] },
+        { label: 'Floral Midi Date Look', gradient: 'linear-gradient(145deg, #F9A8D4 0%, #E868A8 100%)', tags: ['soft', 'feminine'], query: ['style_bohemian', 'color_pastel'] },
+        { label: 'Blush Wrap Dress', gradient: 'linear-gradient(145deg, #FCC0DC 0%, #F080B8 100%)', tags: ['romantic', 'warm'], query: ['style_bohemian', 'color_pink'] },
+        { label: 'Ballet Flat Edit', gradient: 'linear-gradient(145deg, #FFD4E8 0%, #F8A0C8 100%)', tags: ['delicate', 'sweet'], query: ['style_classic', 'color_pastel'] },
+        { label: 'Linen Cami + Heels', gradient: 'linear-gradient(145deg, #FFE4F0 0%, #FAB8D8 100%)', tags: ['soft', 'elevated'], query: ['style_minimalist', 'occ_evening'] },
       ],
       whyMyNextFit:
         'My Next Fit surfaces soft, feminine pieces that feel like you — not a trend.',
@@ -347,10 +347,10 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         'Well-cut wide-leg pants + a silk cami + one small bag — nothing extra',
       ],
       visualCards: [
-        { label: 'Minimal Date Edit', gradient: 'linear-gradient(145deg, #E8EAED 0%, #B0B5BC 100%)', tags: ['clean', 'minimal'] },
-        { label: 'Column Dress Night', gradient: 'linear-gradient(145deg, #F0F2F5 0%, #C0C5CC 100%)', tags: ['classic', 'composed'] },
-        { label: 'Silk Cami + Trousers', gradient: 'linear-gradient(145deg, #F8F9FA 0%, #D0D5DB 100%)', tags: ['minimal', 'chic'] },
-        { label: 'Pointed Mule Finish', gradient: 'linear-gradient(145deg, #E0E4E8 0%, #A8AEB8 100%)', tags: ['finish', 'quiet'] },
+        { label: 'Minimal Date Edit', gradient: 'linear-gradient(145deg, #E8EAED 0%, #B0B5BC 100%)', tags: ['clean', 'minimal'], query: ['style_minimalist', 'color_neutral'] },
+        { label: 'Column Dress Night', gradient: 'linear-gradient(145deg, #F0F2F5 0%, #C0C5CC 100%)', tags: ['classic', 'composed'], query: ['style_classic', 'occ_evening'] },
+        { label: 'Silk Cami + Trousers', gradient: 'linear-gradient(145deg, #F8F9FA 0%, #D0D5DB 100%)', tags: ['minimal', 'chic'], query: ['style_minimalist', 'fit_slim'] },
+        { label: 'Pointed Mule Finish', gradient: 'linear-gradient(145deg, #E0E4E8 0%, #A8AEB8 100%)', tags: ['finish', 'quiet'], query: ['style_minimalist', 'color_black'] },
       ],
       whyMyNextFit:
         'My Next Fit finds the minimal, precise pieces your aesthetic demands — nothing overdone, everything right.',

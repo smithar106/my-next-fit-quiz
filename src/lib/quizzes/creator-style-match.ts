@@ -243,10 +243,10 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         'Mixing high + new brands with your personal archive in ways that feel fresh',
       ],
       visualCards: [
-        { label: 'Feed Aesthetic Drop', gradient: 'linear-gradient(145deg, #FB923C 0%, #D05800 100%)', tags: ['trend', 'fresh'] },
-        { label: 'Early Adopter Edit', gradient: 'linear-gradient(145deg, #FDB070 0%, #E07020 100%)', tags: ['forward', 'bold'] },
-        { label: 'Brand Collab Look', gradient: 'linear-gradient(145deg, #FEC898 0%, #F08840 100%)', tags: ['collab', 'creator'] },
-        { label: 'Micro-Trend Moment', gradient: 'linear-gradient(145deg, #FFD8B0 0%, #F5A060 100%)', tags: ['ahead', 'culture'] },
+        { label: 'Feed Aesthetic Drop', gradient: 'linear-gradient(145deg, #FB923C 0%, #D05800 100%)', tags: ['trend', 'fresh'], query: ['style_bold', 'color_bright'] },
+        { label: 'Early Adopter Edit', gradient: 'linear-gradient(145deg, #FDB070 0%, #E07020 100%)', tags: ['forward', 'bold'], query: ['style_streetwear', 'style_bold'] },
+        { label: 'Brand Collab Look', gradient: 'linear-gradient(145deg, #FEC898 0%, #F08840 100%)', tags: ['collab', 'creator'], query: ['style_bold', 'color_accent'] },
+        { label: 'Micro-Trend Moment', gradient: 'linear-gradient(145deg, #FFD8B0 0%, #F5A060 100%)', tags: ['ahead', 'culture'], query: ['style_streetwear', 'color_bright'] },
       ],
       whyMyNextFit:
         'My Next Fit surfaces the new and emerging pieces your trend-forward aesthetic demands — before they\'re everywhere.',
@@ -269,10 +269,10 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         'Clean lines, no busy prints — your editing eye extends to your outfit',
       ],
       visualCards: [
-        { label: 'Neutral Feed Aesthetic', gradient: 'linear-gradient(145deg, #F5F5F5 0%, #D0D0D0 100%)', tags: ['minimal', 'aesthetic'] },
-        { label: 'Monochrome Content Look', gradient: 'linear-gradient(145deg, #EBEBEB 0%, #B8B8B8 100%)', tags: ['tonal', 'creator'] },
-        { label: 'Texture Focus Edit', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #C8C8C8 100%)', tags: ['detail', 'editorial'] },
-        { label: 'Clean Line Drop', gradient: 'linear-gradient(145deg, #F0F0F0 0%, #E0E0E0 100%)', tags: ['minimal', 'art'] },
+        { label: 'Neutral Feed Aesthetic', gradient: 'linear-gradient(145deg, #F5F5F5 0%, #D0D0D0 100%)', tags: ['minimal', 'aesthetic'], query: ['style_minimalist', 'color_neutral'] },
+        { label: 'Monochrome Content Look', gradient: 'linear-gradient(145deg, #EBEBEB 0%, #B8B8B8 100%)', tags: ['tonal', 'creator'], query: ['style_minimalist', 'color_monochrome'] },
+        { label: 'Texture Focus Edit', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #C8C8C8 100%)', tags: ['detail', 'editorial'], query: ['style_minimalist', 'color_white'] },
+        { label: 'Clean Line Drop', gradient: 'linear-gradient(145deg, #F0F0F0 0%, #E0E0E0 100%)', tags: ['minimal', 'art'], query: ['style_minimalist', 'style_classic'] },
       ],
       whyMyNextFit:
         'My Next Fit learns your precise neutral palette and finds the exactly-right pieces your minimalist feed deserves.',
@@ -295,10 +295,10 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         'Streetwear brands mixed with luxury in ways that feel earned, not forced',
       ],
       visualCards: [
-        { label: 'Sneaker Hero Drop', gradient: 'linear-gradient(145deg, #A5B4FC 0%, #5060D0 100%)', tags: ['street', 'culture'] },
-        { label: 'Oversized Archive Edit', gradient: 'linear-gradient(145deg, #818CF8 0%, #4040B8 100%)', tags: ['streetwear', 'bold'] },
-        { label: 'Graphic Tee Layered', gradient: 'linear-gradient(145deg, #C0C8FF 0%, #7080E8 100%)', tags: ['layer', 'archive'] },
-        { label: 'Street × Luxury Mix', gradient: 'linear-gradient(145deg, #D0D8FF 0%, #9098F0 100%)', tags: ['elevated', 'rare'] },
+        { label: 'Sneaker Hero Drop', gradient: 'linear-gradient(145deg, #A5B4FC 0%, #5060D0 100%)', tags: ['street', 'culture'], query: ['style_streetwear', 'style_athletic'] },
+        { label: 'Oversized Archive Edit', gradient: 'linear-gradient(145deg, #818CF8 0%, #4040B8 100%)', tags: ['streetwear', 'bold'], query: ['style_streetwear', 'fit_oversized'] },
+        { label: 'Graphic Tee Layered', gradient: 'linear-gradient(145deg, #C0C8FF 0%, #7080E8 100%)', tags: ['layer', 'archive'], query: ['style_streetwear', 'fit_boxy'] },
+        { label: 'Street × Luxury Mix', gradient: 'linear-gradient(145deg, #D0D8FF 0%, #9098F0 100%)', tags: ['elevated', 'rare'], query: ['style_streetwear', 'style_luxury'] },
       ],
       whyMyNextFit:
         'My Next Fit finds the street-to-luxury pieces that fit your cultural aesthetic — rare enough to matter.',
@@ -321,10 +321,10 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         'Minimal accessories, a structured bag, and shoes that complete without competing',
       ],
       visualCards: [
-        { label: 'Luxury Unboxing Look', gradient: 'linear-gradient(145deg, #FDE68A 0%, #D09000 100%)', tags: ['luxury', 'aspirational'] },
-        { label: 'Champagne Edit', gradient: 'linear-gradient(145deg, #FEF3A0 0%, #E8B020 100%)', tags: ['soft', 'elevated'] },
-        { label: 'Structured Bag Moment', gradient: 'linear-gradient(145deg, #FFFBC0 0%, #F5C840 100%)', tags: ['investment', 'quiet'] },
-        { label: 'Silk + Neutral Look', gradient: 'linear-gradient(145deg, #FEFBD0 0%, #F0D060 100%)', tags: ['soft', 'luxury'] },
+        { label: 'Luxury Unboxing Look', gradient: 'linear-gradient(145deg, #FDE68A 0%, #D09000 100%)', tags: ['luxury', 'aspirational'], query: ['style_luxury', 'color_neutral'] },
+        { label: 'Champagne Edit', gradient: 'linear-gradient(145deg, #FEF3A0 0%, #E8B020 100%)', tags: ['soft', 'elevated'], query: ['style_luxury', 'color_pastel'] },
+        { label: 'Structured Bag Moment', gradient: 'linear-gradient(145deg, #FFFBC0 0%, #F5C840 100%)', tags: ['investment', 'quiet'], query: ['style_minimalist', 'style_luxury'] },
+        { label: 'Silk + Neutral Look', gradient: 'linear-gradient(145deg, #FEFBD0 0%, #F0D060 100%)', tags: ['soft', 'luxury'], query: ['style_luxury', 'fit_slim'] },
       ],
       whyMyNextFit:
         'My Next Fit matches your soft luxury aesthetic and surfaces pieces your audience will actually want to screenshot.',
@@ -347,10 +347,10 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         'Your outfit looks like it took 5 minutes and 5 years of taste-building at once',
       ],
       visualCards: [
-        { label: 'GRWM Everyday Edit', gradient: 'linear-gradient(145deg, #34D399 0%, #10A060 100%)', tags: ['real', 'relatable'] },
-        { label: 'Denim + Quality Tee', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['casual', 'authentic'] },
-        { label: 'Elevated Casual Look', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['cool', 'effortless'] },
-        { label: 'One Detail Edit', gradient: 'linear-gradient(145deg, #C0FBE8 0%, #6EE7B7 100%)', tags: ['intentional', 'cool'] },
+        { label: 'GRWM Everyday Edit', gradient: 'linear-gradient(145deg, #34D399 0%, #10A060 100%)', tags: ['real', 'relatable'], query: ['style_classic', 'occ_casual'] },
+        { label: 'Denim + Quality Tee', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['casual', 'authentic'], query: ['style_minimalist', 'occ_casual'] },
+        { label: 'Elevated Casual Look', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['cool', 'effortless'], query: ['style_classic', 'occ_weekend'] },
+        { label: 'One Detail Edit', gradient: 'linear-gradient(145deg, #C0FBE8 0%, #6EE7B7 100%)', tags: ['intentional', 'cool'], query: ['style_minimalist', 'color_neutral'] },
       ],
       whyMyNextFit:
         'My Next Fit keeps your wardrobe stocked with the genuinely good, everyday pieces your audience trusts you to find.',

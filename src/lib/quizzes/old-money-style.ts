@@ -243,10 +243,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Cream wide-leg pants + navy crewneck + gold watch — nothing else needed',
       ],
       visualCards: [
-        { label: 'Heritage Coat Edit', gradient: 'linear-gradient(145deg, #C8A96E 0%, #8B6914 100%)', tags: ['heritage', 'tailored'] },
-        { label: 'Cashmere Tonal Look', gradient: 'linear-gradient(145deg, #D4B896 0%, #A07850 100%)', tags: ['luxury', 'quiet'] },
-        { label: 'Ivory + Navy Edit', gradient: 'linear-gradient(145deg, #F5EFE0 0%, #C4A068 100%)', tags: ['classic', 'refined'] },
-        { label: 'Gold Watch Moment', gradient: 'linear-gradient(145deg, #E8D4A0 0%, #B89040 100%)', tags: ['minimal', 'elevated'] },
+        { label: 'Heritage Coat Edit', gradient: 'linear-gradient(145deg, #C8A96E 0%, #8B6914 100%)', tags: ['heritage', 'tailored'], query: ['style_luxury', 'fit_tailored'] },
+        { label: 'Cashmere Tonal Look', gradient: 'linear-gradient(145deg, #D4B896 0%, #A07850 100%)', tags: ['luxury', 'quiet'], query: ['style_minimalist', 'color_neutral'] },
+        { label: 'Ivory + Navy Edit', gradient: 'linear-gradient(145deg, #F5EFE0 0%, #C4A068 100%)', tags: ['classic', 'refined'], query: ['style_classic', 'color_neutral'] },
+        { label: 'Gold Watch Moment', gradient: 'linear-gradient(145deg, #E8D4A0 0%, #B89040 100%)', tags: ['minimal', 'elevated'], query: ['style_minimalist', 'style_luxury'] },
       ],
       whyMyNextFit:
         'My Next Fit finds the quiet, quality pieces your aesthetic demands — no trend noise, just your exact palette.',
@@ -269,10 +269,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Striped button-down + well-cut shorts + leather sneakers',
       ],
       visualCards: [
-        { label: 'Navy Blazer + Chinos', gradient: 'linear-gradient(145deg, #5B7EC0 0%, #2B4280 100%)', tags: ['prep', 'classic'] },
-        { label: 'Oxford + Loafer Edit', gradient: 'linear-gradient(145deg, #7898D8 0%, #3B5998 100%)', tags: ['tailored', 'heritage'] },
-        { label: 'Tweed + Tall Boots', gradient: 'linear-gradient(145deg, #8AA8E0 0%, #4A6AB0 100%)', tags: ['classic', 'prep'] },
-        { label: 'Striped Shirt Weekend', gradient: 'linear-gradient(145deg, #A0B8F0 0%, #5878C0 100%)', tags: ['weekend', 'casual'] },
+        { label: 'Navy Blazer + Chinos', gradient: 'linear-gradient(145deg, #5B7EC0 0%, #2B4280 100%)', tags: ['prep', 'classic'], query: ['style_preppy', 'fit_tailored'] },
+        { label: 'Oxford + Loafer Edit', gradient: 'linear-gradient(145deg, #7898D8 0%, #3B5998 100%)', tags: ['tailored', 'heritage'], query: ['style_classic', 'fit_tailored'] },
+        { label: 'Tweed + Tall Boots', gradient: 'linear-gradient(145deg, #8AA8E0 0%, #4A6AB0 100%)', tags: ['classic', 'prep'], query: ['style_preppy', 'style_classic'] },
+        { label: 'Striped Shirt Weekend', gradient: 'linear-gradient(145deg, #A0B8F0 0%, #5878C0 100%)', tags: ['weekend', 'casual'], query: ['style_classic', 'occ_weekend'] },
       ],
       whyMyNextFit:
         'My Next Fit learns your prep palette and connects you to the exact pieces worth investing in.',
@@ -295,10 +295,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Silk slip dress in cream + a tailored blazer thrown over + small gold bag',
       ],
       visualCards: [
-        { label: 'Champagne Satin Moment', gradient: 'linear-gradient(145deg, #FAE8D5 0%, #E8C8A8 100%)', tags: ['feminine', 'luxury'] },
-        { label: 'Blush Midi + Cashmere', gradient: 'linear-gradient(145deg, #F5E2D0 0%, #DCC0A0 100%)', tags: ['soft', 'polished'] },
-        { label: 'Silk Slip + Blazer', gradient: 'linear-gradient(145deg, #FAEEE0 0%, #E8D0B0 100%)', tags: ['elevated', 'feminine'] },
-        { label: 'Gold Bag Edit', gradient: 'linear-gradient(145deg, #F8E8D0 0%, #D4B080 100%)', tags: ['heiress', 'classic'] },
+        { label: 'Champagne Satin Moment', gradient: 'linear-gradient(145deg, #FAE8D5 0%, #E8C8A8 100%)', tags: ['feminine', 'luxury'], query: ['style_luxury', 'occ_evening'] },
+        { label: 'Blush Midi + Cashmere', gradient: 'linear-gradient(145deg, #F5E2D0 0%, #DCC0A0 100%)', tags: ['soft', 'polished'], query: ['style_bohemian', 'color_pastel'] },
+        { label: 'Silk Slip + Blazer', gradient: 'linear-gradient(145deg, #FAEEE0 0%, #E8D0B0 100%)', tags: ['elevated', 'feminine'], query: ['style_luxury', 'fit_slim'] },
+        { label: 'Gold Bag Edit', gradient: 'linear-gradient(145deg, #F8E8D0 0%, #D4B080 100%)', tags: ['heiress', 'classic'], query: ['style_classic', 'style_luxury'] },
       ],
       whyMyNextFit:
         'My Next Fit surfaces the soft, feminine luxury pieces that feel like you — not a mood board.',
@@ -321,10 +321,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Black cigarette trousers + black cashmere turtleneck + zero accessories',
       ],
       visualCards: [
-        { label: 'Cashmere + Denim Edit', gradient: 'linear-gradient(145deg, #F0F0F0 0%, #C8C8C8 100%)', tags: ['minimal', 'luxury'] },
-        { label: 'All-Ivory Set', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #E0E0E0 100%)', tags: ['monochrome', 'clean'] },
-        { label: 'Black Turtleneck Moment', gradient: 'linear-gradient(145deg, #D0D0D0 0%, #909090 100%)', tags: ['minimal', 'sharp'] },
-        { label: 'Neutral Mule Edit', gradient: 'linear-gradient(145deg, #E8E8E8 0%, #B8B8B8 100%)', tags: ['quiet', 'elevated'] },
+        { label: 'Cashmere + Denim Edit', gradient: 'linear-gradient(145deg, #F0F0F0 0%, #C8C8C8 100%)', tags: ['minimal', 'luxury'], query: ['style_minimalist', 'style_luxury'] },
+        { label: 'All-Ivory Set', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #E0E0E0 100%)', tags: ['monochrome', 'clean'], query: ['style_minimalist', 'color_white'] },
+        { label: 'Black Turtleneck Moment', gradient: 'linear-gradient(145deg, #D0D0D0 0%, #909090 100%)', tags: ['minimal', 'sharp'], query: ['style_minimalist', 'color_black'] },
+        { label: 'Neutral Mule Edit', gradient: 'linear-gradient(145deg, #E8E8E8 0%, #B8B8B8 100%)', tags: ['quiet', 'elevated'], query: ['style_minimalist', 'color_neutral'] },
       ],
       whyMyNextFit:
         'My Next Fit is built for your mindset — it shows you the one piece that\'s actually worth adding.',
@@ -347,10 +347,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Linen joggers + a fitted tank + lightweight cardigan + clean sneakers',
       ],
       visualCards: [
-        { label: 'Club Weekend Look', gradient: 'linear-gradient(145deg, #A8F0C0 0%, #50C878 100%)', tags: ['sporty', 'luxury'] },
-        { label: 'Tennis Skirt + Polo', gradient: 'linear-gradient(145deg, #C0F8D8 0%, #70D898 100%)', tags: ['classic', 'active'] },
-        { label: 'Quarter-Zip Edit', gradient: 'linear-gradient(145deg, #D0FCE8 0%, #86EFAC 100%)', tags: ['prep', 'sport'] },
-        { label: 'Linen + Cardigan Look', gradient: 'linear-gradient(145deg, #B8F0D0 0%, #60D898 100%)', tags: ['casual', 'elevated'] },
+        { label: 'Club Weekend Look', gradient: 'linear-gradient(145deg, #A8F0C0 0%, #50C878 100%)', tags: ['sporty', 'luxury'], query: ['style_athletic', 'style_luxury'] },
+        { label: 'Tennis Skirt + Polo', gradient: 'linear-gradient(145deg, #C0F8D8 0%, #70D898 100%)', tags: ['classic', 'active'], query: ['style_athletic', 'style_preppy'] },
+        { label: 'Quarter-Zip Edit', gradient: 'linear-gradient(145deg, #D0FCE8 0%, #86EFAC 100%)', tags: ['prep', 'sport'], query: ['style_athletic', 'occ_sport'] },
+        { label: 'Linen + Cardigan Look', gradient: 'linear-gradient(145deg, #B8F0D0 0%, #60D898 100%)', tags: ['casual', 'elevated'], query: ['style_classic', 'occ_casual'] },
       ],
       whyMyNextFit:
         'My Next Fit finds the sport-meets-luxury pieces that hit your exact aesthetic — athletic without looking athletic.',

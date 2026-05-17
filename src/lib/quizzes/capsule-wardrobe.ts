@@ -243,10 +243,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'Two pairs of shoes: one casual, one elevated — keeps the capsule tight',
       ],
       visualCards: [
-        { label: 'Capsule Tops Edit', gradient: 'linear-gradient(145deg, #F0F0F0 0%, #C8C8C8 100%)', tags: ['minimal', 'neutral'] },
-        { label: 'Neutral Bottoms', gradient: 'linear-gradient(145deg, #E8E8E8 0%, #B0B0B0 100%)', tags: ['capsule', 'clean'] },
-        { label: 'Blazer + Trousers', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #D0D0D0 100%)', tags: ['elevated', 'versatile'] },
-        { label: 'Two-Shoe Rule Edit', gradient: 'linear-gradient(145deg, #E0E0E0 0%, #A8A8A8 100%)', tags: ['minimal', 'smart'] },
+        { label: 'Capsule Tops Edit', gradient: 'linear-gradient(145deg, #F0F0F0 0%, #C8C8C8 100%)', tags: ['minimal', 'neutral'], query: ['style_minimalist', 'color_neutral'] },
+        { label: 'Neutral Bottoms', gradient: 'linear-gradient(145deg, #E8E8E8 0%, #B0B0B0 100%)', tags: ['capsule', 'clean'], query: ['style_minimalist', 'color_white'] },
+        { label: 'Blazer + Trousers', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #D0D0D0 100%)', tags: ['elevated', 'versatile'], query: ['style_classic', 'fit_tailored'] },
+        { label: 'Two-Shoe Rule Edit', gradient: 'linear-gradient(145deg, #E0E0E0 0%, #A8A8A8 100%)', tags: ['minimal', 'smart'], query: ['style_minimalist', 'style_classic'] },
       ],
       whyMyNextFit:
         'My Next Fit builds your capsule around your taste profile — so every piece it recommends belongs.',
@@ -269,10 +269,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'Shoes: block heel mules, pointed flats, clean ankle boots — nothing casual',
       ],
       visualCards: [
-        { label: 'Work Blazer Edit', gradient: 'linear-gradient(145deg, #93C5FD 0%, #60A5E8 100%)', tags: ['professional', 'polished'] },
-        { label: 'Tailored Trouser Look', gradient: 'linear-gradient(145deg, #BAD8FC 0%, #7EB8F0 100%)', tags: ['workwear', 'classic'] },
-        { label: 'Midi Skirt + Knit', gradient: 'linear-gradient(145deg, #DBEAFE 0%, #93C5FD 100%)', tags: ['elegant', 'office'] },
-        { label: 'Pointed Flat Edit', gradient: 'linear-gradient(145deg, #C8DFFF 0%, #80B4F0 100%)', tags: ['finish', 'sharp'] },
+        { label: 'Work Blazer Edit', gradient: 'linear-gradient(145deg, #93C5FD 0%, #60A5E8 100%)', tags: ['professional', 'polished'], query: ['style_workwear', 'fit_tailored'] },
+        { label: 'Tailored Trouser Look', gradient: 'linear-gradient(145deg, #BAD8FC 0%, #7EB8F0 100%)', tags: ['workwear', 'classic'], query: ['style_workwear', 'style_classic'] },
+        { label: 'Midi Skirt + Knit', gradient: 'linear-gradient(145deg, #DBEAFE 0%, #93C5FD 100%)', tags: ['elegant', 'office'], query: ['style_classic', 'occ_workwear'] },
+        { label: 'Pointed Flat Edit', gradient: 'linear-gradient(145deg, #C8DFFF 0%, #80B4F0 100%)', tags: ['finish', 'sharp'], query: ['style_workwear', 'color_neutral'] },
       ],
       whyMyNextFit:
         'My Next Fit identifies the exact gaps in your work wardrobe and fills them with pieces that earn their place.',
@@ -295,10 +295,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'Accessories do the heavy lifting — a great bag and earrings elevate any basic',
       ],
       visualCards: [
-        { label: 'Denim + Quality Tee', gradient: 'linear-gradient(145deg, #FDE68A 0%, #F0C830 100%)', tags: ['casual', 'easy'] },
-        { label: 'Weekend Blazer Look', gradient: 'linear-gradient(145deg, #FEF0A0 0%, #F5D840 100%)', tags: ['elevated', 'casual'] },
-        { label: 'Maxi + Sneaker Edit', gradient: 'linear-gradient(145deg, #FFFBCC 0%, #F8E050 100%)', tags: ['relaxed', 'cool'] },
-        { label: 'Earrings + Bag Lift', gradient: 'linear-gradient(145deg, #FFF3B0 0%, #F0D040 100%)', tags: ['finish', 'weekend'] },
+        { label: 'Denim + Quality Tee', gradient: 'linear-gradient(145deg, #FDE68A 0%, #F0C830 100%)', tags: ['casual', 'easy'], query: ['style_classic', 'occ_casual'] },
+        { label: 'Weekend Blazer Look', gradient: 'linear-gradient(145deg, #FEF0A0 0%, #F5D840 100%)', tags: ['elevated', 'casual'], query: ['style_classic', 'occ_weekend'] },
+        { label: 'Maxi + Sneaker Edit', gradient: 'linear-gradient(145deg, #FFFBCC 0%, #F8E050 100%)', tags: ['relaxed', 'cool'], query: ['style_bohemian', 'occ_casual'] },
+        { label: 'Earrings + Bag Lift', gradient: 'linear-gradient(145deg, #FFF3B0 0%, #F0D040 100%)', tags: ['finish', 'weekend'], query: ['style_minimalist', 'occ_weekend'] },
       ],
       whyMyNextFit:
         'My Next Fit learns what you actually reach for on weekends and finds more of exactly that.',
@@ -321,10 +321,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'One versatile dress, one blazer, two bottoms, three tops — that\'s the core',
       ],
       visualCards: [
-        { label: 'Airport to Dinner Look', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['travel', 'versatile'] },
-        { label: 'Silk Blend Edit', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['packable', 'elegant'] },
-        { label: 'One-Bag Outfit Formula', gradient: 'linear-gradient(145deg, #C0FBE0 0%, #6EE7B7 100%)', tags: ['capsule', 'smart'] },
-        { label: 'Blazer + Two Outfits', gradient: 'linear-gradient(145deg, #B0F5D8 0%, #40D088 100%)', tags: ['travel', 'elevated'] },
+        { label: 'Airport to Dinner Look', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['travel', 'versatile'], query: ['style_minimalist', 'fit_relaxed'] },
+        { label: 'Silk Blend Edit', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['packable', 'elegant'], query: ['style_luxury', 'color_neutral'] },
+        { label: 'One-Bag Outfit Formula', gradient: 'linear-gradient(145deg, #C0FBE0 0%, #6EE7B7 100%)', tags: ['capsule', 'smart'], query: ['style_classic', 'color_neutral'] },
+        { label: 'Blazer + Two Outfits', gradient: 'linear-gradient(145deg, #B0F5D8 0%, #40D088 100%)', tags: ['travel', 'elevated'], query: ['style_classic', 'fit_tailored'] },
       ],
       whyMyNextFit:
         'My Next Fit helps you build a travel wardrobe that actually packs small and lives large.',
@@ -347,10 +347,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'The formula: 3 neutrals + 1 statement color + 2 shoes = 20+ outfits',
       ],
       visualCards: [
-        { label: 'Invest: Coat + Denim', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D8A0 100%)', tags: ['smart', 'invest'] },
-        { label: '3 Neutral Formula', gradient: 'linear-gradient(145deg, #C0FADC 0%, #70E8B0 100%)', tags: ['budget', 'system'] },
-        { label: 'Versatile Bag Edit', gradient: 'linear-gradient(145deg, #D4FDE8 0%, #90F0C0 100%)', tags: ['capsule', 'value'] },
-        { label: 'Statement Color Pop', gradient: 'linear-gradient(145deg, #B8F8D8 0%, #60D8A8 100%)', tags: ['mix', 'smart'] },
+        { label: 'Invest: Coat + Denim', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D8A0 100%)', tags: ['smart', 'invest'], query: ['style_classic', 'color_neutral'] },
+        { label: '3 Neutral Formula', gradient: 'linear-gradient(145deg, #C0FADC 0%, #70E8B0 100%)', tags: ['budget', 'system'], query: ['style_minimalist', 'color_neutral'] },
+        { label: 'Versatile Bag Edit', gradient: 'linear-gradient(145deg, #D4FDE8 0%, #90F0C0 100%)', tags: ['capsule', 'value'], query: ['style_classic', 'occ_casual'] },
+        { label: 'Statement Color Pop', gradient: 'linear-gradient(145deg, #B8F8D8 0%, #60D8A8 100%)', tags: ['mix', 'smart'], query: ['style_bold', 'color_bright'] },
       ],
       whyMyNextFit:
         'My Next Fit finds the best value pieces in your aesthetic — quality at accessible prices, no guesswork.',

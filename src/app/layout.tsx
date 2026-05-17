@@ -39,7 +39,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script type="text/javascript" src="https://s.skimresources.com/js/303204X1791245.skimlinks.js" async />
+      </body>
     </html>
   );
 }

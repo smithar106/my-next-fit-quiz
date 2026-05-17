@@ -243,10 +243,10 @@ export const styleQuiz: QuizConfig = {
         'Monochrome sets in oat, stone, or soft white',
       ],
       visualCards: [
-        { label: 'Cream Trousers + Silk Tank', gradient: 'linear-gradient(145deg, #F5F0E8 0%, #E8DDD0 100%)', tags: ['neutral', 'minimal'], query: ['style_minimalist', 'color_neutral'] },
-        { label: 'Linen Set — Stone', gradient: 'linear-gradient(145deg, #EDE7D9 0%, #D4C8B5 100%)', tags: ['minimal', 'elevated'], query: ['style_minimalist', 'color_earth'] },
-        { label: 'White Button-Down', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #E5E0D8 100%)', tags: ['classic', 'clean'], query: ['style_classic', 'color_white'] },
-        { label: 'Monochrome Oat Edit', gradient: 'linear-gradient(145deg, #F0EBE0 0%, #C8BEA8 100%)', tags: ['neutral', 'tonal'], query: ['style_minimalist', 'color_monochrome'] },
+        { label: 'Neutral Basics', gradient: 'linear-gradient(145deg, #F5F0E8 0%, #E8DDD0 100%)', tags: ['neutral', 'minimal'], query: ['style_minimalist', 'color_neutral'] },
+        { label: 'Minimal Sets', gradient: 'linear-gradient(145deg, #EDE7D9 0%, #D4C8B5 100%)', tags: ['minimal', 'elevated'], query: ['style_minimalist', 'color_earth'] },
+        { label: 'Classic Whites', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #E5E0D8 100%)', tags: ['classic', 'clean'], query: ['style_classic', 'color_white'] },
+        { label: 'Tonal Looks', gradient: 'linear-gradient(145deg, #F0EBE0 0%, #C8BEA8 100%)', tags: ['neutral', 'tonal'], query: ['style_minimalist', 'color_monochrome'] },
       ],
       whyMyNextFit:
         'My Next Fit learns your exact neutral palette and surfaces pieces that actually work together — no trend noise, just your aesthetic.',
@@ -269,10 +269,10 @@ export const styleQuiz: QuizConfig = {
         'Linen blazer + silk cami + well-cut shorts + block-heel sandals',
       ],
       visualCards: [
-        { label: 'Camel Coat + Navy Trousers', gradient: 'linear-gradient(145deg, #C8A96E 0%, #8B6914 100%)', tags: ['classic', 'tailored'], query: ['style_classic', 'fit_tailored'] },
-        { label: 'Cashmere + Loafers', gradient: 'linear-gradient(145deg, #D4B896 0%, #A07850 100%)', tags: ['luxury', 'prep'], query: ['style_luxury', 'style_preppy'] },
-        { label: 'Silk Cami + Blazer', gradient: 'linear-gradient(145deg, #E8D4B0 0%, #C4A068 100%)', tags: ['polished', 'quiet'], query: ['style_classic', 'color_neutral'] },
-        { label: 'White Oxford Edit', gradient: 'linear-gradient(145deg, #F5EFE0 0%, #D8C49A 100%)', tags: ['classic', 'crisp'], query: ['style_preppy', 'color_white'] },
+        { label: 'Tailored Classics', gradient: 'linear-gradient(145deg, #C8A96E 0%, #8B6914 100%)', tags: ['classic', 'tailored'], query: ['style_classic', 'fit_tailored'] },
+        { label: 'Luxury Prep', gradient: 'linear-gradient(145deg, #D4B896 0%, #A07850 100%)', tags: ['luxury', 'prep'], query: ['style_luxury', 'style_preppy'] },
+        { label: 'Quiet Neutrals', gradient: 'linear-gradient(145deg, #E8D4B0 0%, #C4A068 100%)', tags: ['polished', 'quiet'], query: ['style_classic', 'color_neutral'] },
+        { label: 'Crisp Whites', gradient: 'linear-gradient(145deg, #F5EFE0 0%, #D8C49A 100%)', tags: ['classic', 'crisp'], query: ['style_preppy', 'color_white'] },
       ],
       whyMyNextFit:
         'My Next Fit finds the quiet luxury pieces you actually want — classic construction, neutral palette, nothing overdone.',
@@ -295,10 +295,10 @@ export const styleQuiz: QuizConfig = {
         'Soft wrap top + wide-leg trousers in cream or blush',
       ],
       visualCards: [
-        { label: 'Satin Slip + Gold Straps', gradient: 'linear-gradient(145deg, #F2B8C6 0%, #E888A0 100%)', tags: ['feminine', 'glam'], query: ['style_luxury', 'occ_evening'] },
-        { label: 'Dusty Rose Midi', gradient: 'linear-gradient(145deg, #F5C4CE 0%, #E8A0B0 100%)', tags: ['romantic', 'soft'], query: ['style_bohemian', 'color_pastel'] },
-        { label: 'Blush Wrap Dress', gradient: 'linear-gradient(145deg, #FADADD 0%, #F0B0BE 100%)', tags: ['dreamy', 'feminine'], query: ['style_bohemian', 'color_bright'] },
-        { label: 'Pearl + Lavender Edit', gradient: 'linear-gradient(145deg, #EDD5F5 0%, #D4A0E8 100%)', tags: ['soft', 'elevated'], query: ['style_luxury', 'color_pastel'] },
+        { label: 'Evening Glam', gradient: 'linear-gradient(145deg, #F2B8C6 0%, #E888A0 100%)', tags: ['feminine', 'glam'], query: ['style_luxury', 'occ_evening'] },
+        { label: 'Soft Pastels', gradient: 'linear-gradient(145deg, #F5C4CE 0%, #E8A0B0 100%)', tags: ['romantic', 'soft'], query: ['style_bohemian', 'color_pastel'] },
+        { label: 'Feminine Dresses', gradient: 'linear-gradient(145deg, #FADADD 0%, #F0B0BE 100%)', tags: ['dreamy', 'feminine'], query: ['style_bohemian', 'color_bright'] },
+        { label: 'Soft Luxe', gradient: 'linear-gradient(145deg, #EDD5F5 0%, #D4A0E8 100%)', tags: ['soft', 'elevated'], query: ['style_luxury', 'color_pastel'] },
       ],
       whyMyNextFit:
         'My Next Fit surfaces soft, feminine pieces curated to your specific taste — so every outfit makes you feel like yourself.',
@@ -321,10 +321,10 @@ export const styleQuiz: QuizConfig = {
         'Baggy jeans + fitted baby tee + a trench coat + kitten heels',
       ],
       visualCards: [
-        { label: 'Cargo + Satin Corset', gradient: 'linear-gradient(145deg, #A78BFA 0%, #7C5CE0 100%)', tags: ['edge', 'feminine'], query: ['style_streetwear', 'color_dark'] },
-        { label: 'Bomber + Floral Layer', gradient: 'linear-gradient(145deg, #C4A8FA 0%, #8B6AE8 100%)', tags: ['streetwear', 'romantic'], query: ['style_streetwear', 'style_bold'] },
-        { label: 'Baggy Denim + Baby Tee', gradient: 'linear-gradient(145deg, #B09AF5 0%, #7C58D8 100%)', tags: ['casual', 'cool'], query: ['style_streetwear', 'color_neutral'] },
-        { label: 'Trench + Kitten Heels', gradient: 'linear-gradient(145deg, #D0B8FF 0%, #9870F0 100%)', tags: ['unexpected', 'chic'], query: ['style_classic', 'style_streetwear'] },
+        { label: 'Streetwear Looks', gradient: 'linear-gradient(145deg, #A78BFA 0%, #7C5CE0 100%)', tags: ['edge', 'feminine'], query: ['style_streetwear', 'color_dark'] },
+        { label: 'Bold Pieces', gradient: 'linear-gradient(145deg, #C4A8FA 0%, #8B6AE8 100%)', tags: ['streetwear', 'romantic'], query: ['style_streetwear', 'style_bold'] },
+        { label: 'Casual Cool', gradient: 'linear-gradient(145deg, #B09AF5 0%, #7C58D8 100%)', tags: ['casual', 'cool'], query: ['style_streetwear', 'color_neutral'] },
+        { label: 'Classic Remix', gradient: 'linear-gradient(145deg, #D0B8FF 0%, #9870F0 100%)', tags: ['unexpected', 'chic'], query: ['style_classic', 'style_streetwear'] },
       ],
       whyMyNextFit:
         'My Next Fit gets your mix-it aesthetic and serves pieces that play well with what you already own — no cookie-cutter looks.',
@@ -347,10 +347,10 @@ export const styleQuiz: QuizConfig = {
         'Matching set in a soft neutral + clean sneakers + a structured tote',
       ],
       visualCards: [
-        { label: 'White Tee + Straight Leg', gradient: 'linear-gradient(145deg, #93C5FD 0%, #60A5E8 100%)', tags: ['clean', 'classic'], query: ['style_classic', 'color_white'] },
-        { label: 'Blazer Dress + Sandals', gradient: 'linear-gradient(145deg, #BAD8FC 0%, #7EB8F0 100%)', tags: ['polished', 'easy'], query: ['style_workwear', 'fit_tailored'] },
-        { label: 'Matching Set + Sneakers', gradient: 'linear-gradient(145deg, #DBEAFE 0%, #93C5FD 100%)', tags: ['effortless', 'cool'], query: ['style_minimalist', 'style_athletic'] },
-        { label: 'Gold Hoops Edit', gradient: 'linear-gradient(145deg, #C8DFFF 0%, #80B4F0 100%)', tags: ['classic', 'refined'], query: ['style_classic', 'color_neutral'] },
+        { label: 'Classic Whites', gradient: 'linear-gradient(145deg, #93C5FD 0%, #60A5E8 100%)', tags: ['clean', 'classic'], query: ['style_classic', 'color_white'] },
+        { label: 'Polished Work Looks', gradient: 'linear-gradient(145deg, #BAD8FC 0%, #7EB8F0 100%)', tags: ['polished', 'easy'], query: ['style_workwear', 'fit_tailored'] },
+        { label: 'Matching Sets', gradient: 'linear-gradient(145deg, #DBEAFE 0%, #93C5FD 100%)', tags: ['effortless', 'cool'], query: ['style_minimalist', 'style_athletic'] },
+        { label: 'Clean Neutrals', gradient: 'linear-gradient(145deg, #C8DFFF 0%, #80B4F0 100%)', tags: ['classic', 'refined'], query: ['style_classic', 'color_neutral'] },
       ],
       whyMyNextFit:
         'My Next Fit builds around your existing classics and shows you what to add next — no guessing, no impulse buys.',

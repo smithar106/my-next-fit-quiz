@@ -324,7 +324,7 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         { label: 'Luxury Unboxing Look', gradient: 'linear-gradient(145deg, #FDE68A 0%, #D09000 100%)', tags: ['luxury', 'aspirational'], query: ['style_luxury', 'color_neutral'] },
         { label: 'Champagne Edit', gradient: 'linear-gradient(145deg, #FEF3A0 0%, #E8B020 100%)', tags: ['soft', 'elevated'], query: ['style_luxury', 'color_pastel'] },
         { label: 'Structured Bag Moment', gradient: 'linear-gradient(145deg, #FFFBC0 0%, #F5C840 100%)', tags: ['investment', 'quiet'], query: ['style_minimalist', 'style_luxury'] },
-        { label: 'Silk + Neutral Look', gradient: 'linear-gradient(145deg, #FEFBD0 0%, #F0D060 100%)', tags: ['soft', 'luxury'], query: ['style_luxury', 'fit_slim'] },
+        { label: 'Soft Luxury', gradient: 'linear-gradient(145deg, #FEFBD0 0%, #F0D060 100%)', tags: ['soft', 'luxury'], query: ['style_luxury', 'fit_slim'] },
       ],
       whyMyNextFit:
         'My Next Fit matches your soft luxury aesthetic and surfaces pieces your audience will actually want to screenshot.',
@@ -348,7 +348,7 @@ export const creatorStyleMatchQuiz: QuizConfig = {
       ],
       visualCards: [
         { label: 'GRWM Everyday Edit', gradient: 'linear-gradient(145deg, #34D399 0%, #10A060 100%)', tags: ['real', 'relatable'], query: ['style_classic', 'occ_casual'] },
-        { label: 'Denim + Quality Tee', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['casual', 'authentic'], query: ['style_minimalist', 'occ_casual'] },
+        { label: 'Casual Authentic', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['casual', 'authentic'], query: ['style_minimalist', 'occ_casual'] },
         { label: 'Elevated Casual Look', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['cool', 'effortless'], query: ['style_classic', 'occ_weekend'] },
         { label: 'One Detail Edit', gradient: 'linear-gradient(145deg, #C0FBE8 0%, #6EE7B7 100%)', tags: ['intentional', 'cool'], query: ['style_minimalist', 'color_neutral'] },
       ],

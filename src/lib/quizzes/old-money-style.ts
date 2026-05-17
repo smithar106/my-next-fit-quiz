@@ -269,9 +269,9 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Striped button-down + well-cut shorts + leather sneakers',
       ],
       visualCards: [
-        { label: 'Navy Blazer + Chinos', gradient: 'linear-gradient(145deg, #5B7EC0 0%, #2B4280 100%)', tags: ['prep', 'classic'], query: ['style_preppy', 'fit_tailored'] },
-        { label: 'Oxford + Loafer Edit', gradient: 'linear-gradient(145deg, #7898D8 0%, #3B5998 100%)', tags: ['tailored', 'heritage'], query: ['style_classic', 'fit_tailored'] },
-        { label: 'Tweed + Tall Boots', gradient: 'linear-gradient(145deg, #8AA8E0 0%, #4A6AB0 100%)', tags: ['classic', 'prep'], query: ['style_preppy', 'style_classic'] },
+        { label: 'Prep Classics', gradient: 'linear-gradient(145deg, #5B7EC0 0%, #2B4280 100%)', tags: ['prep', 'classic'], query: ['style_preppy', 'fit_tailored'] },
+        { label: 'Tailored Heritage', gradient: 'linear-gradient(145deg, #7898D8 0%, #3B5998 100%)', tags: ['tailored', 'heritage'], query: ['style_classic', 'fit_tailored'] },
+        { label: 'Heritage Pieces', gradient: 'linear-gradient(145deg, #8AA8E0 0%, #4A6AB0 100%)', tags: ['classic', 'prep'], query: ['style_preppy', 'style_classic'] },
         { label: 'Striped Shirt Weekend', gradient: 'linear-gradient(145deg, #A0B8F0 0%, #5878C0 100%)', tags: ['weekend', 'casual'], query: ['style_classic', 'occ_weekend'] },
       ],
       whyMyNextFit:
@@ -295,9 +295,9 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Silk slip dress in cream + a tailored blazer thrown over + small gold bag',
       ],
       visualCards: [
-        { label: 'Champagne Satin Moment', gradient: 'linear-gradient(145deg, #FAE8D5 0%, #E8C8A8 100%)', tags: ['feminine', 'luxury'], query: ['style_luxury', 'occ_evening'] },
-        { label: 'Blush Midi + Cashmere', gradient: 'linear-gradient(145deg, #F5E2D0 0%, #DCC0A0 100%)', tags: ['soft', 'polished'], query: ['style_bohemian', 'color_pastel'] },
-        { label: 'Silk Slip + Blazer', gradient: 'linear-gradient(145deg, #FAEEE0 0%, #E8D0B0 100%)', tags: ['elevated', 'feminine'], query: ['style_luxury', 'fit_slim'] },
+        { label: 'Evening Luxury', gradient: 'linear-gradient(145deg, #FAE8D5 0%, #E8C8A8 100%)', tags: ['feminine', 'luxury'], query: ['style_luxury', 'occ_evening'] },
+        { label: 'Soft Pastels', gradient: 'linear-gradient(145deg, #F5E2D0 0%, #DCC0A0 100%)', tags: ['soft', 'polished'], query: ['style_bohemian', 'color_pastel'] },
+        { label: 'Slim Luxury Pieces', gradient: 'linear-gradient(145deg, #FAEEE0 0%, #E8D0B0 100%)', tags: ['elevated', 'feminine'], query: ['style_luxury', 'fit_slim'] },
         { label: 'Gold Bag Edit', gradient: 'linear-gradient(145deg, #F8E8D0 0%, #D4B080 100%)', tags: ['heiress', 'classic'], query: ['style_classic', 'style_luxury'] },
       ],
       whyMyNextFit:

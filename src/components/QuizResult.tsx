@@ -51,6 +51,12 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         attribution, created_at: new Date().toISOString(),
       });
       await trackEvent('email_submitted', quiz.id, sessionId, { result_id: result.id });
+      // Fire Resend emails (welcome to user + lead notify) — non-blocking
+      fetch('/api/email-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, resultLabel: result.label, quizId: quiz.id }),
+      }).catch(() => {});
       onEmailSubmit(email);
     } catch {
       // silent

@@ -1,0 +1,138 @@
+'use client';
+
+import { QuizQuestion as QuizQuestionType } from '@/types/quiz';
+import { useState } from 'react';
+import QuizProgress from './QuizProgress';
+
+interface QuizQuestionProps {
+  question: QuizQuestionType;
+  questionIndex: number;
+  total: number;
+  onAnswer: (optionId: string) => void;
+}
+
+export default function QuizQuestion({
+  question,
+  questionIndex,
+  total,
+  onAnswer,
+}: QuizQuestionProps) {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  const MICROCOPY = [
+    'Building your aesthetic...',
+    'Decoding your style DNA...',
+    'Matching your wardrobe energy...',
+    'Getting clearer on your vibe...',
+    'Almost there — your style profile is coming together.',
+    'Last one — your style profile is almost ready.',
+  ];
+
+  function handleSelect(optionId: string) {
+    if (selected) return; // prevent double-tap
+    setSelected(optionId);
+    // Brief delay for visual feedback before advancing
+    setTimeout(() => {
+      onAnswer(optionId);
+    }, 220);
+  }
+
+  return (
+    <div className="min-h-screen bg-[#0A0A0A] flex flex-col relative overflow-hidden">
+      {/* Top glow */}
+      <div
+        className="absolute top-[-160px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, #C084FC 0%, #F472B6 40%, transparent 70%)',
+          filter: 'blur(60px)',
+          opacity: 0.35,
+        }}
+      />
+      {/* Bottom right accent */}
+      <div
+        className="absolute bottom-[-100px] right-[-80px] w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, #F472B6 0%, transparent 65%)',
+          filter: 'blur(70px)',
+          opacity: 0.18,
+        }}
+      />
+      <QuizProgress current={questionIndex + 1} total={total} />
+
+      <div className="flex-1 flex flex-col items-center px-6 pt-12 pb-10">
+        <div className="w-full max-w-[440px] flex flex-col gap-8">
+          {/* Counter */}
+          <div className="pt-2">
+            <div className="text-[11px] tracking-[0.2em] uppercase font-semibold" style={{ color: '#D8A0FF' }}>
+              Question {questionIndex + 1} of {total}
+            </div>
+            <p className="text-[12px] text-white/45 mt-1">
+              {MICROCOPY[Math.min(questionIndex, MICROCOPY.length - 1)]}
+            </p>
+          </div>
+
+          {/* Question */}
+          <div className="flex flex-col gap-2">
+            <h2 className="text-[26px] leading-snug font-bold text-white">
+              {question.text}
+            </h2>
+            {question.subtext && (
+              <p className="text-[15px] text-white/75 leading-relaxed">
+                {question.subtext}
+              </p>
+            )}
+          </div>
+
+          {/* Options */}
+          <div className="flex flex-col gap-3">
+            {question.options.map((option) => {
+              const isSelected = selected === option.id;
+              const isDimmed = selected !== null && !isSelected;
+
+              return (
+                <button
+                  key={option.id}
+                  onClick={() => handleSelect(option.id)}
+                  className={[
+                    'w-full min-h-[60px] px-5 py-4 text-left rounded-xl',
+                    'text-[15px] leading-snug font-medium',
+                    'transition-all duration-150',
+                    'border',
+                    'flex items-center gap-3',
+                    'active:scale-[0.98]',
+                  ].join(' ')}
+                  style={
+                    isSelected
+                      ? {
+                          background: 'linear-gradient(135deg, #C084FC30, #F472B630)',
+                          border: '2px solid #D8A0FF',
+                          color: '#ffffff',
+                        }
+                      : isDimmed
+                      ? {
+                          background: 'transparent',
+                          border: '1px solid rgba(255,255,255,0.07)',
+                          color: 'rgba(255,255,255,0.3)',
+                        }
+                      : {
+                          background: 'rgba(255,255,255,0.07)',
+                          border: '1px solid rgba(255,255,255,0.18)',
+                          color: '#ffffff',
+                        }
+                  }
+                >
+                  {option.emoji && (
+                    <span className="text-[20px] leading-none flex-shrink-0">
+                      {option.emoji}
+                    </span>
+                  )}
+                  <span>{option.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

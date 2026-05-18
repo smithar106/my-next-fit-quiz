@@ -4,6 +4,7 @@ import { oldMoneyStyleQuiz } from './old-money-style';
 import { capsuleWardrobeQuiz } from './capsule-wardrobe';
 import { dateNightOutfitsQuiz } from './date-night-outfits';
 import { creatorStyleMatchQuiz } from './creator-style-match';
+import { styleDnaQuiz } from './style-dna';
 
 export const allQuizzes: QuizConfig[] = [
   styleQuiz,
@@ -11,6 +12,7 @@ export const allQuizzes: QuizConfig[] = [
   capsuleWardrobeQuiz,
   dateNightOutfitsQuiz,
   creatorStyleMatchQuiz,
+  styleDnaQuiz,
 ];
 
 export const quizBySlug: Record<string, QuizConfig> = Object.fromEntries(
@@ -29,4 +31,5 @@ export {
   capsuleWardrobeQuiz,
   dateNightOutfitsQuiz,
   creatorStyleMatchQuiz,
+  styleDnaQuiz,
 };

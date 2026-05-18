@@ -151,20 +151,20 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         {/* ── WHAT HAPPENS NEXT ── */}
         <NextStepSection accent={accent} />
 
-        {/* ── EMAIL ── */}
-        <div
-          className="rounded-2xl px-5 py-5"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1.5px solid rgba(255,255,255,0.18)' }}
-        >
-          <EmailCapture onSubmit={handleEmailSubmit} isLoading={emailLoading} />
-        </div>
-
-        {/* ── APP STORE CTA ── */}
+        {/* ── APP STORE CTA — primary action at emotional peak ── */}
         <AppStoreCTA label={ctaLabel} accent={accent} url={appStoreUrl} onClick={handleAppStoreClick} />
 
         {/* ── SHARE ── */}
         <div className="mb-6">
           <ShareResultButton result={result} quizName={quiz.hook} accent={accent} sessionId={sessionId} quizId={quiz.id} />
+        </div>
+
+        {/* ── EMAIL — secondary capture after primary CTA ── */}
+        <div
+          className="rounded-2xl px-5 py-5"
+          style={{ background: 'rgba(255,255,255,0.05)', border: '1.5px solid rgba(255,255,255,0.18)' }}
+        >
+          <EmailCapture onSubmit={handleEmailSubmit} isLoading={emailLoading} />
         </div>
 
         {/* Spacer so sticky CTA doesn't overlap last content */}

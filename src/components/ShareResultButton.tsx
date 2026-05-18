@@ -1,20 +1,30 @@
 'use client';
 import { useState } from 'react';
 import { QuizResultDef } from '@/types/quiz';
+import { trackEvent } from '@/lib/events';
 
 interface Props {
   result: QuizResultDef;
   quizName: string;
   accent: string;
+  sessionId: string;
+  quizId: string;
 }
 
-export default function ShareResultButton({ result, quizName, accent }: Props) {
+export default function ShareResultButton({ result, quizName, accent, sessionId, quizId }: Props) {
   const [copied, setCopied] = useState(false);
 
-  const shareText = `I got ${result.label} on My Next Fit — ${result.tagline.split(' — ')[1] ?? result.tagline} 💫 Find your style:`;
+  const shareText = result.tagline.includes(' — ')
+    ? `I got ${result.label} on My Next Fit — apparently ${result.tagline.split(' — ')[1].toLowerCase()}. Find your style:`
+    : `I got ${result.label} on My Next Fit. Find your style:`;
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
 
   async function handleShare() {
+    // fire tracking — don't await, don't block share
+    trackEvent('share_clicked', quizId, sessionId, {
+      result_id: result.id,
+      archetype_name: result.label,
+    });
     if (navigator.share) {
       try {
         await navigator.share({ title: `I'm a ${result.label}`, text: shareText, url: shareUrl });

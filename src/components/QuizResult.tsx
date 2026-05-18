@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { QuizResultDef, QuizConfig } from '@/types/quiz';
 import { supabase } from '@/lib/supabase';
-import { getAttribution } from '@/lib/attribution';
+import { getAttribution, buildAppStoreUrl, persistResult } from '@/lib/attribution';
 import { trackEvent } from '@/lib/events';
 import EmailCapture from './EmailCapture';
 import ResultVisualCards from './ResultVisualCards';
@@ -37,9 +37,10 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
 
   useEffect(() => {
     trackEvent('result_viewed', quiz.id, sessionId, { result_id: result.id });
+    persistResult(result.id, result.label, quiz.id);
     const t = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(t);
-  }, [quiz.id, sessionId, result.id]);
+  }, [quiz.id, sessionId, result.id, result.label]);
 
   async function handleEmailSubmit(email: string) {
     setEmailLoading(true);
@@ -66,8 +67,18 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
   }
 
   async function handleAppStoreClick() {
-    await trackEvent('app_store_clicked', quiz.id, sessionId, { result_id: result.id });
-    window.open(appStoreUrl, '_blank', 'noopener,noreferrer');
+    const attribution = getAttribution();
+    await trackEvent('app_store_clicked', quiz.id, sessionId, {
+      result_id: result.id,
+      archetype_name: result.label,
+      source: 'result_cta',
+    });
+    const url = buildAppStoreUrl(appStoreUrl, attribution, {
+      result_id: result.id,
+      archetype_name: result.label,
+      quiz_id: quiz.id,
+    });
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   return (
@@ -140,20 +151,20 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         {/* ── WHAT HAPPENS NEXT ── */}
         <NextStepSection accent={accent} />
 
-        {/* ── APP STORE CTA ── */}
-        <AppStoreCTA label={ctaLabel} accent={accent} url={appStoreUrl} onClick={handleAppStoreClick} />
-
-        {/* ── SHARE ── */}
-        <div className="mb-6">
-          <ShareResultButton result={result} quizName={quiz.hook} accent={accent} />
-        </div>
-
         {/* ── EMAIL ── */}
         <div
           className="rounded-2xl px-5 py-5"
           style={{ background: 'rgba(255,255,255,0.05)', border: '1.5px solid rgba(255,255,255,0.18)' }}
         >
           <EmailCapture onSubmit={handleEmailSubmit} isLoading={emailLoading} />
+        </div>
+
+        {/* ── APP STORE CTA ── */}
+        <AppStoreCTA label={ctaLabel} accent={accent} url={appStoreUrl} onClick={handleAppStoreClick} />
+
+        {/* ── SHARE ── */}
+        <div className="mb-6">
+          <ShareResultButton result={result} quizName={quiz.hook} accent={accent} sessionId={sessionId} quizId={quiz.id} />
         </div>
 
         {/* Spacer so sticky CTA doesn't overlap last content */}
@@ -165,6 +176,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         quizId={quiz.id}
         sessionId={sessionId}
         resultId={result.id}
+        archetypeName={result.label}
       />
     </div>
   );

@@ -2,15 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import { trackEvent } from '@/lib/events';
+import { buildAppStoreUrl, getAttribution } from '@/lib/attribution';
 
 interface Props {
   accent: string;
   quizId: string;
   sessionId: string;
   resultId: string;
+  archetypeName: string;
 }
 
-export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId }: Props) {
+export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId, archetypeName }: Props) {
   const [visible, setVisible] = useState(false);
   const appStoreUrl =
     process.env.NEXT_PUBLIC_APP_STORE_URL ??
@@ -23,11 +25,18 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId 
   }, []);
 
   async function handleClick() {
-    await trackEvent('app_store_clicked', quizId, sessionId, {
+    const attribution = getAttribution();
+    await trackEvent('sticky_cta_clicked', quizId, sessionId, {
       result_id: resultId,
+      archetype_name: archetypeName,
       source: 'sticky_cta',
     });
-    window.open(appStoreUrl, '_blank', 'noopener,noreferrer');
+    const url = buildAppStoreUrl(appStoreUrl, attribution, {
+      result_id: resultId,
+      archetype_name: archetypeName,
+      quiz_id: quizId,
+    });
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   return (

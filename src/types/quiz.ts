@@ -60,4 +60,6 @@ export type FunnelEvent =
   | 'quiz_completed'
   | 'result_viewed'
   | 'email_submitted'
-  | 'app_store_clicked';
+  | 'app_store_clicked'
+  | 'sticky_cta_clicked'
+  | 'share_clicked';

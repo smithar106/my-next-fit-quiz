@@ -18,7 +18,7 @@ export default function EmailCapture({ onSubmit, isLoading }: EmailCaptureProps)
       <div className="flex flex-col gap-2 py-3 items-center">
         <p className="text-[22px]">✓</p>
         <p className="text-[14px] text-white/80 font-medium text-center">
-          You&apos;re in — outfit ideas coming to your inbox.
+          ✓ Sent. Your personalized style feed continues in the app.
         </p>
       </div>
     );
@@ -41,10 +41,10 @@ export default function EmailCapture({ onSubmit, isLoading }: EmailCaptureProps)
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1 mb-4">
         <p className="text-[14px] font-bold text-white">
-          Get outfit ideas in your inbox
+          Get your full style profile
         </p>
         <p className="text-[12px] text-white/45">
-          No spam. Unsubscribe anytime.
+          Your archetype, outfit direction, and personalized aesthetic breakdown — delivered to your inbox.
         </p>
       </div>
 
@@ -69,7 +69,7 @@ export default function EmailCapture({ onSubmit, isLoading }: EmailCaptureProps)
           disabled={isLoading}
           className="w-full h-[52px] bg-white text-[#0A0A0A] text-[14px] font-bold rounded-xl active:scale-[0.98] transition-all duration-150 disabled:opacity-50"
         >
-          {isLoading ? 'Sending...' : 'Send me outfit ideas'}
+          {isLoading ? 'Sending...' : 'Send my style profile →'}
         </button>
       </form>
 

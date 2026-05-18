@@ -44,7 +44,7 @@ export default function EmailCapture({ onSubmit, isLoading }: EmailCaptureProps)
           Get your full style profile
         </p>
         <p className="text-[12px] text-white/45">
-          Your archetype, outfit direction, and personalized aesthetic breakdown — delivered to your inbox.
+          Your style identity, outfit direction, and personalized aesthetic breakdown — delivered to your inbox.
         </p>
       </div>
 

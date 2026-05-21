@@ -44,13 +44,17 @@ export function getAttribution(): Attribution {
   }
 }
 
+// Smart link base — routes through mynextfit.app/open which passes params to the
+// native app via custom scheme (mynextfit://open?...) and falls back to App Store.
+const SMART_LINK_BASE = 'https://mynextfit.app/open';
+
 export function buildAppStoreUrl(
-  baseUrl: string,
+  _baseUrl: string,
   attr: Attribution,
   extras?: { result_id?: string; archetype_name?: string; quiz_id?: string }
 ): string {
   try {
-    const url = new URL(baseUrl);
+    const url = new URL(SMART_LINK_BASE);
     if (attr.creator) url.searchParams.set('creator', attr.creator);
     if (attr.campaign) url.searchParams.set('campaign', attr.campaign);
     if (attr.utm_source) url.searchParams.set('utm_source', attr.utm_source);
@@ -63,7 +67,7 @@ export function buildAppStoreUrl(
     if (extras?.quiz_id) url.searchParams.set('quiz_id', extras.quiz_id);
     return url.toString();
   } catch {
-    return baseUrl;
+    return SMART_LINK_BASE;
   }
 }
 

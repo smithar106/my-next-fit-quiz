@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { trackEvent } from '@/lib/events';
-import { buildAppStoreUrl, getAttribution } from '@/lib/attribution';
+import { buildSmartLink, getAttribution } from '@/lib/attribution';
 
 interface Props {
   accent: string;
@@ -14,9 +14,6 @@ interface Props {
 
 export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId, archetypeName }: Props) {
   const [visible, setVisible] = useState(false);
-  const appStoreUrl =
-    process.env.NEXT_PUBLIC_APP_STORE_URL ??
-    'https://apps.apple.com/app/id6766315768';
 
   useEffect(() => {
     // Appear after a short delay so it doesn't compete with the reveal animation
@@ -31,7 +28,9 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
       archetype_name: archetypeName,
       source: 'sticky_cta',
     });
-    const url = buildAppStoreUrl(appStoreUrl, attribution, {
+    // Build smart link with all attribution + identity params at click time
+    // (not at mount time) so archetype is always current
+    const url = buildSmartLink(attribution, {
       result_id: resultId,
       archetype_name: archetypeName,
       quiz_id: quizId,

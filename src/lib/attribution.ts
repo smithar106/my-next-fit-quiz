@@ -44,12 +44,11 @@ export function getAttribution(): Attribution {
   }
 }
 
-// Smart link base — routes through mynextfit.app/open which passes params to the
-// native app via custom scheme (mynextfit://open?...) and falls back to App Store.
+// Routes through mynextfit.app/open — passes params to the native app via
+// custom scheme (mynextfit://open?...) and falls back to App Store if not installed.
 const SMART_LINK_BASE = 'https://mynextfit.app/open';
 
-export function buildAppStoreUrl(
-  _baseUrl: string,
+export function buildSmartLink(
   attr: Attribution,
   extras?: { result_id?: string; archetype_name?: string; quiz_id?: string }
 ): string {
@@ -57,6 +56,8 @@ export function buildAppStoreUrl(
     const url = new URL(SMART_LINK_BASE);
     if (attr.creator) url.searchParams.set('creator', attr.creator);
     if (attr.campaign) url.searchParams.set('campaign', attr.campaign);
+    if (attr.source) url.searchParams.set('source', attr.source);
+    if (attr.platform) url.searchParams.set('platform', attr.platform);
     if (attr.utm_source) url.searchParams.set('utm_source', attr.utm_source);
     if (attr.utm_medium) url.searchParams.set('utm_medium', attr.utm_medium);
     if (attr.utm_campaign) url.searchParams.set('utm_campaign', attr.utm_campaign);
@@ -69,6 +70,15 @@ export function buildAppStoreUrl(
   } catch {
     return SMART_LINK_BASE;
   }
+}
+
+/** @deprecated Use buildSmartLink — baseUrl arg is ignored, kept for call-site compatibility */
+export function buildAppStoreUrl(
+  _baseUrl: string,
+  attr: Attribution,
+  extras?: { result_id?: string; archetype_name?: string; quiz_id?: string }
+): string {
+  return buildSmartLink(attr, extras);
 }
 
 export function persistResult(resultId: string, archetypeName: string, quizId: string) {

@@ -16,7 +16,7 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
   const [visible, setVisible] = useState(false);
   const appStoreUrl =
     process.env.NEXT_PUBLIC_APP_STORE_URL ??
-    'https://apps.apple.com/app/my-next-fit/id6746580479';
+    'https://apps.apple.com/app/id6766315768';
 
   useEffect(() => {
     // Appear after a short delay so it doesn't compete with the reveal animation

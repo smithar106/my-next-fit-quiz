@@ -7,6 +7,7 @@ const QUIZ_LABELS: Record<string, string> = {
   'capsule-wardrobe': 'Capsule Wardrobe Quiz',
   'date-night-outfits': 'Date Night Outfit Quiz',
   'creator-style-match': 'Creator Style Match',
+  'style-dna': 'Style DNA Quiz',
 };
 
 export async function POST(req: NextRequest) {
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
             <p style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#C084FC;margin-bottom:8px;">My Next Fit</p>
             <h1 style="font-size:32px;font-weight:900;margin:0 0 8px 0;color:#ffffff;">${resultLabel}</h1>
             <p style="font-size:16px;color:rgba(255,255,255,0.75);margin:0 0 32px 0;">That's your style — and now My Next Fit can build your personalized feed around it.</p>
-            <a href="https://apps.apple.com/app/my-next-fit/id6746580479" style="display:inline-block;background:linear-gradient(135deg,#C084FC,#F472B6);color:#ffffff;font-weight:700;font-size:15px;padding:16px 32px;border-radius:12px;text-decoration:none;">Unlock My Style Feed →</a>
+            <a href="https://apps.apple.com/app/id6766315768" style="display:inline-block;background:linear-gradient(135deg,#C084FC,#F472B6);color:#ffffff;font-weight:700;font-size:15px;padding:16px 32px;border-radius:12px;text-decoration:none;">Unlock My Style Feed →</a>
             <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:40px;">You received this because you took the ${quizName} at quiz.mynextfit.app. <a href="#" style="color:rgba(255,255,255,0.3);">Unsubscribe</a>.</p>
           </div>
         `,

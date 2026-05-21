@@ -31,7 +31,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
   const [emailLoading, setEmailLoading] = useState(false);
   const [visible, setVisible] = useState(false);
 
-  const appStoreUrl = process.env.NEXT_PUBLIC_APP_STORE_URL ?? 'https://apps.apple.com/app/my-next-fit/id6746580479';
+  const appStoreUrl = process.env.NEXT_PUBLIC_APP_STORE_URL ?? 'https://apps.apple.com/app/id6766315768';
   const ctaLabel = CTA_COPY[quiz.slug] ?? 'Get My Personalized Outfits';
   const accent = result.accentColor;
 

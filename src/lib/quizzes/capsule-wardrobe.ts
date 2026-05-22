@@ -10,7 +10,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
     {
       id: 'cw-q1',
       text: 'How would you describe your day-to-day life right now?',
-      subtext: 'Be honest — this helps us build something that actually fits.',
+      subtext: 'Be honest — your real life is what makes the result useful.',
       options: [
         {
           id: 'cw-q1-a',

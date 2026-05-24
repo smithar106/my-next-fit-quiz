@@ -7,7 +7,7 @@ import { getAttribution, buildAppStoreUrl, persistResult } from '@/lib/attributi
 import { trackEvent } from '@/lib/events';
 import EmailCapture from './EmailCapture';
 import ResultVisualCards from './ResultVisualCards';
-import ShareResultButton from './ShareResultButton';
+import ShareCard from './ShareCard';
 import NextStepSection from './NextStepSection';
 import AppStoreCTA from './AppStoreCTA';
 import StickyDownloadCTA from './StickyDownloadCTA';
@@ -167,7 +167,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
 
         {/* ── SHARE ── */}
         <div className="mb-6">
-          <ShareResultButton result={result} quizName={quiz.hook} accent={accent} sessionId={sessionId} quizId={quiz.id} />
+          <ShareCard result={result} quizName={quiz.hook} accent={accent} sessionId={sessionId} quizId={quiz.id} />
         </div>
 
         {/* ── EMAIL — secondary capture after primary CTA ── */}

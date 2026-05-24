@@ -111,12 +111,18 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
 
         {/* ── IDENTITY LINES ── */}
         {result.identityLines && result.identityLines.length > 0 && (
-          <div className="flex flex-col gap-2 mb-6">
+          <div className="flex flex-col gap-3 mb-8">
             {result.identityLines.map((line, i) => (
-              <p key={i} className="text-[15px] font-semibold text-white/90 leading-snug pl-4"
-                style={{ borderLeft: `2px solid ${accent}80` }}>
-                {line}
-              </p>
+              <div key={i} className="relative flex items-center gap-4 rounded-2xl px-5 py-4 overflow-hidden"
+                style={{ background: `linear-gradient(135deg, ${accent}18, ${accent}08)`, border: `1px solid ${accent}40` }}>
+                {/* Glow spot */}
+                <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl" style={{ background: accent }} />
+                <span className="text-[13px] font-black tracking-[0.12em] uppercase flex-shrink-0 w-5 text-center"
+                  style={{ color: `${accent}99` }}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p className="text-[15px] font-semibold text-white leading-snug">{line}</p>
+              </div>
             ))}
           </div>
         )}
@@ -125,12 +131,6 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         {result.visualCards && result.visualCards.length > 0 && (
           <ResultVisualCards cards={result.visualCards} accent={accent} />
         )}
-
-        {/* ── DESCRIPTION ── */}
-        <div className="rounded-2xl px-5 py-5 mb-5"
-          style={{ background: `linear-gradient(135deg, ${accent}20, ${accent}08)`, border: `1.5px solid ${accent}45` }}>
-          <p className="text-[15px] text-white leading-relaxed">{result.description}</p>
-        </div>
 
         {/* ── OUTFIT DIRECTIONS ── */}
         <div className="flex flex-col gap-3 mb-6">

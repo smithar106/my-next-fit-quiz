@@ -14,6 +14,41 @@ interface Props {
   accent: string;
 }
 
+// Items mislabeled cat_tops (backfill defaulted all untagged items to tops).
+// These exclusions prevent trousers, sunglasses, bags, shoes from showing in the TOP slot.
+const SLOT_EXCLUSIONS: Record<string, string[]> = {
+  cat_tops: [
+    'pant', 'trouser', 'jean', 'denim', 'short', 'skirt', 'legging',
+    'sunglass', 'eyewear', 'optical', 'watch', 'boot', 'shoe', 'sandal', 'sneaker', 'heel',
+    'bag', 'purse', 'wallet', 'tote', 'clutch', 'handbag',
+  ],
+  cat_bottoms: [
+    'shirt', 'blouse', 'top', 'jacket', 'coat', 'sweater', 'cardigan',
+    'boot', 'shoe', 'sandal', 'sneaker',
+    'sunglass', 'bag', 'purse', 'wallet',
+  ],
+  cat_footwear: [
+    'shirt', 'blouse', 'pant', 'jean', 'trouser', 'jacket', 'coat',
+    'bag', 'purse', 'wallet', 'sunglass', 'watch',
+  ],
+  cat_accessories: [
+    'shirt', 'blouse', 'pant', 'jean', 'trouser', 'jacket', 'coat',
+    'boot', 'shoe', 'sandal', 'sneaker',
+  ],
+};
+
+function applySlotExclusions(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  q: any,
+  categoryTagId: string,
+) {
+  const exclusions = SLOT_EXCLUSIONS[categoryTagId] ?? [];
+  for (const kw of exclusions) {
+    q = (q as any).not('product_url', 'ilike', `%${kw}%`);
+  }
+  return q;
+}
+
 async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promise<string | null> {
   if (!supabase || query.length === 0) return null;
 
@@ -25,9 +60,11 @@ async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promis
     return null;
   };
 
+  // Detect the category slot (first cat_* tag in query, if any)
+  const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
+
   // Try all tags together (AND) first — strictest match, no category mismatch
   try {
-    const filterStr = query.map(id => `[{"id":"${id}"}]`);
     let q = supabase
       .from('items')
       .select('image_url')
@@ -35,10 +72,11 @@ async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promis
       .not('image_url', 'like', '%picsum%')
       .not('image_url', 'like', '%loremflickr%')
       .limit(80);
-    for (const f of filterStr) {
-      q = q.filter('tags', 'cs', f);
+    for (const id of query) {
+      q = (q as any).filter('tags', 'cs', `[{"id":"${id}"}]`);
     }
-    const { data } = await q;
+    if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
+    const { data } = await (q as any);
     if (data?.length) {
       const url = pickUnused(data as { image_url: string }[]);
       if (url) return url;
@@ -47,7 +85,7 @@ async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promis
 
   // Fallback: category tag only (first tag in query) — still correct category, just looser condition
   try {
-    const { data } = await supabase
+    let q = supabase
       .from('items')
       .select('image_url')
       .filter('tags', 'cs', `[{"id":"${query[0]}"}]`)
@@ -55,6 +93,8 @@ async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promis
       .not('image_url', 'like', '%picsum%')
       .not('image_url', 'like', '%loremflickr%')
       .limit(80);
+    if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
+    const { data } = await (q as any);
     if (data?.length) {
       const url = pickUnused(data as { image_url: string }[]);
       if (url) return url;

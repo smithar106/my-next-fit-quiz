@@ -20,12 +20,12 @@ export default function QuizQuestion({
   const [selected, setSelected] = useState<string | null>(null);
 
   const MICROCOPY = [
-    'Building your aesthetic...',
-    'Decoding your style DNA...',
-    'Matching your wardrobe energy...',
-    'Getting clearer on your vibe...',
-    'Almost there — your style profile is coming together.',
-    'Last one — your style profile is almost ready.',
+    'Reading your eye...',
+    'Mapping your thrift instinct...',
+    'Finding your aesthetic frequency...',
+    'Getting clearer on what you notice...',
+    'Almost there — your taste profile is coming together.',
+    'Last one — your thrift identity is almost ready.',
   ];
 
   function handleSelect(optionId: string) {

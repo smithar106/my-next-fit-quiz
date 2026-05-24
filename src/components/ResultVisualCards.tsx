@@ -15,7 +15,7 @@ interface Props {
 }
 
 async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promise<string | null> {
-  if (!supabase) return null;
+  if (!supabase || query.length === 0) return null;
 
   const pickUnused = (data: { image_url: string }[]): string | null => {
     const shuffled = [...data].sort(() => Math.random() - 0.5);
@@ -25,43 +25,43 @@ async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promis
     return null;
   };
 
-  for (const tagId of query) {
-    try {
-      const { data } = await supabase
-        .from('items')
-        .select('image_url')
-        .filter('tags', 'cs', `[{"id":"${tagId}"}]`)
-        .not('image_url', 'is', null)
-        .not('image_url', 'like', '%picsum%')
-        .not('image_url', 'like', '%loremflickr%')
-        .limit(50);
-
-      if (data?.length) {
-        const url = pickUnused(data as { image_url: string }[]);
-        if (url) return url;
-      }
-    } catch {
-      // try next tag
-    }
-  }
-
-  // Hard fallback: any real item image not yet used
+  // Try all tags together (AND) first — strictest match, no category mismatch
   try {
-    const { data } = await supabase
+    const filterStr = query.map(id => `[{"id":"${id}"}]`);
+    let q = supabase
       .from('items')
       .select('image_url')
       .not('image_url', 'is', null)
       .not('image_url', 'like', '%picsum%')
       .not('image_url', 'like', '%loremflickr%')
-      .limit(100)
-      .order('created_at', { ascending: false });
-
+      .limit(80);
+    for (const f of filterStr) {
+      q = q.filter('tags', 'cs', f);
+    }
+    const { data } = await q;
     if (data?.length) {
       const url = pickUnused(data as { image_url: string }[]);
-      return url;
+      if (url) return url;
     }
   } catch {}
 
+  // Fallback: category tag only (first tag in query) — still correct category, just looser condition
+  try {
+    const { data } = await supabase
+      .from('items')
+      .select('image_url')
+      .filter('tags', 'cs', `[{"id":"${query[0]}"}]`)
+      .not('image_url', 'is', null)
+      .not('image_url', 'like', '%picsum%')
+      .not('image_url', 'like', '%loremflickr%')
+      .limit(80);
+    if (data?.length) {
+      const url = pickUnused(data as { image_url: string }[]);
+      if (url) return url;
+    }
+  } catch {}
+
+  // No fallback to random items — show gradient placeholder instead
   return null;
 }
 

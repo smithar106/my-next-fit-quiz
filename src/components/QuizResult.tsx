@@ -20,7 +20,7 @@ interface QuizResultProps {
 }
 
 const CTA_COPY: Record<string, string> = {
-  'style-quiz': 'Unlock My Style Feed',
+  'style-quiz': 'Find my first hidden gem →',
   'old-money-style': 'See My Daily Fits',
   'capsule-wardrobe': 'Get My Personalized Outfits',
   'date-night-outfits': 'Open My AI Stylist',
@@ -97,7 +97,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         <div className="flex flex-col items-center text-center pt-14 pb-8 gap-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase"
             style={{ background: `${accent}22`, border: `1px solid ${accent}60`, color: accent }}>
-            Your Style
+            Your Thrift Identity
           </div>
           <h1 className="text-[48px] font-black leading-[1.0] tracking-tight"
             style={{ background: `linear-gradient(135deg, #ffffff 20%, ${accent} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
@@ -135,17 +135,28 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         {/* ── OUTFIT DIRECTIONS ── */}
         <div className="flex flex-col gap-3 mb-6">
           <p className="text-[11px] tracking-[0.25em] font-bold uppercase" style={{ color: accent }}>
-            Your Outfit Directions
+            Your Outfit
           </p>
-          {result.outfitDirections.map((direction, i) => (
-            <div key={i} className="flex items-start gap-4 rounded-xl px-4 py-4"
-              style={{ background: `${accent}10`, border: `1px solid ${accent}30` }}>
-              <span className="text-[14px] font-black tabular-nums flex-shrink-0 mt-0.5" style={{ color: accent }}>
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <p className="text-[14px] text-white leading-snug">{direction}</p>
-            </div>
-          ))}
+          {result.outfitDirections.map((direction, i) => {
+            const colonIdx = direction.indexOf(' — ');
+            const slotLabel = colonIdx > -1 ? direction.slice(0, colonIdx) : null;
+            const slotDetail = colonIdx > -1 ? direction.slice(colonIdx + 3) : direction;
+            return (
+              <div key={i} className="flex items-start gap-4 rounded-xl px-4 py-4"
+                style={{ background: `${accent}10`, border: `1px solid ${accent}30` }}>
+                {slotLabel ? (
+                  <span className="text-[10px] font-black tracking-[0.15em] uppercase flex-shrink-0 mt-0.5 w-[68px]" style={{ color: accent }}>
+                    {slotLabel}
+                  </span>
+                ) : (
+                  <span className="text-[14px] font-black tabular-nums flex-shrink-0 mt-0.5" style={{ color: accent }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                )}
+                <p className="text-[14px] text-white leading-snug">{slotDetail}</p>
+              </div>
+            );
+          })}
         </div>
 
         {/* ── WHAT HAPPENS NEXT ── */}

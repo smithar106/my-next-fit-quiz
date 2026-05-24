@@ -5,12 +5,12 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'What\'s Your Personal Style? — My Next Fit',
+  title: 'What Kind of Treasure Hunter Is Your Aesthetic? — My Next Thrift',
   description:
-    'Take the 30-second style quiz to find your personal style. Elevated Minimalist, Old Money, Soft Glam, and more. Get personalized outfit recommendations.',
+    'Take the 30-second thrift identity quiz. Discover the rare pieces your eye naturally finds. Archive Hunter, Quiet Luxury Collector, Hidden Gem Collector, and more.',
   openGraph: {
-    title: 'What\'s Your Personal Style?',
-    description: 'Discover your style DNA in 60 seconds.',
+    title: 'Your closet should feel discovered, not bought.',
+    description: 'Find the rare pieces your aesthetic keeps searching for.',
   },
 };
 

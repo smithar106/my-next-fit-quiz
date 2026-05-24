@@ -92,7 +92,7 @@ export default function ResultVisualCards({ cards, accent }: Props) {
   return (
     <div className="flex flex-col gap-3 mb-6">
       <p className="text-[11px] tracking-[0.25em] font-bold uppercase" style={{ color: accent }}>
-        Your Aesthetic
+        Pieces To Hunt For
       </p>
       <div className="grid grid-cols-2 gap-3">
         {cards.map((card, i) => {

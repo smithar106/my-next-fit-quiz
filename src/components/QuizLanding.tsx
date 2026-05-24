@@ -17,19 +17,19 @@ export default function QuizLanding({
     <div className="min-h-screen bg-[#0A0A0A] flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden">
       {/* Background glow */}
       <div
-        className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full opacity-65 pointer-events-none"
+        className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full opacity-50 pointer-events-none"
         style={{
           background:
-            'radial-gradient(circle, #C084FC 0%, #F472B6 40%, transparent 70%)',
-          filter: 'blur(45px)',
+            'radial-gradient(circle, #C4965A 0%, #8B5E3C 45%, transparent 70%)',
+          filter: 'blur(55px)',
         }}
       />
 
       {/* Bottom accent */}
       <div
-        className="absolute bottom-[-80px] left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full pointer-events-none opacity-20"
+        className="absolute bottom-[-80px] left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full pointer-events-none opacity-15"
         style={{
-          background: 'radial-gradient(circle, #F472B6 0%, transparent 70%)',
+          background: 'radial-gradient(circle, #C4965A 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
       />
@@ -39,12 +39,12 @@ export default function QuizLanding({
         <div
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.15em] uppercase"
           style={{
-            background: 'linear-gradient(135deg, #C084FC33, #F472B633)',
-            border: '1px solid #C084FC66',
-            color: '#E9C5FA',
+            background: 'linear-gradient(135deg, #C4965A22, #8B5E3C22)',
+            border: '1px solid #C4965A55',
+            color: '#D4A870',
           }}
         >
-          My Next Fit
+          My Next Thrift
         </div>
 
         {/* Hook */}
@@ -52,7 +52,7 @@ export default function QuizLanding({
           <h1
             className="text-[36px] leading-[1.1] font-bold tracking-tight"
             style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #D8A0FF 45%, #FF8CC8 100%)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #E8C898 50%, #C4965A 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -60,7 +60,7 @@ export default function QuizLanding({
           >
             {hook}
           </h1>
-          <p className="text-[16px] leading-relaxed text-white/90 max-w-[320px] mx-auto">
+          <p className="text-[16px] leading-relaxed text-white/80 max-w-[320px] mx-auto">
             {hookSubtext}
           </p>
         </div>
@@ -70,21 +70,17 @@ export default function QuizLanding({
           onClick={onStart}
           className="w-full h-[58px] text-[15px] font-bold rounded-full tracking-wide active:scale-[0.98] transition-all duration-150"
           style={{
-            background: 'linear-gradient(135deg, #C084FC, #F472B6)',
+            background: 'linear-gradient(135deg, #C4965A, #8B5E3C)',
             color: '#ffffff',
-            boxShadow: '0 0 48px rgba(192, 132, 252, 0.6)',
+            boxShadow: '0 0 48px rgba(196, 150, 90, 0.5)',
           }}
         >
           {ctaLabel}
         </button>
 
         {/* Trust */}
-        <p className="text-[12px] text-white/70">
+        <p className="text-[12px] text-white/50">
           Takes about 30 seconds &middot; Free
-        </p>
-
-        <p className="text-[12px] text-white/60 text-center max-w-[260px] mx-auto">
-          Built for people who want outfits that actually feel like them.
         </p>
       </div>
     </div>

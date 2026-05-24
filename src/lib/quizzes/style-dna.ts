@@ -249,7 +249,7 @@ export const styleDnaQuiz: QuizConfig = {
         { label: 'Quiet Luxury Edit', gradient: 'linear-gradient(145deg, #F0ECE6 0%, #C4BEB4 100%)', tags: ['luxury', 'restrained'], query: ['style_minimalist', 'style_classic'] },
       ],
       whyMyNextFit:
-        'My Next Fit learns your exact neutral palette and quality markers — it finds the pieces your eye would stop at, so you never have to dig through noise.',
+        'My Next Thrift learns your exact neutral palette and quality markers — it finds the pieces your eye would stop at, so you never have to dig through noise.',
       accentColor: '#D4CFC8',
     },
     {
@@ -275,7 +275,7 @@ export const styleDnaQuiz: QuizConfig = {
         { label: 'Dark Tailoring', gradient: 'linear-gradient(145deg, #4A4040 0%, #2C2424 100%)', tags: ['tailored', 'dark'], query: ['style_workwear', 'color_dark'] },
       ],
       whyMyNextFit:
-        'My Next Fit surfaces dark, structured pieces with actual edge — not just black basics, but the pieces with real visual intelligence.',
+        'My Next Thrift surfaces dark, structured pieces with actual edge — not just black basics, but the pieces with real visual intelligence.',
       accentColor: '#5A5A5A',
     },
     {
@@ -301,7 +301,7 @@ export const styleDnaQuiz: QuizConfig = {
         { label: 'Blush Palette', gradient: 'linear-gradient(145deg, #EDD5E8 0%, #D8A0CC 100%)', tags: ['blush', 'delicate'], query: ['style_minimalist', 'color_pastel'] },
       ],
       whyMyNextFit:
-        'My Next Fit finds soft, feminine pieces that actually match your taste — not trend-driven, not overdone, just right.',
+        'My Next Thrift finds soft, feminine pieces that actually match your taste — not trend-driven, not overdone, just right.',
       accentColor: '#F2B8C6',
     },
     {
@@ -327,7 +327,7 @@ export const styleDnaQuiz: QuizConfig = {
         { label: 'Sharp Neutrals', gradient: 'linear-gradient(145deg, #D8D0C0 0%, #A09080 100%)', tags: ['neutral', 'precise'], query: ['style_minimalist', 'color_earth'] },
       ],
       whyMyNextFit:
-        'My Next Fit learns your proportion preferences and finds pieces with the exact construction your eye is trained to spot.',
+        'My Next Thrift learns your proportion preferences and finds pieces with the exact construction your eye is trained to spot.',
       accentColor: '#B8AFA0',
     },
     {
@@ -353,7 +353,7 @@ export const styleDnaQuiz: QuizConfig = {
         { label: 'Cultural Pieces', gradient: 'linear-gradient(145deg, #C4B0FF 0%, #8870F0 100%)', tags: ['culture', 'editorial'], query: ['style_bold', 'style_luxury'] },
       ],
       whyMyNextFit:
-        'My Next Fit surfaces pieces with editorial potential — things with enough character that your eye can actually do something with them.',
+        'My Next Thrift surfaces pieces with editorial potential — things with enough character that your eye can actually do something with them.',
       accentColor: '#9B89F5',
     },
   ],

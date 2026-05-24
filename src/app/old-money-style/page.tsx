@@ -5,7 +5,7 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'Which Old Money Aesthetic Is Yours? — My Next Fit',
+  title: 'Which Old Money Aesthetic Is Yours? — My Next Thrift',
   description:
     'Quiet luxury, classic prep, modern heiress — discover which old money style is actually yours. Take the 60-second quiz.',
   openGraph: {

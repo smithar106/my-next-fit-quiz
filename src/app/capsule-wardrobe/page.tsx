@@ -5,7 +5,7 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'What Capsule Wardrobe Do You Actually Need? — My Next Fit',
+  title: 'What Capsule Wardrobe Do You Actually Need? — My Next Thrift',
   description:
     'Minimal, workwear, travel, weekend, or budget capsule — discover the exact wardrobe system for your life. 60-second quiz.',
   openGraph: {

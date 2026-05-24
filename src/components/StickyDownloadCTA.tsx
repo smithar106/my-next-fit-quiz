@@ -60,7 +60,7 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
         {/* Left copy */}
         <div className="flex flex-col gap-0.5 min-w-0">
           <p className="text-[11px] text-white/50 font-medium tracking-wide leading-none">
-            My Next Fit
+            My Next Thrift
           </p>
           <p className="text-[14px] text-white font-semibold leading-snug truncate">
             Your personalized style feed is waiting.

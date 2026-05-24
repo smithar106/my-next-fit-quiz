@@ -44,9 +44,9 @@ export function getAttribution(): Attribution {
   }
 }
 
-// Routes through mynextfit.app/open — passes params to the native app via
+// Routes through mynextthrift.app/open — passes params to the native app via
 // custom scheme (mynextfit://open?...) and falls back to App Store if not installed.
-const SMART_LINK_BASE = 'https://mynextfit.app/open';
+const SMART_LINK_BASE = 'https://mynextthrift.app/open';
 
 export function buildSmartLink(
   attr: Attribution,

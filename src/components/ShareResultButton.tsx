@@ -15,8 +15,8 @@ export default function ShareResultButton({ result, quizName, accent, sessionId,
   const [copied, setCopied] = useState(false);
 
   const shareText = result.tagline.includes(' — ')
-    ? `I got ${result.label} on My Next Fit — apparently ${result.tagline.split(' — ')[1].toLowerCase()}. Find your style:`
-    : `I got ${result.label} on My Next Fit. Find your style:`;
+    ? `I got ${result.label} on My Next Thrift — apparently ${result.tagline.split(' — ')[1].toLowerCase()}. Find your style:`
+    : `I got ${result.label} on My Next Thrift. Find your style:`;
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
 
   async function handleShare() {

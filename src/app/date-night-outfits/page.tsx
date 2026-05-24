@@ -5,7 +5,7 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'What\'s Your Date Night Outfit Personality? — My Next Fit',
+  title: 'What\'s Your Date Night Outfit Personality? — My Next Thrift',
   description:
     'Elegant romantic, effortless cool, bold statement, soft feminine, or minimal chic — find your date night style in 60 seconds.',
   openGraph: {

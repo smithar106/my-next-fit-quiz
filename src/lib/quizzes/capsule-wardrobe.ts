@@ -249,7 +249,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         { label: 'Two-Shoe Rule Edit', gradient: 'linear-gradient(145deg, #E0E0E0 0%, #A8A8A8 100%)', tags: ['minimal', 'smart'], query: ['style_minimalist', 'style_classic'] },
       ],
       whyMyNextFit:
-        'My Next Fit builds your capsule around your taste profile — so every piece it recommends belongs.',
+        'My Next Thrift builds your capsule around your taste profile — so every piece it recommends belongs.',
       accentColor: '#E5E5E5',
     },
     {
@@ -275,7 +275,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         { label: 'Pointed Flat Edit', gradient: 'linear-gradient(145deg, #C8DFFF 0%, #80B4F0 100%)', tags: ['finish', 'sharp'], query: ['style_workwear', 'color_neutral'] },
       ],
       whyMyNextFit:
-        'My Next Fit identifies the exact gaps in your work wardrobe and fills them with pieces that earn their place.',
+        'My Next Thrift identifies the exact gaps in your work wardrobe and fills them with pieces that earn their place.',
       accentColor: '#93C5FD',
     },
     {
@@ -301,7 +301,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         { label: 'Weekend Essentials', gradient: 'linear-gradient(145deg, #FFF3B0 0%, #F0D040 100%)', tags: ['finish', 'weekend'], query: ['style_minimalist', 'occ_weekend'] },
       ],
       whyMyNextFit:
-        'My Next Fit learns what you actually reach for on weekends and finds more of exactly that.',
+        'My Next Thrift learns what you actually reach for on weekends and finds more of exactly that.',
       accentColor: '#FDE68A',
     },
     {
@@ -327,7 +327,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         { label: 'Travel Essentials', gradient: 'linear-gradient(145deg, #B0F5D8 0%, #40D088 100%)', tags: ['travel', 'elevated'], query: ['style_classic', 'fit_tailored'] },
       ],
       whyMyNextFit:
-        'My Next Fit helps you build a travel wardrobe that actually packs small and lives large.',
+        'My Next Thrift helps you build a travel wardrobe that actually packs small and lives large.',
       accentColor: '#6EE7B7',
     },
     {
@@ -353,7 +353,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         { label: 'Statement Color Pop', gradient: 'linear-gradient(145deg, #B8F8D8 0%, #60D8A8 100%)', tags: ['mix', 'smart'], query: ['style_bold', 'color_bright'] },
       ],
       whyMyNextFit:
-        'My Next Fit finds the best value pieces in your aesthetic — quality at accessible prices, no guesswork.',
+        'My Next Thrift finds the best value pieces in your aesthetic — quality at accessible prices, no guesswork.',
       accentColor: '#A7F3D0',
     },
   ],

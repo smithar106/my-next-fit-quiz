@@ -249,7 +249,7 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         { label: 'Gold Watch Moment', gradient: 'linear-gradient(145deg, #E8D4A0 0%, #B89040 100%)', tags: ['minimal', 'elevated'], query: ['style_minimalist', 'style_luxury'] },
       ],
       whyMyNextFit:
-        'My Next Fit finds the quiet, quality pieces your aesthetic demands — no trend noise, just your exact palette.',
+        'My Next Thrift finds the quiet, quality pieces your aesthetic demands — no trend noise, just your exact palette.',
       accentColor: '#C8A96E',
     },
     {
@@ -275,7 +275,7 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         { label: 'Striped Shirt Weekend', gradient: 'linear-gradient(145deg, #A0B8F0 0%, #5878C0 100%)', tags: ['weekend', 'casual'], query: ['style_classic', 'occ_weekend'] },
       ],
       whyMyNextFit:
-        'My Next Fit learns your prep palette and connects you to the exact pieces worth investing in.',
+        'My Next Thrift learns your prep palette and connects you to the exact pieces worth investing in.',
       accentColor: '#3B5998',
     },
     {
@@ -301,7 +301,7 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         { label: 'Gold Bag Edit', gradient: 'linear-gradient(145deg, #F8E8D0 0%, #D4B080 100%)', tags: ['heiress', 'classic'], query: ['style_classic', 'style_luxury'] },
       ],
       whyMyNextFit:
-        'My Next Fit surfaces the soft, feminine luxury pieces that feel like you — not a mood board.',
+        'My Next Thrift surfaces the soft, feminine luxury pieces that feel like you — not a mood board.',
       accentColor: '#F5E6D3',
     },
     {
@@ -327,7 +327,7 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         { label: 'Neutral Mule Edit', gradient: 'linear-gradient(145deg, #E8E8E8 0%, #B8B8B8 100%)', tags: ['quiet', 'elevated'], query: ['style_minimalist', 'color_neutral'] },
       ],
       whyMyNextFit:
-        'My Next Fit is built for your mindset — it shows you the one piece that\'s actually worth adding.',
+        'My Next Thrift is built for your mindset — it shows you the one piece that\'s actually worth adding.',
       accentColor: '#E5E5E5',
     },
     {
@@ -353,7 +353,7 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         { label: 'Linen + Cardigan Look', gradient: 'linear-gradient(145deg, #B8F0D0 0%, #60D898 100%)', tags: ['casual', 'elevated'], query: ['style_classic', 'occ_casual'] },
       ],
       whyMyNextFit:
-        'My Next Fit finds the sport-meets-luxury pieces that hit your exact aesthetic — athletic without looking athletic.',
+        'My Next Thrift finds the sport-meets-luxury pieces that hit your exact aesthetic — athletic without looking athletic.',
       accentColor: '#86EFAC',
     },
   ],

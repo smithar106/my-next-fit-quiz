@@ -249,7 +249,7 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         { label: 'Classic Evening Looks', gradient: 'linear-gradient(145deg, #ECD4FF 0%, #C884FC 100%)', tags: ['timeless', 'romantic'], query: ['style_classic', 'occ_evening'] },
       ],
       whyMyNextFit:
-        'My Next Fit finds the pieces that feel as intentional and beautiful as your date night energy.',
+        'My Next Thrift finds the pieces that feel as intentional and beautiful as your date night energy.',
       accentColor: '#C084FC',
     },
     {
@@ -275,7 +275,7 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         { label: 'Ankle Boot Moment', gradient: 'linear-gradient(145deg, #B0F5D8 0%, #40D088 100%)', tags: ['edge', 'cool'], query: ['style_streetwear', 'occ_casual'] },
       ],
       whyMyNextFit:
-        'My Next Fit matches your effortless aesthetic and finds the pieces that look good without overthinking.',
+        'My Next Thrift matches your effortless aesthetic and finds the pieces that look good without overthinking.',
       accentColor: '#6EE7B7',
     },
     {
@@ -301,7 +301,7 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         { label: 'Statement Earring Edit', gradient: 'linear-gradient(145deg, #FFD0D0 0%, #F88080 100%)', tags: ['finish', 'dramatic'], query: ['style_bold', 'occ_evening'] },
       ],
       whyMyNextFit:
-        'My Next Fit learns what bold means to you specifically and finds the pieces that hit exactly that note.',
+        'My Next Thrift learns what bold means to you specifically and finds the pieces that hit exactly that note.',
       accentColor: '#F87171',
     },
     {
@@ -327,7 +327,7 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         { label: 'Soft Evening Looks', gradient: 'linear-gradient(145deg, #FFE4F0 0%, #FAB8D8 100%)', tags: ['soft', 'elevated'], query: ['style_minimalist', 'occ_evening'] },
       ],
       whyMyNextFit:
-        'My Next Fit surfaces soft, feminine pieces that feel like you — not a trend.',
+        'My Next Thrift surfaces soft, feminine pieces that feel like you — not a trend.',
       accentColor: '#F9A8D4',
     },
     {
@@ -353,7 +353,7 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         { label: 'Pointed Mule Finish', gradient: 'linear-gradient(145deg, #E0E4E8 0%, #A8AEB8 100%)', tags: ['finish', 'quiet'], query: ['style_minimalist', 'color_black'] },
       ],
       whyMyNextFit:
-        'My Next Fit finds the minimal, precise pieces your aesthetic demands — nothing overdone, everything right.',
+        'My Next Thrift finds the minimal, precise pieces your aesthetic demands — nothing overdone, everything right.',
       accentColor: '#D1D5DB',
     },
   ],

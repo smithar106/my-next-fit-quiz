@@ -9,17 +9,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'My Next Fit — Style Quiz',
+  title: 'My Next Thrift — Style Quiz',
   description:
     'Discover your personal style in 30 seconds. Personalized outfit recommendations powered by AI.',
   openGraph: {
-    title: 'My Next Fit — Style Quiz',
+    title: 'My Next Thrift — Style Quiz',
     description: 'Discover your style in 60 seconds.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'My Next Fit — Style Quiz',
+    title: 'My Next Thrift — Style Quiz',
     description: 'Discover your style in 60 seconds.',
   },
 };

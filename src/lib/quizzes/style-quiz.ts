@@ -197,7 +197,7 @@ export const styleQuiz: QuizConfig = {
       description:
         'You have a rare kind of patience. You\'re not looking for labels — you\'re looking for something that just feels right. And when you find it, you know immediately. Your eye is trained on what most people walk past, which is exactly why your wardrobe looks like nobody else\'s.',
       identityLines: [
-        '"You always notice things others miss."',
+        'You always notice things others miss.',
         'You\'re not chasing brands. You\'re chasing feeling.',
         'Your best finds cost less than dinner.',
       ],

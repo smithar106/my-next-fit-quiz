@@ -3,8 +3,8 @@
 const FEATURES = [
   'Rare finds matched to your thrift instinct',
   'Pieces that feel collected, not bought',
-  'Vintage and secondhand from 80+ curated stores',
-  'Finds inspired by your eye — not the algorithm',
+  'A feed that learns the difference between what you want and what you need',
+  'The patience to wait for the right thing — and the eye to know it when it arrives',
 ];
 
 interface Props {

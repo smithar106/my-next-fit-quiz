@@ -109,7 +109,7 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1E1810 0%, #140E08 100%)', tags: ['leather boots'], query: ['cat_footwear', 'cond_vintage'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #221C12 0%, #18120A 100%)', tags: ['silk scarf'], query: ['cat_accessories', 'cond_vintage'] },
       ],
-      whyMyNextFit: 'My Next Thrift surfaces rare vintage and archive pieces across 80+ curated stores — so every recommendation feels like a real find.',
+      whyMyNextFit: 'A feed built around the eye that already knows what it\'s looking for. The pieces that reach you feel excavated, not recommended.',
       accentColor: '#C4965A',
     },
     {
@@ -135,7 +135,7 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1020 0%, #120A16 100%)', tags: ['vintage sneakers'], query: ['cat_footwear', 'cond_vintage'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201428 0%, #160E1C 100%)', tags: ['layered chains'], query: ['cat_accessories', 'cond_vintage'] },
       ],
-      whyMyNextFit: 'My Next Thrift gets your mix-and-match aesthetic and surfaces vintage pieces that play well with what you already own.',
+      whyMyNextFit: 'Pieces with enough edge and softness to hold the tension your eye is always after. The find that works in a context it wasn\'t designed for.',
       accentColor: '#9B7EC8',
     },
     {
@@ -161,7 +161,7 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1A10 0%, #14100A 100%)', tags: ['leather loafers'], query: ['cat_footwear', 'cond_secondhand'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201E14 0%, #18140C 100%)', tags: ['structured bag'], query: ['cat_accessories', 'cond_secondhand'] },
       ],
-      whyMyNextFit: 'My Next Thrift finds the quiet luxury pieces you actually want — designer-quality fabric, no logo noise.',
+      whyMyNextFit: 'The pieces that reach you earned their place. Designer-quality fabric, no logo noise — found before the obvious crowd gets there.',
       accentColor: '#D4C5A0',
     },
     {
@@ -187,7 +187,7 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1A1410 0%, #120E08 100%)', tags: ['heritage boots'], query: ['cat_footwear', 'cond_vintage'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #1C1810 0%, #14100A 100%)', tags: ['vintage watch'], query: ['cat_accessories', 'cond_vintage'] },
       ],
-      whyMyNextFit: 'My Next Thrift is built for the treasure hunter — real vintage from 80+ curated stores, scored and ranked so the best finds surface first.',
+      whyMyNextFit: 'A feed that keeps pace with your instinct — the back-of-the-rack gem, the estate sale score, the thing that makes people stop and ask.',
       accentColor: '#8B7355',
     },
     {
@@ -213,7 +213,7 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1A1818 0%, #121010 100%)', tags: ['simple boots'], query: ['cat_footwear', 'cond_vintage'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #1C1A20 0%, #141218 100%)', tags: ['statement piece'], query: ['cat_accessories', 'cond_vintage'] },
       ],
-      whyMyNextFit: 'My Next Thrift\'s gem score surfaces rare, underrated pieces with high visual quality — the finds most people scroll past.',
+      whyMyNextFit: 'Pieces most people walk right past. Your eye catches what others miss — the feed reflects that, not the other way around.',
       accentColor: '#7B9E87',
     },
     {
@@ -239,7 +239,7 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1A12 0%, #141008 100%)', tags: ['heritage footwear'], query: ['cat_footwear', 'cond_vintage'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201C12 0%, #16120C 100%)', tags: ['designer bag'], query: ['cat_accessories', 'cond_secondhand'] },
       ],
-      whyMyNextFit: 'My Next Thrift scans 80+ vintage and secondhand stores for designer pieces — ranked by rarity so the real finds surface first.',
+      whyMyNextFit: 'The thrill is the find. Rare designer pieces at prices that shouldn\'t exist — the kind your eye spots before anyone else does.',
       accentColor: '#D4A830',
     },
     {
@@ -265,7 +265,7 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1814 0%, #14100C 100%)', tags: ['canvas / sandals'], query: ['cat_footwear', 'cond_vintage'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201A14 0%, #16100E 100%)', tags: ['vintage jewelry'], query: ['cat_accessories', 'cond_vintage'] },
       ],
-      whyMyNextFit: 'My Next Thrift finds the soft, emotionally-textured pieces you\'re drawn to — warm, worn-in, and unlike anything in a fast fashion store.',
+      whyMyNextFit: 'The worn-in blouse that feels like it was always yours. The faded knit you can\'t explain. Pieces with warmth that shows before you can describe it.',
       accentColor: '#C4907A',
     },
     {
@@ -291,7 +291,7 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #161420 0%, #0E0C18 100%)', tags: ['chunky boots'], query: ['cat_footwear', 'cond_vintage'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #181420 0%, #100C18 100%)', tags: ['bold accessory'], query: ['cat_accessories', 'cond_vintage'] },
       ],
-      whyMyNextFit: 'My Next Thrift feeds your eclectic instinct — rare vintage from 80+ curated stores with enough range to keep your combinations surprising.',
+      whyMyNextFit: 'Pieces with enough character that your combinations keep surprising even you. The find from a different world that somehow completes the look.',
       accentColor: '#7B8FD0',
     },
   ],

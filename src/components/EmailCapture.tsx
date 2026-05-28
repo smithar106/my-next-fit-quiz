@@ -18,7 +18,7 @@ export default function EmailCapture({ onSubmit, isLoading }: EmailCaptureProps)
       <div className="flex flex-col gap-2 py-3 items-center">
         <p className="text-[22px]">✓</p>
         <p className="text-[14px] text-white/80 font-medium text-center">
-          ✓ Sent. Your personalized style feed continues in the app.
+          ✓ Sent. Your thrift identity is saved.
         </p>
       </div>
     );
@@ -41,10 +41,10 @@ export default function EmailCapture({ onSubmit, isLoading }: EmailCaptureProps)
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1 mb-4">
         <p className="text-[14px] font-bold text-white">
-          Get your full style profile
+          Keep this result
         </p>
         <p className="text-[12px] text-white/45">
-          Your style identity, outfit direction, and personalized aesthetic breakdown — delivered to your inbox.
+          Your thrift identity and outfit direction — saved to your inbox so you don't lose it.
         </p>
       </div>
 

@@ -63,7 +63,7 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
             My Next Thrift
           </p>
           <p className="text-[14px] text-white font-semibold leading-snug truncate">
-            Your personalized style feed is waiting.
+            Your thrift identity continues in the app.
           </p>
         </div>
 
@@ -72,12 +72,12 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
           onClick={handleClick}
           className="flex-shrink-0 h-[40px] px-5 rounded-xl text-[13px] font-bold tracking-wide active:scale-[0.96] transition-all duration-150 whitespace-nowrap"
           style={{
-            background: `linear-gradient(135deg, ${accent}, #F472B6)`,
+            background: accent,
             color: '#080808',
             boxShadow: `0 0 20px ${accent}50`,
           }}
         >
-          Unlock My Style Feed
+          Start the hunt →
         </button>
       </div>
     </div>

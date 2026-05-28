@@ -22,9 +22,9 @@ export default function QuizQuestion({
   const MICROCOPY = [
     'Reading your eye...',
     'Mapping your thrift instinct...',
-    'Finding your aesthetic frequency...',
     'Getting clearer on what you notice...',
-    'Almost there — your taste profile is coming together.',
+    'Your eye is becoming specific...',
+    'Almost there — your thrift identity is taking shape.',
     'Last one — your thrift identity is almost ready.',
   ];
 
@@ -43,16 +43,16 @@ export default function QuizQuestion({
       <div
         className="absolute top-[-160px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, #C084FC 0%, #F472B6 40%, transparent 70%)',
+          background: 'radial-gradient(circle, #C4965A 0%, #8B7355 40%, transparent 70%)',
           filter: 'blur(60px)',
-          opacity: 0.35,
+          opacity: 0.25,
         }}
       />
       {/* Bottom right accent */}
       <div
         className="absolute bottom-[-100px] right-[-80px] w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, #F472B6 0%, transparent 65%)',
+          background: 'radial-gradient(circle, #8B7355 0%, transparent 65%)',
           filter: 'blur(70px)',
           opacity: 0.18,
         }}
@@ -63,7 +63,7 @@ export default function QuizQuestion({
         <div className="w-full max-w-[440px] flex flex-col gap-8">
           {/* Counter */}
           <div className="pt-2">
-            <div className="text-[11px] tracking-[0.2em] uppercase font-semibold" style={{ color: '#D8A0FF' }}>
+            <div className="text-[11px] tracking-[0.2em] uppercase font-semibold" style={{ color: '#C4965A' }}>
               Question {questionIndex + 1} of {total}
             </div>
             <p className="text-[12px] text-white/45 mt-1">
@@ -104,8 +104,8 @@ export default function QuizQuestion({
                   style={
                     isSelected
                       ? {
-                          background: 'linear-gradient(135deg, #C084FC30, #F472B630)',
-                          border: '2px solid #D8A0FF',
+                          background: 'rgba(196, 150, 90, 0.18)',
+                          border: '2px solid #C4965A',
                           color: '#ffffff',
                         }
                       : isDimmed

@@ -249,7 +249,7 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         { label: 'Micro-Trend Moment', gradient: 'linear-gradient(145deg, #FFD8B0 0%, #F5A060 100%)', tags: ['ahead', 'culture'], query: ['style_streetwear', 'color_bright'] },
       ],
       whyMyNextFit:
-        'My Next Thrift surfaces the new and emerging pieces your trend-forward aesthetic demands — before they\'re everywhere.',
+        'The pieces that land before the trend does. Found secondhand, worn before anyone else has the context to name it.',
       accentColor: '#FB923C',
     },
     {
@@ -275,7 +275,7 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         { label: 'Clean Line Drop', gradient: 'linear-gradient(145deg, #F0F0F0 0%, #E0E0E0 100%)', tags: ['minimal', 'art'], query: ['style_minimalist', 'style_classic'] },
       ],
       whyMyNextFit:
-        'My Next Thrift learns your precise neutral palette and finds the exactly-right pieces your minimalist feed deserves.',
+        'The precise neutral your feed is always pulling toward. Finds that add without disturbing — earned through restraint.',
       accentColor: '#E5E7EB',
     },
     {
@@ -301,7 +301,7 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         { label: 'Street × Luxury Mix', gradient: 'linear-gradient(145deg, #D0D8FF 0%, #9098F0 100%)', tags: ['elevated', 'rare'], query: ['style_streetwear', 'style_luxury'] },
       ],
       whyMyNextFit:
-        'My Next Thrift finds the street-to-luxury pieces that fit your cultural aesthetic — rare enough to matter.',
+        'Street-to-luxury pieces rare enough to matter. The find that your audience screenshots before they know where it\'s from.',
       accentColor: '#818CF8',
     },
     {
@@ -327,7 +327,7 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         { label: 'Soft Luxury', gradient: 'linear-gradient(145deg, #FEFBD0 0%, #F0D060 100%)', tags: ['soft', 'luxury'], query: ['style_luxury', 'fit_slim'] },
       ],
       whyMyNextFit:
-        'My Next Thrift matches your soft luxury aesthetic and surfaces pieces your audience will actually want to screenshot.',
+        'Soft luxury pieces your audience stops scrolling for. Found, not styled — which is exactly why they feel real.',
       accentColor: '#FBBF24',
     },
     {
@@ -353,7 +353,7 @@ export const creatorStyleMatchQuiz: QuizConfig = {
         { label: 'One Detail Edit', gradient: 'linear-gradient(145deg, #C0FBE8 0%, #6EE7B7 100%)', tags: ['intentional', 'cool'], query: ['style_minimalist', 'color_neutral'] },
       ],
       whyMyNextFit:
-        'My Next Thrift keeps your wardrobe stocked with the genuinely good, everyday pieces your audience trusts you to find.',
+        'The genuinely good everyday pieces your audience trusts you to find. The kind of find that earns that trust.',
       accentColor: '#34D399',
     },
   ],

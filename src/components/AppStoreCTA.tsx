@@ -14,7 +14,7 @@ export default function AppStoreCTA({ label, accent, url, onClick }: Props) {
         onClick={onClick}
         className="w-full h-[64px] font-black text-[17px] rounded-2xl tracking-wide active:scale-[0.98] transition-all duration-150"
         style={{
-          background: `linear-gradient(135deg, ${accent}, #F472B6)`,
+          background: accent,
           color: '#080808',
           boxShadow: `0 0 70px ${accent}90, 0 8px 32px rgba(0,0,0,0.5)`,
         }}

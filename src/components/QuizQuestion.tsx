@@ -73,11 +73,11 @@ export default function QuizQuestion({
 
           {/* Question */}
           <div className="flex flex-col gap-2">
-            <h2 className="text-[26px] leading-snug font-bold text-white">
+            <h2 style={{ fontFamily: 'var(--font-cormorant, Georgia, serif)', fontSize: 'clamp(28px, 6vw, 34px)', lineHeight: 1.15, fontWeight: 400, color: '#fff' }}>
               {question.text}
             </h2>
             {question.subtext && (
-              <p className="text-[15px] text-white/75 leading-relaxed">
+              <p className="text-[15px] text-white/70 leading-relaxed">
                 {question.subtext}
               </p>
             )}

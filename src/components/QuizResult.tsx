@@ -99,8 +99,17 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
             style={{ background: `${accent}22`, border: `1px solid ${accent}60`, color: accent }}>
             Your Thrift Identity
           </div>
-          <h1 className="text-[48px] font-black leading-[1.0] tracking-tight"
-            style={{ background: `linear-gradient(135deg, #ffffff 20%, ${accent} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <h1 style={{
+            fontFamily: 'var(--font-cormorant, Georgia, serif)',
+            fontSize: 'clamp(44px, 10vw, 64px)',
+            fontWeight: 300,
+            lineHeight: 1.0,
+            letterSpacing: '-0.01em',
+            background: `linear-gradient(135deg, #ffffff 20%, ${accent} 100%)`,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}>
             {result.label}
           </h1>
           <p className="text-[17px] text-white font-medium leading-snug max-w-[300px]">

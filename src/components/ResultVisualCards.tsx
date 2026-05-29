@@ -72,6 +72,8 @@ const GEM_FLOOR = 70;
 // The component tries each in sequence on onError, so dead URLs don't blank the slot.
 async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, titleKeywords?: string[]): Promise<string[]> {
   if (!supabase || query.length === 0) return [];
+  // Footwear and accessory product photos are typically awkward cropped shots — skip and show gradient only.
+  if (query.includes('cat_footwear') || query.includes('cat_accessories')) return [];
 
   // Collect up to N unused URLs from a result set, shuffling within the top-8 for variety.
   const collectUnused = (data: { image_url: string }[], n = 5): string[] => {

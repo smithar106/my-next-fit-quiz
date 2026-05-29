@@ -17,6 +17,7 @@ export interface VisualCard {
   gradient: string;    // CSS gradient — shown while loading or as fallback
   tags: string[];      // display hashtags
   query?: string[];    // Supabase tag IDs to fetch a real product image
+  titleKeywords?: string[];  // OR'd title ilike filters — match the display label specifically
 }
 
 export interface QuizResultDef {

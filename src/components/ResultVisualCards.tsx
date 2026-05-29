@@ -70,7 +70,7 @@ const GEM_FLOOR = 70;
 
 // Returns an ordered list of candidate URLs for a slot.
 // The component tries each in sequence on onError, so dead URLs don't blank the slot.
-async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>): Promise<string[]> {
+async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, titleKeywords?: string[]): Promise<string[]> {
   if (!supabase || query.length === 0) return [];
 
   // Collect up to N unused URLs from a result set, shuffling within the top-8 for variety.
@@ -98,19 +98,31 @@ async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>): P
       .order('gem_score', { ascending: false })
       .limit(40);
 
+  // Apply title keyword OR filter — ensures item actually matches the display label.
+  // e.g. titleKeywords=['blazer','jacket'] means title must contain at least one.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const applyTitleKeywords = (q: any): any => {
+    if (!titleKeywords?.length) return q;
+    // Supabase doesn't support OR on a single column natively in the JS client,
+    // so we use the PostgREST `or` filter string.
+    const orFilter = titleKeywords.map(kw => `title.ilike.%${kw}%`).join(',');
+    return q.or(orFilter);
+  };
+
   // Detect the category slot (first cat_* tag in query, if any)
   const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
 
   const seen = new Set<string>(usedUrls);
   const candidates: string[] = [];
 
-  // Pass 1: all tags AND'd — strictest, highest quality
+  // Pass 1: all tags AND'd + title keywords — strictest, highest quality
   try {
     let q = baseSelect(supabase!.from('items'));
     for (const id of query) {
       q = (q as any).filter('tags', 'cs', `[{"id":"${id}"}]`);
     }
     if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
+    q = applyTitleKeywords(q);
     const { data } = await (q as any);
     if (data?.length) candidates.push(...collectUnused(data as { image_url: string }[], 5));
   } catch {}
@@ -161,7 +173,7 @@ export default function ResultVisualCards({ cards, accent }: Props) {
       const usedUrls = new Set<string>();
       const results: CardImage[] = [];
       for (const card of cards) {
-        const candidates = await fetchCandidatesForCard(card.query ?? [], usedUrls);
+        const candidates = await fetchCandidatesForCard(card.query ?? [], usedUrls, card.titleKeywords);
         results.push({ candidates, idx: 0, loaded: false });
       }
       if (!cancelled) setImages(results);

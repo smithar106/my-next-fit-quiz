@@ -5,7 +5,8 @@ import { VisualCard } from '@/types/quiz';
 import { supabase } from '@/lib/supabase';
 
 interface CardImage {
-  url: string | null;
+  candidates: string[];  // ordered list to try; advance on 404
+  idx: number;           // current candidate index
   loaded: boolean;
 }
 
@@ -63,28 +64,27 @@ function proxyUrl(url: string): string {
   return `/api/img?url=${encodeURIComponent(url)}`;
 }
 
-// Minimum gem_score to qualify for quiz recommendations.
-// Scores 0–60 are basics and noise (83% of catalog). 61+ is the top 17% — ~15K
-// quality items with vintage signal, material quality, or brand provenance.
-// 81+ (481 items) are gems; fetched first via ORDER BY gem_score DESC.
-const GEM_FLOOR = 40;
+// Show only high-quality items (70+) in quiz result cards.
+// Rescore in progress — raise to 81 once rescore completes and footwear bucket fills.
+const GEM_FLOOR = 70;
 
-async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promise<string | null> {
-  if (!supabase || query.length === 0) return null;
+// Returns an ordered list of candidate URLs for a slot.
+// The component tries each in sequence on onError, so dead URLs don't blank the slot.
+async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>): Promise<string[]> {
+  if (!supabase || query.length === 0) return [];
 
-  // Pick from the top-scored unused items (already ordered by gem_score DESC)
-  const pickUnused = (data: { image_url: string }[]): string | null => {
-    // Slight shuffle within the top-8 so repeated result views feel varied,
-    // but we never fall below the quality floor because the DB enforced it.
+  // Collect up to N unused URLs from a result set, shuffling within the top-8 for variety.
+  const collectUnused = (data: { image_url: string }[], n = 5): string[] => {
     const pool = data.slice(0, 8).sort(() => Math.random() - 0.5);
-    for (const item of pool) {
-      if (item.image_url && !usedUrls.has(item.image_url)) return item.image_url;
+    const rest = data.slice(8);
+    const out: string[] = [];
+    for (const item of [...pool, ...rest]) {
+      if (item.image_url && !usedUrls.has(item.image_url)) {
+        out.push(item.image_url);
+        if (out.length >= n) break;
+      }
     }
-    // If all top-8 are used, try the rest in order
-    for (const item of data.slice(8)) {
-      if (item.image_url && !usedUrls.has(item.image_url)) return item.image_url;
-    }
-    return null;
+    return out;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -101,7 +101,10 @@ async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promis
   // Detect the category slot (first cat_* tag in query, if any)
   const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
 
-  // Pass 1: all tags AND'd + gem floor + slot exclusions — strictest, highest quality
+  const seen = new Set<string>(usedUrls);
+  const candidates: string[] = [];
+
+  // Pass 1: all tags AND'd — strictest, highest quality
   try {
     let q = baseSelect(supabase!.from('items'));
     for (const id of query) {
@@ -109,60 +112,59 @@ async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promis
     }
     if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
     const { data } = await (q as any);
-    if (data?.length) {
-      const url = pickUnused(data as { image_url: string; gem_score: number }[]);
-      if (url) return url;
-    }
+    if (data?.length) candidates.push(...collectUnused(data as { image_url: string }[], 5));
   } catch {}
 
-  // Pass 2: category tag only + gem floor — looser on style, strict on quality
-  try {
-    let q = baseSelect(supabase!.from('items'));
-    q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId || query[0]}"}]`);
-    if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
-    const { data } = await (q as any);
-    if (data?.length) {
-      const url = pickUnused(data as { image_url: string; gem_score: number }[]);
-      if (url) return url;
-    }
-  } catch {}
+  // Pass 2: category tag only — looser on style
+  if (candidates.length < 5) {
+    try {
+      let q = baseSelect(supabase!.from('items'));
+      q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId || query[0]}"}]`);
+      if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
+      const { data } = await (q as any);
+      if (data?.length) {
+        for (const u of collectUnused(data as { image_url: string }[], 5)) {
+          if (!seen.has(u)) { candidates.push(u); seen.add(u); }
+        }
+      }
+    } catch {}
+  }
 
-  // Pass 3: category slot only (no style tags) + gem floor — widest net, still quality-gated
-  if (categoryTagId) {
+  // Pass 3: widest net — category only, no style tags
+  if (candidates.length < 5 && categoryTagId) {
     try {
       let q = baseSelect(supabase!.from('items'));
       q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
       q = applySlotExclusions(q as any, categoryTagId) as any;
       const { data } = await (q as any);
       if (data?.length) {
-        const url = pickUnused(data as { image_url: string; gem_score: number }[]);
-        if (url) return url;
+        for (const u of collectUnused(data as { image_url: string }[], 5)) {
+          if (!seen.has(u)) { candidates.push(u); seen.add(u); }
+        }
       }
     } catch {}
   }
 
-  // No basics — show gradient placeholder instead
-  return null;
+  // Mark the first candidate as "used" so sibling slots don't pick the same image
+  if (candidates[0]) usedUrls.add(candidates[0]);
+  return candidates;
 }
 
 export default function ResultVisualCards({ cards, accent }: Props) {
   const [images, setImages] = useState<CardImage[]>(
-    cards.map(() => ({ url: null, loaded: false }))
+    cards.map(() => ({ candidates: [], idx: 0, loaded: false }))
   );
 
   useEffect(() => {
     let cancelled = false;
     async function loadImages() {
       const usedUrls = new Set<string>();
-      const results: (string | null)[] = [];
+      const results: CardImage[] = [];
       for (const card of cards) {
-        const url = await fetchImageForCard(card.query ?? [], usedUrls);
-        if (url) usedUrls.add(url);
-        results.push(url);
+        const candidates = await fetchCandidatesForCard(card.query ?? [], usedUrls);
+        results.push({ candidates, idx: 0, loaded: false });
       }
-      if (!cancelled) {
-        setImages(results.map(url => ({ url, loaded: false })));
-      }
+      if (!cancelled) setImages(results);
     }
     loadImages();
     return () => { cancelled = true; };
@@ -177,7 +179,8 @@ export default function ResultVisualCards({ cards, accent }: Props) {
       <div className="grid grid-cols-2 gap-3">
         {cards.map((card, i) => {
           const img = images[i];
-          const showImage = !!(img?.url && img.loaded);
+          const currentUrl = img?.candidates[img.idx] ?? null;
+          const showImage = !!(currentUrl && img?.loaded);
 
           return (
             <div
@@ -185,10 +188,10 @@ export default function ResultVisualCards({ cards, accent }: Props) {
               className="relative rounded-2xl overflow-hidden flex flex-col justify-end"
               style={{ aspectRatio: '3/4', background: card.gradient }}
             >
-              {img?.url && (
+              {currentUrl && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={proxyUrl(img.url)}
+                  src={proxyUrl(currentUrl)}
                   alt={card.label}
                   onLoad={() =>
                     setImages(prev =>
@@ -196,8 +199,12 @@ export default function ResultVisualCards({ cards, accent }: Props) {
                     )
                   }
                   onError={() =>
+                    // Advance to next candidate; if exhausted, stays blank (gradient shows)
                     setImages(prev =>
-                      prev.map((p, idx) => idx === i ? { ...p, url: null } : p)
+                      prev.map((p, idx) => idx === i
+                        ? { ...p, idx: p.idx + 1, loaded: false }
+                        : p
+                      )
                     )
                   }
                   className="absolute inset-0 w-full h-full object-cover"

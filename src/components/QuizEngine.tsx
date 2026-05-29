@@ -39,7 +39,7 @@ interface QuizEngineProps {
 }
 
 export default function QuizEngine({ quiz }: QuizEngineProps) {
-  const [state, setState] = useState<QuizState>('landing');
+  const [state, setState] = useState<QuizState>('questions');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [result, setResult] = useState<QuizResultDef | null>(null);
@@ -48,6 +48,7 @@ export default function QuizEngine({ quiz }: QuizEngineProps) {
   useEffect(() => {
     captureAttribution();
     trackEvent('page_view', quiz.id, sessionId);
+    trackEvent('quiz_started', quiz.id, sessionId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

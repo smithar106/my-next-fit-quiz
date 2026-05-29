@@ -49,59 +49,85 @@ function applySlotExclusions(
   return q;
 }
 
+// Minimum gem_score to qualify for quiz recommendations.
+// Scores 0–60 are basics and noise (83% of catalog). 61+ is the top 17% — ~15K
+// quality items with vintage signal, material quality, or brand provenance.
+// 81+ (481 items) are gems; fetched first via ORDER BY gem_score DESC.
+const GEM_FLOOR = 61;
+
 async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promise<string | null> {
   if (!supabase || query.length === 0) return null;
 
+  // Pick from the top-scored unused items (already ordered by gem_score DESC)
   const pickUnused = (data: { image_url: string }[]): string | null => {
-    const shuffled = [...data].sort(() => Math.random() - 0.5);
-    for (const item of shuffled) {
+    // Slight shuffle within the top-8 so repeated result views feel varied,
+    // but we never fall below the quality floor because the DB enforced it.
+    const pool = data.slice(0, 8).sort(() => Math.random() - 0.5);
+    for (const item of pool) {
+      if (item.image_url && !usedUrls.has(item.image_url)) return item.image_url;
+    }
+    // If all top-8 are used, try the rest in order
+    for (const item of data.slice(8)) {
       if (item.image_url && !usedUrls.has(item.image_url)) return item.image_url;
     }
     return null;
   };
 
-  // Detect the category slot (first cat_* tag in query, if any)
-  const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
-
-  // Try all tags together (AND) first — strictest match, no category mismatch
-  try {
-    let q = supabase
-      .from('items')
-      .select('image_url')
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const baseSelect = (q: any) =>
+    (q as any)
+      .select('image_url, gem_score')
+      .gte('gem_score', GEM_FLOOR)
       .not('image_url', 'is', null)
       .not('image_url', 'like', '%picsum%')
       .not('image_url', 'like', '%loremflickr%')
-      .limit(80);
+      .order('gem_score', { ascending: false })
+      .limit(40);
+
+  // Detect the category slot (first cat_* tag in query, if any)
+  const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
+
+  // Pass 1: all tags AND'd + gem floor + slot exclusions — strictest, highest quality
+  try {
+    let q = baseSelect(supabase!.from('items'));
     for (const id of query) {
       q = (q as any).filter('tags', 'cs', `[{"id":"${id}"}]`);
     }
     if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
     const { data } = await (q as any);
     if (data?.length) {
-      const url = pickUnused(data as { image_url: string }[]);
+      const url = pickUnused(data as { image_url: string; gem_score: number }[]);
       if (url) return url;
     }
   } catch {}
 
-  // Fallback: category tag only (first tag in query) — still correct category, just looser condition
+  // Pass 2: category tag only + gem floor — looser on style, strict on quality
   try {
-    let q = supabase
-      .from('items')
-      .select('image_url')
-      .filter('tags', 'cs', `[{"id":"${query[0]}"}]`)
-      .not('image_url', 'is', null)
-      .not('image_url', 'like', '%picsum%')
-      .not('image_url', 'like', '%loremflickr%')
-      .limit(80);
+    let q = baseSelect(supabase!.from('items'));
+    q = (q as any).filter('tags', 'cs', `[{"id":"${query[0]}"}]`);
     if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
     const { data } = await (q as any);
     if (data?.length) {
-      const url = pickUnused(data as { image_url: string }[]);
+      const url = pickUnused(data as { image_url: string; gem_score: number }[]);
       if (url) return url;
     }
   } catch {}
 
-  // No fallback to random items — show gradient placeholder instead
+  // Pass 3: category slot only (no style tags) + gem floor — widest net, still quality-gated
+  if (categoryTagId) {
+    try {
+      let q = baseSelect(supabase!.from('items'));
+      q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
+      q = applySlotExclusions(q as any, categoryTagId) as any;
+      const { data } = await (q as any);
+      if (data?.length) {
+        const url = pickUnused(data as { image_url: string; gem_score: number }[]);
+        if (url) return url;
+      }
+    } catch {}
+  }
+
+  // No basics — show gradient placeholder instead
   return null;
 }
 

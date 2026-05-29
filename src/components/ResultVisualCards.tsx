@@ -16,24 +16,32 @@ interface Props {
 
 // Items mislabeled cat_tops (backfill defaulted all untagged items to tops).
 // These exclusions prevent trousers, sunglasses, bags, shoes from showing in the TOP slot.
+// URL slug keywords — items whose product_url contains any of these are excluded from the slot.
+// Catches mis-categorized items (dress tagged cat_bottoms, bag in footwear, etc.)
 const SLOT_EXCLUSIONS: Record<string, string[]> = {
   cat_tops: [
     'pant', 'trouser', 'jean', 'denim', 'short', 'skirt', 'legging',
-    'sunglass', 'eyewear', 'optical', 'watch', 'boot', 'shoe', 'sandal', 'sneaker', 'heel',
-    'bag', 'purse', 'wallet', 'tote', 'clutch', 'handbag',
+    'dress', 'jumpsuit', 'romper',
+    'sunglass', 'eyewear', 'optical', 'watch',
+    'boot', 'shoe', 'sandal', 'sneaker', 'heel', 'mule', 'loafer', 'pump',
+    'bag', 'purse', 'wallet', 'tote', 'clutch', 'handbag', 'backpack',
   ],
   cat_bottoms: [
-    'shirt', 'blouse', 'top', 'jacket', 'coat', 'sweater', 'cardigan',
-    'boot', 'shoe', 'sandal', 'sneaker',
-    'sunglass', 'bag', 'purse', 'wallet',
+    'shirt', 'blouse', 'top', 'tee', 'tank', 'jacket', 'coat', 'sweater', 'cardigan', 'hoodie',
+    'dress', 'jumpsuit', 'romper',
+    'boot', 'shoe', 'sandal', 'sneaker', 'heel', 'mule', 'loafer', 'pump',
+    'sunglass', 'bag', 'purse', 'wallet', 'tote', 'clutch', 'handbag', 'backpack',
   ],
   cat_footwear: [
-    'shirt', 'blouse', 'pant', 'jean', 'trouser', 'jacket', 'coat',
-    'bag', 'purse', 'wallet', 'sunglass', 'watch',
+    'shirt', 'blouse', 'tee', 'tank', 'pant', 'jean', 'trouser', 'skirt', 'dress',
+    'jacket', 'coat', 'sweater', 'cardigan',
+    'bag', 'purse', 'wallet', 'tote', 'clutch', 'handbag', 'backpack',
+    'sunglass', 'watch', 'belt', 'scarf', 'hat',
   ],
   cat_accessories: [
-    'shirt', 'blouse', 'pant', 'jean', 'trouser', 'jacket', 'coat',
-    'boot', 'shoe', 'sandal', 'sneaker',
+    'shirt', 'blouse', 'tee', 'tank', 'pant', 'jean', 'trouser', 'skirt', 'dress',
+    'jacket', 'coat', 'sweater', 'cardigan',
+    'boot', 'shoe', 'sandal', 'sneaker', 'heel', 'mule', 'loafer', 'pump',
   ],
 };
 
@@ -53,7 +61,7 @@ function applySlotExclusions(
 // Scores 0–60 are basics and noise (83% of catalog). 61+ is the top 17% — ~15K
 // quality items with vintage signal, material quality, or brand provenance.
 // 81+ (481 items) are gems; fetched first via ORDER BY gem_score DESC.
-const GEM_FLOOR = 61;
+const GEM_FLOOR = 40;
 
 async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promise<string | null> {
   if (!supabase || query.length === 0) return null;

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 const ARCHETYPES = [
-  { label: 'Archive Hunter', color: '#C4965A', desc: 'You dress like the best pieces existed before trends caught up.' },
+  { label: 'Archive Hunter', color: '#C4965A', desc: 'You dress like the best pieces already existed before trends caught up.' },
   { label: 'Quiet Luxury Collector', color: '#D4C5A0', desc: 'Fabric, silhouette, restraint. Never logos.' },
   { label: 'Hidden Gem Collector', color: '#7B9E87', desc: 'You notice things others walk right past.' },
   { label: 'Street Romantic', color: '#9B7EC8', desc: 'Soft and sharp. Tender and tough. Always both.' },
@@ -14,11 +14,13 @@ const ARCHETYPES = [
   { label: 'Downtown Treasure Hunter', color: '#8B7355', desc: 'Your wardrobe is a map of everywhere you\'ve looked.' },
 ];
 
-const PROOF_CARDS = [
-  { quote: '"This app exposed me. My entire identity is hidden gem collector."', handle: '@archivegirl' },
-  { quote: '"I took a quiz about thrift shopping and had a genuine moment of self-recognition."', handle: '@quietlux.finds' },
-  { quote: '"I knew I was an eclectic archivist before I finished the second question."', handle: '@thriftdaydreams' },
-  { quote: '"The outfit it mapped for me is literally what I wear. How."', handle: '@rarepiece.diary' },
+const PROOF_LINES = [
+  'Anti-fast fashion',
+  'Archive instinct',
+  'Rare finds',
+  '80K+ curated pieces',
+  '80+ vintage boutiques',
+  '100% secondhand',
 ];
 
 export default function HomePage() {
@@ -252,43 +254,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── IDENTITY PROOF ── */}
-      <section style={{ padding: '80px 0', overflow: 'hidden' }}>
-        <div style={{ maxWidth: 680, margin: '0 auto 40px', padding: '0 24px', textAlign: 'center' }}>
-          <p style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.35)', marginBottom: 16 }}>
-            Thrift identity moments
-          </p>
-          <h2 style={{
-            fontFamily: 'var(--font-cormorant, Georgia, serif)',
-            fontSize: 'clamp(32px, 6vw, 52px)',
-            fontWeight: 400, lineHeight: 1.15, color: '#fff',
-          }}>
-            "This app{' '}
-            <em style={{ fontStyle: 'italic', color: '#C4965A' }}>exposed me.</em>"
-          </h2>
-        </div>
-
-        {/* Scrolling proof cards */}
-        <div style={{ display: 'flex', gap: 16, padding: '0 24px', overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
-          {[...PROOF_CARDS, ...PROOF_CARDS].map((card, i) => (
-            <div key={i} style={{
-              flexShrink: 0, width: 280,
-              padding: '28px 24px',
-              borderRadius: 16,
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.1)',
+      {/* ── CATALOG PROOF ── */}
+      <section style={{ padding: '80px 24px', maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+        <div style={{
+          width: 1, height: 72,
+          background: 'linear-gradient(to bottom, transparent, rgba(196,150,90,0.5), transparent)',
+          margin: '0 auto 48px',
+        }} />
+        <blockquote style={{
+          fontFamily: 'var(--font-cormorant, Georgia, serif)',
+          fontSize: 'clamp(28px, 5.5vw, 46px)',
+          fontWeight: 400, fontStyle: 'italic',
+          lineHeight: 1.25, color: 'rgba(255,255,255,0.9)',
+          marginBottom: 32,
+        }}>
+          "The best pieces aren't bought.<br />They're found."
+        </blockquote>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 24px' }}>
+          {PROOF_LINES.map(line => (
+            <span key={line} style={{
+              fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
+              fontWeight: 700, color: 'rgba(255,255,255,0.22)',
             }}>
-              <p style={{
-                fontFamily: 'var(--font-cormorant, Georgia, serif)',
-                fontSize: 20, fontStyle: 'italic', lineHeight: 1.5,
-                color: 'rgba(255,255,255,0.88)', marginBottom: 16,
-              }}>
-                {card.quote}
-              </p>
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.06em' }}>
-                {card.handle}
-              </p>
-            </div>
+              {line}
+            </span>
           ))}
         </div>
       </section>
@@ -358,12 +347,14 @@ export default function HomePage() {
 
       {/* ── FOOTER ── */}
       <footer style={{
-        padding: '24px',
+        padding: '28px 24px',
         textAlign: 'center',
         borderTop: '1px solid rgba(255,255,255,0.07)',
       }}>
-        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.06em' }}>
-          © 2026 My Next Thrift &nbsp;·&nbsp; collected, not bought
+        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.04em' }}>
+          © 2026 My Next Thrift &nbsp;·&nbsp;
+          <a href="https://mynextthrift.app/privacy" style={{ color: 'rgba(255,255,255,0.32)', textDecoration: 'none', margin: '0 8px' }}>Privacy</a>
+          <a href="https://mynextthrift.app/terms" style={{ color: 'rgba(255,255,255,0.32)', textDecoration: 'none', margin: '0 8px' }}>Terms</a>
         </p>
       </footer>
     </div>

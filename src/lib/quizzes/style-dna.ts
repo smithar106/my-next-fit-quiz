@@ -243,10 +243,10 @@ export const styleDnaQuiz: QuizConfig = {
         'The piece with the best drape or cut you own, worn simply',
       ],
       visualCards: [
-        { label: 'Minimal Neutrals', gradient: 'linear-gradient(145deg, #F5F2EE 0%, #DDD8D0 100%)', tags: ['minimal', 'instinctive'], query: ['style_minimalist', 'color_neutral'] },
-        { label: 'Perfect Basics', gradient: 'linear-gradient(145deg, #EEEBE6 0%, #D0CBC2 100%)', tags: ['clean', 'effortless'], query: ['style_minimalist', 'color_white'] },
-        { label: 'Tonal Dressing', gradient: 'linear-gradient(145deg, #E8E4DE 0%, #C8C2B8 100%)', tags: ['tonal', 'refined'], query: ['style_minimalist', 'color_monochrome'] },
-        { label: 'Quiet Luxury Edit', gradient: 'linear-gradient(145deg, #F0ECE6 0%, #C4BEB4 100%)', tags: ['luxury', 'restrained'], query: ['style_minimalist', 'style_classic'] },
+        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #E8E0D4 0%, #C4B8A8 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #C8D4E0 0%, #8FA8C0 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'style_vintage'] },
+        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #D8D4CC 0%, #A8A098 100%)', tags: ['#rare', '#collected'], query: ['cat_tops', 'style_minimalist'] },
+        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #E0D8CC 0%, #B8ADA0 100%)', tags: ['#archive', '#instinct'], query: ['cat_accessories', 'style_vintage'] },
       ],
       whyMyNextFit:
         'A feed that already knows the difference between noise and the right neutral. The pieces that reach you have passed your eye first.',
@@ -269,10 +269,10 @@ export const styleDnaQuiz: QuizConfig = {
         'Oversized shirt + slim bottom + clean dark boot',
       ],
       visualCards: [
-        { label: 'Dark Structured Looks', gradient: 'linear-gradient(145deg, #2A2A2A 0%, #1A1A1A 100%)', tags: ['dark', 'structured'], query: ['style_minimalist', 'color_dark'] },
-        { label: 'Black Coat Edit', gradient: 'linear-gradient(145deg, #3A3A3A 0%, #222222 100%)', tags: ['architectural', 'sharp'], query: ['style_classic', 'color_black'] },
-        { label: 'Tonal Black', gradient: 'linear-gradient(145deg, #444444 0%, #282828 100%)', tags: ['intellectual', 'moody'], query: ['style_minimalist', 'color_black'] },
-        { label: 'Dark Tailoring', gradient: 'linear-gradient(145deg, #4A4040 0%, #2C2424 100%)', tags: ['tailored', 'dark'], query: ['style_workwear', 'color_dark'] },
+        { label: 'Worn-In Leather', gradient: 'linear-gradient(145deg, #3A2E28 0%, #1E1610 100%)', tags: ['#worn-in', '#archive'], query: ['cat_tops', 'style_vintage', 'color_black'] },
+        { label: 'Archive Graphic Tees', gradient: 'linear-gradient(145deg, #2C2828 0%, #181414 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'Estate Sale Energy', gradient: 'linear-gradient(145deg, #3C3030 0%, #201818 100%)', tags: ['#estate', '#collected'], query: ['cat_accessories', 'style_vintage'] },
+        { label: 'One-of-One Texture', gradient: 'linear-gradient(145deg, #4A3C36 0%, #2A201A 100%)', tags: ['#texture', '#one-of-one'], query: ['cat_tops', 'style_bold'] },
       ],
       whyMyNextFit:
         'Pieces with actual edge — not just black basics. The ones your eye would stop at in the right rack at the right moment.',
@@ -295,10 +295,10 @@ export const styleDnaQuiz: QuizConfig = {
         'Feminine print or texture as the one statement — everything else quiet',
       ],
       visualCards: [
-        { label: 'Soft Feminine Pieces', gradient: 'linear-gradient(145deg, #F5D5DC 0%, #E8A8B8 100%)', tags: ['soft', 'romantic'], query: ['style_bohemian', 'color_pastel'] },
-        { label: 'Silk & Satin Edit', gradient: 'linear-gradient(145deg, #F2C8D4 0%, #E094A8 100%)', tags: ['feminine', 'elegant'], query: ['style_luxury', 'occ_evening'] },
-        { label: 'Dreamy Dresses', gradient: 'linear-gradient(145deg, #FADADD 0%, #F0A8B8 100%)', tags: ['dreamy', 'flowing'], query: ['style_bohemian', 'color_bright'] },
-        { label: 'Blush Palette', gradient: 'linear-gradient(145deg, #EDD5E8 0%, #D8A0CC 100%)', tags: ['blush', 'delicate'], query: ['style_minimalist', 'color_pastel'] },
+        { label: 'Romantic Relics', gradient: 'linear-gradient(145deg, #F0D0D8 0%, #D8A0B4 100%)', tags: ['#soft', '#nostalgic'], query: ['cat_tops', 'style_vintage', 'color_pastel'] },
+        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #EAD0E0 0%, #C8A0C0 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'style_bohemian'] },
+        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #F5D8E4 0%, #E0B0C8 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #ECC8DC 0%, #C898B8 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'style_vintage'] },
       ],
       whyMyNextFit:
         'Soft, chosen pieces — not trend-driven, not overdone. The things that feel like yours the moment you see them.',
@@ -321,10 +321,10 @@ export const styleDnaQuiz: QuizConfig = {
         'Monochrome in a sharp neutral — navy, camel, or grey done precisely',
       ],
       visualCards: [
-        { label: 'Tailored Pieces', gradient: 'linear-gradient(145deg, #C8C0B0 0%, #8A7E6E 100%)', tags: ['tailored', 'architect'], query: ['style_classic', 'fit_tailored'] },
-        { label: 'Classic Proportions', gradient: 'linear-gradient(145deg, #D4C8B4 0%, #9A8C78 100%)', tags: ['classic', 'structured'], query: ['style_workwear', 'fit_tailored'] },
-        { label: 'The Right Coat', gradient: 'linear-gradient(145deg, #C0B8A4 0%, #7A7060 100%)', tags: ['coat', 'investment'], query: ['style_classic', 'occ_outerwear'] },
-        { label: 'Sharp Neutrals', gradient: 'linear-gradient(145deg, #D8D0C0 0%, #A09080 100%)', tags: ['neutral', 'precise'], query: ['style_minimalist', 'color_earth'] },
+        { label: 'Vintage Uniform Pieces', gradient: 'linear-gradient(145deg, #C4B8A4 0%, #887868 100%)', tags: ['#structure', '#archive'], query: ['cat_tops', 'style_vintage', 'fit_tailored'] },
+        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #B8C4D0 0%, #7890A8 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'style_vintage'] },
+        { label: 'Worn-In Leather', gradient: 'linear-gradient(145deg, #C0A890 0%, #806850 100%)', tags: ['#worn-in', '#quality'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #D0C8B8 0%, #9C9080 100%)', tags: ['#rare', '#collected'], query: ['cat_accessories', 'style_classic'] },
       ],
       whyMyNextFit:
         'Pieces with the right construction — the exact silhouette and weight your eye is already trained to find, before you have to dig for them.',
@@ -347,10 +347,10 @@ export const styleDnaQuiz: QuizConfig = {
         'A combination of eras, aesthetics, or intentions — worn like it was obvious',
       ],
       visualCards: [
-        { label: 'Unexpected Combos', gradient: 'linear-gradient(145deg, #9B89F5 0%, #6A52D0 100%)', tags: ['editorial', 'unexpected'], query: ['style_bold', 'style_streetwear'] },
-        { label: 'Statement Edit', gradient: 'linear-gradient(145deg, #B8A2FC 0%, #7E5EE8 100%)', tags: ['statement', 'curated'], query: ['style_bold', 'color_bright'] },
-        { label: 'Mix-Era Looks', gradient: 'linear-gradient(145deg, #A890F8 0%, #7060DC 100%)', tags: ['reference', 'original'], query: ['style_streetwear', 'style_classic'] },
-        { label: 'Cultural Pieces', gradient: 'linear-gradient(145deg, #C4B0FF 0%, #8870F0 100%)', tags: ['culture', 'editorial'], query: ['style_bold', 'style_luxury'] },
+        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #9880F0 0%, #6048C8 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'style_bold'] },
+        { label: 'Archive Graphic Tees', gradient: 'linear-gradient(145deg, #A890F8 0%, #7050D8 100%)', tags: ['#archive', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'One-of-One Texture', gradient: 'linear-gradient(145deg, #B8A4F8 0%, #8060E0 100%)', tags: ['#texture', '#one-of-one'], query: ['cat_accessories', 'style_bold'] },
+        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #C4B0FF 0%, #9070E8 100%)', tags: ['#collected', '#no-two-alike'], query: ['cat_accessories', 'style_vintage'] },
       ],
       whyMyNextFit:
         'Pieces with enough character that your eye can actually do something with them. The find that no algorithm would have suggested, but your eye stops at.',

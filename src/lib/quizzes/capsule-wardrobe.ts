@@ -243,10 +243,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'Two pairs of shoes: one casual, one elevated — keeps the capsule tight',
       ],
       visualCards: [
-        { label: 'Capsule Tops Edit', gradient: 'linear-gradient(145deg, #F0F0F0 0%, #C8C8C8 100%)', tags: ['minimal', 'neutral'], query: ['style_minimalist', 'color_neutral'] },
-        { label: 'Neutral Bottoms', gradient: 'linear-gradient(145deg, #E8E8E8 0%, #B0B0B0 100%)', tags: ['capsule', 'clean'], query: ['style_minimalist', 'color_white'] },
-        { label: 'Elevated Classics', gradient: 'linear-gradient(145deg, #FAFAFA 0%, #D0D0D0 100%)', tags: ['elevated', 'versatile'], query: ['style_classic', 'fit_tailored'] },
-        { label: 'Two-Shoe Rule Edit', gradient: 'linear-gradient(145deg, #E0E0E0 0%, #A8A8A8 100%)', tags: ['minimal', 'smart'], query: ['style_minimalist', 'style_classic'] },
+        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #E8E4E0 0%, #C0B8B0 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #D8DCE8 0%, #A8B0C8 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'style_vintage'] },
+        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #E4E0DC 0%, #B8B0A8 100%)', tags: ['#rare', '#found'], query: ['cat_tops', 'style_minimalist', 'style_vintage'] },
+        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #DCDCDC 0%, #A8A8A8 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'style_vintage'] },
       ],
       whyMyNextFit:
         'Every piece that reaches you earned its place in the set. The edit your eye would build if it had all the time in the world.',
@@ -269,10 +269,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'Shoes: block heel mules, pointed flats, clean ankle boots — nothing casual',
       ],
       visualCards: [
-        { label: 'Work Blazer Edit', gradient: 'linear-gradient(145deg, #93C5FD 0%, #60A5E8 100%)', tags: ['professional', 'polished'], query: ['style_workwear', 'fit_tailored'] },
-        { label: 'Tailored Trouser Look', gradient: 'linear-gradient(145deg, #BAD8FC 0%, #7EB8F0 100%)', tags: ['workwear', 'classic'], query: ['style_workwear', 'style_classic'] },
-        { label: 'Office Classics', gradient: 'linear-gradient(145deg, #DBEAFE 0%, #93C5FD 100%)', tags: ['elegant', 'office'], query: ['style_classic', 'occ_workwear'] },
-        { label: 'Pointed Flat Edit', gradient: 'linear-gradient(145deg, #C8DFFF 0%, #80B4F0 100%)', tags: ['finish', 'sharp'], query: ['style_workwear', 'color_neutral'] },
+        { label: 'Vintage Uniform Pieces', gradient: 'linear-gradient(145deg, #90B8F0 0%, #5888D8 100%)', tags: ['#structure', '#archive'], query: ['cat_tops', 'style_vintage', 'fit_tailored'] },
+        { label: 'Archive Graphic Tees', gradient: 'linear-gradient(145deg, #A8C8F8 0%, #6898E0 100%)', tags: ['#archive', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #C0D8FF 0%, #80A8F0 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'style_bold', 'style_vintage'] },
+        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #B8D0FF 0%, #7898E8 100%)', tags: ['#history', '#patina'], query: ['cat_accessories', 'style_vintage'] },
       ],
       whyMyNextFit:
         'The professional pieces that hold their shape and their authority. The things you reach for on the important days without thinking twice.',
@@ -295,10 +295,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'Accessories do the heavy lifting — a great bag and earrings elevate any basic',
       ],
       visualCards: [
-        { label: 'Casual Staples', gradient: 'linear-gradient(145deg, #FDE68A 0%, #F0C830 100%)', tags: ['casual', 'easy'], query: ['style_classic', 'occ_casual'] },
-        { label: 'Weekend Blazer Look', gradient: 'linear-gradient(145deg, #FEF0A0 0%, #F5D840 100%)', tags: ['elevated', 'casual'], query: ['style_classic', 'occ_weekend'] },
-        { label: 'Relaxed Weekend', gradient: 'linear-gradient(145deg, #FFFBCC 0%, #F8E050 100%)', tags: ['relaxed', 'cool'], query: ['style_bohemian', 'occ_casual'] },
-        { label: 'Weekend Essentials', gradient: 'linear-gradient(145deg, #FFF3B0 0%, #F0D040 100%)', tags: ['finish', 'weekend'], query: ['style_minimalist', 'occ_weekend'] },
+        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #F0D870 0%, #D8B820 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'style_vintage'] },
+        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #F8E880 0%, #E0C830 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'Estate Sale Energy', gradient: 'linear-gradient(145deg, #FFF0A0 0%, #F0D848 100%)', tags: ['#estate', '#found'], query: ['cat_accessories', 'style_vintage'] },
+        { label: 'Worn-In Leather', gradient: 'linear-gradient(145deg, #F8E890 0%, #E8D050 100%)', tags: ['#worn-in', '#archive'], query: ['cat_tops', 'style_vintage', 'color_earth'] },
       ],
       whyMyNextFit:
         'The pieces you actually want to put on at 9am on a Sunday. Finds that feel right before you can explain why.',
@@ -321,10 +321,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'One versatile dress, one blazer, two bottoms, three tops — that\'s the core',
       ],
       visualCards: [
-        { label: 'Airport to Dinner Look', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['travel', 'versatile'], query: ['style_minimalist', 'fit_relaxed'] },
-        { label: 'Silk Blend Edit', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['packable', 'elegant'], query: ['style_luxury', 'color_neutral'] },
-        { label: 'One-Bag Outfit Formula', gradient: 'linear-gradient(145deg, #C0FBE0 0%, #6EE7B7 100%)', tags: ['capsule', 'smart'], query: ['style_classic', 'color_neutral'] },
-        { label: 'Travel Essentials', gradient: 'linear-gradient(145deg, #B0F5D8 0%, #40D088 100%)', tags: ['travel', 'elevated'], query: ['style_classic', 'fit_tailored'] },
+        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #68E0B0 0%, #20B878 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'style_vintage', 'style_minimalist'] },
+        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #90F0C8 0%, #48C890 100%)', tags: ['#rare', '#found'], query: ['cat_accessories', 'style_vintage'] },
+        { label: 'Romantic Relics', gradient: 'linear-gradient(145deg, #B0F8D8 0%, #68D8A0 100%)', tags: ['#soft', '#nostalgic'], query: ['cat_tops', 'style_bohemian', 'style_vintage'] },
+        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #A0F0D0 0%, #58D8A0 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'style_classic', 'style_vintage'] },
       ],
       whyMyNextFit:
         'Pieces that do double and triple duty without looking like they\'re trying. The edit that makes your whole bag feel lighter.',
@@ -347,10 +347,10 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'The formula: 3 neutrals + 1 statement color + 2 shoes = 20+ outfits',
       ],
       visualCards: [
-        { label: 'Investment Pieces', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D8A0 100%)', tags: ['smart', 'invest'], query: ['style_classic', 'color_neutral'] },
-        { label: '3 Neutral Formula', gradient: 'linear-gradient(145deg, #C0FADC 0%, #70E8B0 100%)', tags: ['budget', 'system'], query: ['style_minimalist', 'color_neutral'] },
-        { label: 'Versatile Bag Edit', gradient: 'linear-gradient(145deg, #D4FDE8 0%, #90F0C0 100%)', tags: ['capsule', 'value'], query: ['style_classic', 'occ_casual'] },
-        { label: 'Statement Color Pop', gradient: 'linear-gradient(145deg, #B8F8D8 0%, #60D8A8 100%)', tags: ['mix', 'smart'], query: ['style_bold', 'color_bright'] },
+        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #90E8C0 0%, #40C080 100%)', tags: ['#rare', '#value'], query: ['cat_tops', 'style_minimalist', 'style_vintage'] },
+        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #A8F0D0 0%, #58C890 100%)', tags: ['#history', '#patina'], query: ['cat_accessories', 'style_vintage'] },
+        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #C0F8E0 0%, #78E0A8 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'style_vintage'] },
+        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #B8F8D8 0%, #68D8A0 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
       ],
       whyMyNextFit:
         'The pieces where quality-to-price ratio actually makes sense for your aesthetic. Smart finds, not cheap ones.',

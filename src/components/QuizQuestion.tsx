@@ -38,7 +38,7 @@ export default function QuizQuestion({
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-[#080808] flex flex-col relative overflow-hidden">
       {/* Top glow */}
       <div
         className="absolute top-[-160px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"

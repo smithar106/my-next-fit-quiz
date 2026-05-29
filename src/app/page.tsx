@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-export const dynamic = 'force-static';
-
 const ARCHETYPES = [
   { label: 'Archive Hunter', color: '#C4965A', desc: 'You dress like the best pieces existed before trends caught up.' },
   { label: 'Quiet Luxury Collector', color: '#D4C5A0', desc: 'Fabric, silhouette, restraint. Never logos.' },

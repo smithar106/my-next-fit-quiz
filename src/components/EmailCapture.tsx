@@ -16,7 +16,6 @@ export default function EmailCapture({ onSubmit, isLoading }: EmailCaptureProps)
   if (submitted) {
     return (
       <div className="flex flex-col gap-2 py-3 items-center">
-        <p className="text-[22px]">✓</p>
         <p className="text-[14px] text-white/80 font-medium text-center">
           ✓ Sent. Your thrift identity is saved.
         </p>

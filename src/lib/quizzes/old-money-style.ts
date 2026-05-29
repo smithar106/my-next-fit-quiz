@@ -243,10 +243,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Cream wide-leg pants + navy crewneck + gold watch — nothing else needed',
       ],
       visualCards: [
-        { label: 'Vintage Uniform Pieces', gradient: 'linear-gradient(145deg, #C8A96E 0%, #8B6914 100%)', tags: ['#structure', '#archive'], query: ['cat_tops', 'style_vintage', 'fit_tailored'] },
-        { label: 'Worn-In Leather', gradient: 'linear-gradient(145deg, #C0A070 0%, #886028 100%)', tags: ['#worn-in', '#quality'], query: ['cat_tops', 'style_vintage', 'color_earth'] },
-        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #D4BC88 0%, #A07840 100%)', tags: ['#rare', '#collected'], query: ['cat_accessories', 'style_classic'] },
-        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #E8D090 0%, #B89040 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'style_vintage'] },
+        { label: 'Vintage Uniform Pieces', gradient: 'linear-gradient(145deg, #C8A96E 0%, #8B6914 100%)', tags: ['#structure', '#archive'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'Worn-In Leather', gradient: 'linear-gradient(145deg, #C0A070 0%, #886028 100%)', tags: ['#worn-in', '#quality'], query: ['cat_tops', 'cond_vintage', 'color_earth'] },
+        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #D4BC88 0%, #A07840 100%)', tags: ['#rare', '#collected'], query: ['cat_accessories', 'cond_vintage'] },
+        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #E8D090 0%, #B89040 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'cond_vintage'] },
       ],
       whyMyNextFit:
         'Quiet, considered pieces that don\'t announce themselves — they just hold. The ones your eye was already looking for.',
@@ -269,10 +269,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Striped button-down + well-cut shorts + leather sneakers',
       ],
       visualCards: [
-        { label: 'Archive Graphic Tees', gradient: 'linear-gradient(145deg, #6888C8 0%, #3858A0 100%)', tags: ['#archive', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
-        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #7898D8 0%, #4868B0 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'style_vintage'] },
-        { label: 'Estate Sale Energy', gradient: 'linear-gradient(145deg, #88A8E0 0%, #5878C0 100%)', tags: ['#estate', '#collected'], query: ['cat_accessories', 'style_vintage'] },
-        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #A0B8F0 0%, #6888D8 100%)', tags: ['#history', '#patina'], query: ['cat_tops', 'style_classic', 'style_vintage'] },
+        { label: 'Archive Graphic Tees', gradient: 'linear-gradient(145deg, #6888C8 0%, #3858A0 100%)', tags: ['#archive', '#worn-in'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #7898D8 0%, #4868B0 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'cond_vintage'] },
+        { label: 'Estate Sale Energy', gradient: 'linear-gradient(145deg, #88A8E0 0%, #5878C0 100%)', tags: ['#estate', '#collected'], query: ['cat_accessories', 'cond_vintage'] },
+        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #A0B8F0 0%, #6888D8 100%)', tags: ['#history', '#patina'], query: ['cat_tops', 'cond_vintage'] },
       ],
       whyMyNextFit:
         'The prep pieces built to last decades, not seasons. Found secondhand before their value becomes obvious.',
@@ -295,10 +295,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Silk slip dress in cream + a tailored blazer thrown over + small gold bag',
       ],
       visualCards: [
-        { label: 'Romantic Relics', gradient: 'linear-gradient(145deg, #F5E0D0 0%, #E0C0A8 100%)', tags: ['#soft', '#nostalgic'], query: ['cat_tops', 'style_vintage', 'color_pastel'] },
-        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #F0D8C8 0%, #D8B898 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'style_bohemian'] },
-        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #F8E8D8 0%, #E0C8A8 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
-        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #F8ECD8 0%, #D8B878 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'style_vintage'] },
+        { label: 'Romantic Relics', gradient: 'linear-gradient(145deg, #F5E0D0 0%, #E0C0A8 100%)', tags: ['#soft', '#nostalgic'], query: ['cat_tops', 'cond_vintage', 'color_pastel'] },
+        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #F0D8C8 0%, #D8B898 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #F8E8D8 0%, #E0C8A8 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #F8ECD8 0%, #D8B878 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'cond_vintage'] },
       ],
       whyMyNextFit:
         'The soft, feminine pieces with real fabric and real construction. Found, not bought — and worn like they were always yours.',
@@ -321,10 +321,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Black cigarette trousers + black cashmere turtleneck + zero accessories',
       ],
       visualCards: [
-        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #E8E4E0 0%, #C0BCB8 100%)', tags: ['#rare', '#collected'], query: ['cat_accessories', 'style_minimalist'] },
-        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #D8DCE4 0%, #A8B0C0 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'style_vintage'] },
-        { label: 'One-of-One Texture', gradient: 'linear-gradient(145deg, #DCDCD8 0%, #B0AEA8 100%)', tags: ['#texture', '#quiet'], query: ['cat_tops', 'style_minimalist', 'style_vintage'] },
-        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #E4E0DC 0%, #C0B8B0 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'style_vintage'] },
+        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #E8E4E0 0%, #C0BCB8 100%)', tags: ['#rare', '#collected'], query: ['cat_accessories', 'cond_vintage'] },
+        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #D8DCE4 0%, #A8B0C0 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'cond_vintage'] },
+        { label: 'One-of-One Texture', gradient: 'linear-gradient(145deg, #DCDCD8 0%, #B0AEA8 100%)', tags: ['#texture', '#quiet'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #E4E0DC 0%, #C0B8B0 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'cond_vintage'] },
       ],
       whyMyNextFit:
         'The one piece that\'s actually worth adding. A feed with the patience to hold out for that — not fill space.',
@@ -347,10 +347,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Linen joggers + a fitted tank + lightweight cardigan + clean sneakers',
       ],
       visualCards: [
-        { label: 'Vintage Uniform Pieces', gradient: 'linear-gradient(145deg, #A0E8C0 0%, #48C080 100%)', tags: ['#structure', '#archive'], query: ['cat_tops', 'style_vintage', 'fit_tailored'] },
-        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #B8F0D0 0%, #60D090 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'style_classic', 'style_vintage'] },
-        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #C8F8E0 0%, #78E0A8 100%)', tags: ['#history', '#patina'], query: ['cat_accessories', 'style_vintage'] },
-        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #B0E8C8 0%, #58C888 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'style_vintage'] },
+        { label: 'Vintage Uniform Pieces', gradient: 'linear-gradient(145deg, #A0E8C0 0%, #48C080 100%)', tags: ['#structure', '#archive'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #B8F0D0 0%, #60D090 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #C8F8E0 0%, #78E0A8 100%)', tags: ['#history', '#patina'], query: ['cat_accessories', 'cond_vintage'] },
+        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #B0E8C8 0%, #58C888 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'cond_vintage'] },
       ],
       whyMyNextFit:
         'Sport-meets-luxury pieces that your eye stops at — athletic without looking athletic, precise without trying.',

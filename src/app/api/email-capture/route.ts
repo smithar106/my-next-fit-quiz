@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
             <p style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#C4965A;margin-bottom:8px;">My Next Thrift</p>
             <h1 style="font-size:32px;font-weight:900;margin:0 0 8px 0;color:#ffffff;">${resultLabel}</h1>
             <p style="font-size:16px;color:rgba(255,255,255,0.75);margin:0 0 32px 0;">That's your thrift identity — and now My Next Thrift can surface the rare finds your eye naturally notices.</p>
-            <a href="https://apps.apple.com/app/id6766315768" style="display:inline-block;background:linear-gradient(135deg,#C4965A,#8B5E3C);color:#ffffff;font-weight:700;font-size:15px;padding:16px 32px;border-radius:12px;text-decoration:none;">Start the hunt →</a>
+            <a href="https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768" style="display:inline-block;background:linear-gradient(135deg,#C4965A,#8B5E3C);color:#ffffff;font-weight:700;font-size:15px;padding:16px 32px;border-radius:12px;text-decoration:none;">Start the hunt →</a>
             <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:40px;">You received this because you took the ${quizName} at quiz.mynextthrift.app. <a href="#" style="color:rgba(255,255,255,0.3);">Unsubscribe</a>.</p>
           </div>
         `,

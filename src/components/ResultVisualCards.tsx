@@ -57,6 +57,12 @@ function applySlotExclusions(
   return q;
 }
 
+// Route all images through our server-side proxy to bypass Shopify CDN hotlink protection.
+// The browser sends a Referer header which Shopify blocks; our server does not.
+function proxyUrl(url: string): string {
+  return `/api/img?url=${encodeURIComponent(url)}`;
+}
+
 // Minimum gem_score to qualify for quiz recommendations.
 // Scores 0–60 are basics and noise (83% of catalog). 61+ is the top 17% — ~15K
 // quality items with vintage signal, material quality, or brand provenance.
@@ -112,7 +118,7 @@ async function fetchImageForCard(query: string[], usedUrls: Set<string>): Promis
   // Pass 2: category tag only + gem floor — looser on style, strict on quality
   try {
     let q = baseSelect(supabase!.from('items'));
-    q = (q as any).filter('tags', 'cs', `[{"id":"${query[0]}"}]`);
+    q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId || query[0]}"}]`);
     if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
     const { data } = await (q as any);
     if (data?.length) {
@@ -182,7 +188,7 @@ export default function ResultVisualCards({ cards, accent }: Props) {
               {img?.url && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={img.url}
+                  src={proxyUrl(img.url)}
                   alt={card.label}
                   onLoad={() =>
                     setImages(prev =>

@@ -150,7 +150,7 @@ export default function HomePage() {
           </Link>
 
           {/* Trust micro */}
-          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.04em' }}>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em' }}>
             30 seconds &nbsp;·&nbsp; Free &nbsp;·&nbsp; 8 identity archetypes
           </p>
         </div>
@@ -159,7 +159,7 @@ export default function HomePage() {
         <div style={{
           position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-          opacity: 0.4, zIndex: 2,
+          opacity: 0.65, zIndex: 2,
         }}>
           <span style={{ fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600 }}>scroll</span>
           <div style={{
@@ -172,7 +172,7 @@ export default function HomePage() {
       {/* ── ARCHETYPE REVEAL ── */}
       <section style={{ padding: '100px 24px', maxWidth: 680, margin: '0 auto' }}>
         <div style={{ marginBottom: 56, textAlign: 'center' }}>
-          <p style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.35)', marginBottom: 16 }}>
+          <p style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.55)', marginBottom: 16 }}>
             The 8 thrift identities
           </p>
           <h2 style={{
@@ -217,7 +217,7 @@ export default function HomePage() {
                 <div style={{ overflow: 'hidden' }}>
                   <div style={{
                     fontSize: isActive ? 18 : 16, fontWeight: 700,
-                    color: isActive ? a.color : 'rgba(255,255,255,0.6)',
+                    color: isActive ? a.color : 'rgba(255,255,255,0.75)',
                     transition: 'all 0.35s ease',
                     fontFamily: 'var(--font-dm-sans, system-ui, sans-serif)',
                     marginBottom: isActive ? 6 : 0,
@@ -225,7 +225,7 @@ export default function HomePage() {
                     {a.label}
                   </div>
                   <div style={{
-                    fontSize: 14, color: 'rgba(255,255,255,0.55)',
+                    fontSize: 14, color: 'rgba(255,255,255,0.72)',
                     lineHeight: 1.5,
                     maxHeight: isActive ? 60 : 0,
                     overflow: 'hidden',
@@ -274,7 +274,7 @@ export default function HomePage() {
           {PROOF_LINES.map(line => (
             <span key={line} style={{
               fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
-              fontWeight: 700, color: 'rgba(255,255,255,0.22)',
+              fontWeight: 700, color: 'rgba(255,255,255,0.5)',
             }}>
               {line}
             </span>
@@ -297,10 +297,10 @@ export default function HomePage() {
         }}>
           "The best pieces aren't bought.<br />They're found."
         </blockquote>
-        <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.5)', marginBottom: 48 }}>
+        <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.72)', marginBottom: 48 }}>
           My Next Thrift maps your aesthetic instinct to the items your eye was always looking for — before the algorithm caught on.
         </p>
-        <p style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.25)' }}>
+        <p style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.5)' }}>
           Anti-fast fashion &nbsp;·&nbsp; Archive instinct &nbsp;·&nbsp; Rare finds
         </p>
       </section>
@@ -326,7 +326,7 @@ export default function HomePage() {
             Know your<br />
             <em style={{ fontStyle: 'italic', color: '#C4965A' }}>thrift eye.</em>
           </h2>
-          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, maxWidth: 340 }}>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, maxWidth: 340 }}>
             Find the rare pieces your aesthetic keeps searching for — before anyone else does.
           </p>
           <Link href="/style-quiz" style={{
@@ -339,7 +339,7 @@ export default function HomePage() {
           }}>
             Start the hunt →
           </Link>
-          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.04em' }}>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em' }}>
             Free &nbsp;·&nbsp; 30 seconds &nbsp;·&nbsp; No account needed
           </p>
         </div>
@@ -351,10 +351,10 @@ export default function HomePage() {
         textAlign: 'center',
         borderTop: '1px solid rgba(255,255,255,0.07)',
       }}>
-        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.04em' }}>
+        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.04em' }}>
           © 2026 My Next Thrift &nbsp;·&nbsp;
-          <a href="https://mynextthrift.app/privacy" style={{ color: 'rgba(255,255,255,0.32)', textDecoration: 'none', margin: '0 8px' }}>Privacy</a>
-          <a href="https://mynextthrift.app/terms" style={{ color: 'rgba(255,255,255,0.32)', textDecoration: 'none', margin: '0 8px' }}>Terms</a>
+          <a href="https://mynextthrift.app/privacy" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', margin: '0 8px' }}>Privacy</a>
+          <a href="https://mynextthrift.app/terms" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', margin: '0 8px' }}>Terms</a>
         </p>
       </footer>
     </div>

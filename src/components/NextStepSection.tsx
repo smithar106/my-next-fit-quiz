@@ -1,10 +1,10 @@
 'use client';
 
 const FEATURES = [
-  'Rare finds matched to your thrift instinct',
-  'Pieces that feel collected, not bought',
-  'A feed that learns the difference between what you want and what you need',
-  'The patience to wait for the right thing — and the eye to know it when it arrives',
+  'See yourself in the moments that matter — your next date, night out, social event',
+  'Pieces that feel collected, not recommended',
+  'A feed that learns what you\'re dressing for — not just what you like',
+  'The version of you that shows up differently in every room',
 ];
 
 interface Props {

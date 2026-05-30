@@ -129,7 +129,7 @@ export default function HomePage() {
 
           {/* Subhead */}
           <p style={{ fontSize: 'clamp(16px, 3vw, 19px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.72)', maxWidth: 400, fontWeight: 400 }}>
-            Find the rare pieces your eye naturally notices.
+            See who you'll be on your next date, your next night out, your next moment that matters.
           </p>
 
           {/* CTA */}
@@ -298,7 +298,7 @@ export default function HomePage() {
           "The best pieces aren't bought.<br />They're found."
         </blockquote>
         <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.72)', marginBottom: 48 }}>
-          My Next Thrift maps your aesthetic instinct to the items your eye was always looking for — before the algorithm caught on.
+          You don't get outfits. You see future versions of yourself — built from pieces that feel found, not recommended.
         </p>
         <p style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.5)' }}>
           Anti-fast fashion &nbsp;·&nbsp; Archive instinct &nbsp;·&nbsp; Rare finds
@@ -327,7 +327,7 @@ export default function HomePage() {
             <em style={{ fontStyle: 'italic', color: '#C4965A' }}>thrift eye.</em>
           </h2>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, maxWidth: 340 }}>
-            Find the rare pieces your aesthetic keeps searching for — before anyone else does.
+            The quiz takes 30 seconds. The app shows you who you'll be — on your next date, your next night out, every moment that matters.
           </p>
           <Link href="/style-quiz" style={{
             display: 'inline-block',

@@ -20,11 +20,11 @@ interface QuizResultProps {
 }
 
 const CTA_COPY: Record<string, string> = {
-  'style-quiz': 'Find my first hidden gem →',
-  'old-money-style': 'See pieces that match my eye →',
-  'capsule-wardrobe': 'Start building my wardrobe →',
-  'date-night-outfits': 'Find pieces that actually feel like me →',
-  'creator-style-match': 'See my thrift feed →',
+  'style-quiz': 'See who I\'ll be on my next night out →',
+  'old-money-style': 'See who I\'ll be on my next date →',
+  'capsule-wardrobe': 'Build the version of me that shows up →',
+  'date-night-outfits': 'See who I\'ll be on my next date →',
+  'creator-style-match': 'See myself in every situation →',
 };
 
 export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: QuizResultProps) {

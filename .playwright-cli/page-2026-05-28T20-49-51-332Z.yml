@@ -1,0 +1,9 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: My Next Thrift
+    - generic [ref=e5]:
+      - heading "Your closet should feel discovered, not bought." [level=1] [ref=e6]
+      - paragraph [ref=e7]: Answer a few quick questions and uncover the kinds of rare pieces your eye naturally finds.
+    - button "Start the hunt →" [ref=e8] [cursor=pointer]
+    - paragraph [ref=e9]: 30 seconds · Free · 8 archetypes
+  - alert [ref=e10]

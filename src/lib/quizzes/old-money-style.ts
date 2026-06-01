@@ -243,10 +243,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Cream wide-leg pants + navy crewneck + gold watch — nothing else needed',
       ],
       visualCards: [
-        { label: 'Vintage Uniform Pieces', gradient: 'linear-gradient(145deg, #C8A96E 0%, #8B6914 100%)', tags: ['#structure', '#archive'], query: ['cat_tops', 'cond_vintage'] },
-        { label: 'Worn-In Leather', gradient: 'linear-gradient(145deg, #C0A070 0%, #886028 100%)', tags: ['#worn-in', '#quality'], query: ['cat_tops', 'cond_vintage', 'color_earth'] },
-        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #D4BC88 0%, #A07840 100%)', tags: ['#rare', '#collected'], query: ['cat_accessories', 'cond_vintage'] },
-        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #E8D090 0%, #B89040 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'cond_vintage'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #C8A96E 0%, #8B6914 100%)', tags: ['cashmere', 'silk'], query: ['cat_tops', 'style_luxury', 'cond_secondhand'], titleKeywords: ['cashmere', 'silk', 'blouse', 'turtleneck', 'crewneck'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #C0A070 0%, #886028 100%)', tags: ['trouser', 'wide-leg'], query: ['cat_bottoms', 'style_luxury', 'cond_secondhand'], titleKeywords: ['trouser', 'pant', 'wide-leg', 'wool', 'crepe'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #D4BC88 0%, #A07840 100%)', tags: ['loafer', 'pump'], query: ['cat_footwear', 'style_luxury', 'cond_secondhand'], titleKeywords: ['loafer', 'pump', 'flat', 'mule', 'heel'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #E8D090 0%, #B89040 100%)', tags: ['bag', 'watch'], query: ['cat_accessories', 'style_luxury', 'cond_secondhand'], titleKeywords: ['bag', 'watch', 'belt', 'clutch', 'tote'] },
       ],
       whyMyNextFit:
         'Quiet, considered pieces that don\'t announce themselves — they just hold. The ones your eye was already looking for.',
@@ -269,10 +269,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Striped button-down + well-cut shorts + leather sneakers',
       ],
       visualCards: [
-        { label: 'Archive Graphic Tees', gradient: 'linear-gradient(145deg, #6888C8 0%, #3858A0 100%)', tags: ['#archive', '#worn-in'], query: ['cat_tops', 'cond_vintage'] },
-        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #7898D8 0%, #4868B0 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'cond_vintage'] },
-        { label: 'Estate Sale Energy', gradient: 'linear-gradient(145deg, #88A8E0 0%, #5878C0 100%)', tags: ['#estate', '#collected'], query: ['cat_accessories', 'cond_vintage'] },
-        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #A0B8F0 0%, #6888D8 100%)', tags: ['#history', '#patina'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #6888C8 0%, #3858A0 100%)', tags: ['blazer', 'oxford'], query: ['cat_tops', 'style_classic', 'cond_vintage'], titleKeywords: ['blazer', 'oxford', 'polo', 'button-down', 'shirt'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #7898D8 0%, #4868B0 100%)', tags: ['chino', 'trouser'], query: ['cat_bottoms', 'style_classic', 'cond_vintage'], titleKeywords: ['chino', 'trouser', 'pant', 'short', 'skirt'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #88A8E0 0%, #5878C0 100%)', tags: ['loafer', 'sneaker'], query: ['cat_footwear', 'style_classic', 'cond_vintage'], titleKeywords: ['loafer', 'sneaker', 'oxford', 'derby', 'boot'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #A0B8F0 0%, #6888D8 100%)', tags: ['belt', 'watch'], query: ['cat_accessories', 'style_classic', 'cond_vintage'], titleKeywords: ['belt', 'watch', 'hat', 'scarf', 'bag'] },
       ],
       whyMyNextFit:
         'The prep pieces built to last decades, not seasons. Found secondhand before their value becomes obvious.',
@@ -295,10 +295,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Silk slip dress in cream + a tailored blazer thrown over + small gold bag',
       ],
       visualCards: [
-        { label: 'Romantic Relics', gradient: 'linear-gradient(145deg, #F5E0D0 0%, #E0C0A8 100%)', tags: ['#soft', '#nostalgic'], query: ['cat_tops', 'cond_vintage', 'color_pastel'] },
-        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #F0D8C8 0%, #D8B898 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'cond_vintage'] },
-        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #F8E8D8 0%, #E0C8A8 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'cond_vintage'] },
-        { label: 'Collector Accessories', gradient: 'linear-gradient(145deg, #F8ECD8 0%, #D8B878 100%)', tags: ['#collected', '#personal'], query: ['cat_accessories', 'cond_vintage'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #F5E0D0 0%, #E0C0A8 100%)', tags: ['silk', 'satin'], query: ['cat_tops', 'style_luxury', 'cond_secondhand'], titleKeywords: ['silk', 'satin', 'blouse', 'cashmere', 'top'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #F0D8C8 0%, #D8B898 100%)', tags: ['skirt', 'trouser'], query: ['cat_bottoms', 'style_luxury', 'cond_secondhand'], titleKeywords: ['skirt', 'trouser', 'pant', 'wide-leg', 'midi'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #F8E8D8 0%, #E0C8A8 100%)', tags: ['kitten', 'flat'], query: ['cat_footwear', 'style_luxury', 'cond_secondhand'], titleKeywords: ['kitten', 'flat', 'heel', 'pump', 'mule'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #F8ECD8 0%, #D8B878 100%)', tags: ['bag', 'earring'], query: ['cat_accessories', 'style_luxury', 'cond_secondhand'], titleKeywords: ['bag', 'earring', 'necklace', 'clutch', 'bracelet'] },
       ],
       whyMyNextFit:
         'The soft, feminine pieces with real fabric and real construction. Found, not bought — and worn like they were always yours.',
@@ -321,10 +321,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Black cigarette trousers + black cashmere turtleneck + zero accessories',
       ],
       visualCards: [
-        { label: 'Underpriced Gems', gradient: 'linear-gradient(145deg, #E8E4E0 0%, #C0BCB8 100%)', tags: ['#rare', '#collected'], query: ['cat_accessories', 'cond_vintage'] },
-        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #D8DCE4 0%, #A8B0C0 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'cond_vintage'] },
-        { label: 'One-of-One Texture', gradient: 'linear-gradient(145deg, #DCDCD8 0%, #B0AEA8 100%)', tags: ['#texture', '#quiet'], query: ['cat_tops', 'cond_vintage'] },
-        { label: 'Soft Vintage Knits', gradient: 'linear-gradient(145deg, #E4E0DC 0%, #C0B8B0 100%)', tags: ['#soft', '#worn-in'], query: ['cat_tops', 'cond_vintage'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #E8E4E0 0%, #C0BCB8 100%)', tags: ['cashmere', 'silk'], query: ['cat_tops', 'style_luxury', 'cond_secondhand'], titleKeywords: ['cashmere', 'silk', 'turtleneck', 'crewneck', 'blouse'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #D8DCE4 0%, #A8B0C0 100%)', tags: ['denim', 'trouser'], query: ['cat_bottoms', 'style_luxury', 'cond_secondhand'], titleKeywords: ['denim', 'trouser', 'pant', 'wide-leg', 'straight'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #DCDCD8 0%, #B0AEA8 100%)', tags: ['mule', 'loafer'], query: ['cat_footwear', 'style_luxury', 'cond_secondhand'], titleKeywords: ['mule', 'loafer', 'sandal', 'flat', 'pump'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #E4E0DC 0%, #C0B8B0 100%)', tags: ['bag', 'belt'], query: ['cat_accessories', 'style_luxury', 'cond_secondhand'], titleKeywords: ['bag', 'belt', 'earring', 'bracelet', 'necklace'] },
       ],
       whyMyNextFit:
         'The one piece that\'s actually worth adding. A feed with the patience to hold out for that — not fill space.',
@@ -347,10 +347,10 @@ export const oldMoneyStyleQuiz: QuizConfig = {
         'Linen joggers + a fitted tank + lightweight cardigan + clean sneakers',
       ],
       visualCards: [
-        { label: 'Vintage Uniform Pieces', gradient: 'linear-gradient(145deg, #A0E8C0 0%, #48C080 100%)', tags: ['#structure', '#archive'], query: ['cat_tops', 'cond_vintage'] },
-        { label: 'Deadstock Finds', gradient: 'linear-gradient(145deg, #B8F0D0 0%, #60D090 100%)', tags: ['#deadstock', '#rare'], query: ['cat_tops', 'cond_vintage'] },
-        { label: 'Pieces With History', gradient: 'linear-gradient(145deg, #C8F8E0 0%, #78E0A8 100%)', tags: ['#history', '#patina'], query: ['cat_accessories', 'cond_vintage'] },
-        { label: 'Perfectly Faded Denim', gradient: 'linear-gradient(145deg, #B0E8C8 0%, #58C888 100%)', tags: ['#faded', '#forever'], query: ['cat_bottoms', 'cond_vintage'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #A0E8C0 0%, #48C080 100%)', tags: ['polo', 'knit'], query: ['cat_tops', 'style_classic', 'cond_secondhand'], titleKeywords: ['polo', 'knit', 'sweater', 'quarter-zip', 'cardigan'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #B8F0D0 0%, #60D090 100%)', tags: ['short', 'skirt'], query: ['cat_bottoms', 'style_classic', 'cond_secondhand'], titleKeywords: ['short', 'skirt', 'jogger', 'linen', 'pant'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #C8F8E0 0%, #78E0A8 100%)', tags: ['sneaker', 'slide'], query: ['cat_footwear', 'style_classic', 'cond_secondhand'], titleKeywords: ['sneaker', 'slide', 'loafer', 'tennis', 'sandal'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #B0E8C8 0%, #58C888 100%)', tags: ['hat', 'bag'], query: ['cat_accessories', 'style_classic', 'cond_secondhand'], titleKeywords: ['hat', 'bag', 'tote', 'belt', 'watch'] },
       ],
       whyMyNextFit:
         'Sport-meets-luxury pieces that your eye stops at — athletic without looking athletic, precise without trying.',

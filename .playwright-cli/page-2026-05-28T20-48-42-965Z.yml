@@ -1,0 +1,100 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]: My Next Thrift
+      - link "Take the quiz" [ref=e5] [cursor=pointer]:
+        - /url: /style-quiz
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]: Thrift Identity Quiz
+        - heading "Your closet should feel discovered, not bought." [level=1] [ref=e9]:
+          - text: Your closet should feel
+          - emphasis [ref=e10]: discovered,
+          - text: not bought.
+        - paragraph [ref=e11]: Find the rare pieces your eye naturally notices.
+        - link "Start the hunt →" [ref=e12] [cursor=pointer]:
+          - /url: /style-quiz
+        - paragraph [ref=e13]: 30 seconds · Free · 8 identity archetypes
+      - generic [ref=e15]: scroll
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: The 8 thrift identities
+        - heading "Which one is already yours?" [level=2] [ref=e20]:
+          - text: Which one is
+          - emphasis [ref=e21]: already yours?
+      - generic [ref=e22]:
+        - generic [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: Archive Hunter
+          - generic [ref=e27]: You dress like the best pieces existed before trends caught up.
+        - generic [ref=e29] [cursor=pointer]:
+          - generic [ref=e30]: Quiet Luxury Collector
+          - generic: Fabric, silhouette, restraint. Never logos.
+        - generic [ref=e32] [cursor=pointer]:
+          - generic [ref=e33]: Hidden Gem Collector
+          - generic: You notice things others walk right past.
+        - generic [ref=e35] [cursor=pointer]:
+          - generic [ref=e36]: Street Romantic
+          - generic: Soft and sharp. Tender and tough. Always both.
+        - generic [ref=e38] [cursor=pointer]:
+          - generic [ref=e39]: Eclectic Archivist
+          - generic: Your outfits shouldn't work on paper. They do.
+        - generic [ref=e41] [cursor=pointer]:
+          - generic [ref=e42]: Soft Vintage Curator
+          - generic: Pieces that feel lived-in, loved, and quietly beautiful.
+        - generic [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: Designer Score Seeker
+          - generic: You've found $800 bags for $40. The thrill is the find.
+        - generic [ref=e47] [cursor=pointer]:
+          - generic [ref=e48]: Downtown Treasure Hunter
+          - generic: Your wardrobe is a map of everywhere you've looked.
+      - link "Find yours in 30 seconds →" [ref=e50] [cursor=pointer]:
+        - /url: /style-quiz
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - paragraph [ref=e53]: Thrift identity moments
+        - heading "\"This app exposed me.\"" [level=2] [ref=e54]:
+          - text: "\"This app"
+          - emphasis [ref=e55]: exposed me.
+          - text: "\""
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - paragraph [ref=e58]: "\"This app exposed me. My entire identity is hidden gem collector.\""
+          - paragraph [ref=e59]: "@archivegirl"
+        - generic [ref=e60]:
+          - paragraph [ref=e61]: "\"I took a quiz about thrift shopping and had a genuine moment of self-recognition.\""
+          - paragraph [ref=e62]: "@quietlux.finds"
+        - generic [ref=e63]:
+          - paragraph [ref=e64]: "\"I knew I was an eclectic archivist before I finished the second question.\""
+          - paragraph [ref=e65]: "@thriftdaydreams"
+        - generic [ref=e66]:
+          - paragraph [ref=e67]: "\"The outfit it mapped for me is literally what I wear. How.\""
+          - paragraph [ref=e68]: "@rarepiece.diary"
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: "\"This app exposed me. My entire identity is hidden gem collector.\""
+          - paragraph [ref=e71]: "@archivegirl"
+        - generic [ref=e72]:
+          - paragraph [ref=e73]: "\"I took a quiz about thrift shopping and had a genuine moment of self-recognition.\""
+          - paragraph [ref=e74]: "@quietlux.finds"
+        - generic [ref=e75]:
+          - paragraph [ref=e76]: "\"I knew I was an eclectic archivist before I finished the second question.\""
+          - paragraph [ref=e77]: "@thriftdaydreams"
+        - generic [ref=e78]:
+          - paragraph [ref=e79]: "\"The outfit it mapped for me is literally what I wear. How.\""
+          - paragraph [ref=e80]: "@rarepiece.diary"
+    - generic [ref=e81]:
+      - blockquote [ref=e83]:
+        - text: "\"The best pieces aren't bought."
+        - text: They're found."
+      - paragraph [ref=e84]: My Next Thrift maps your aesthetic instinct to the items your eye was always looking for — before the algorithm caught on.
+      - paragraph [ref=e85]: Anti-fast fashion · Archive instinct · Rare finds
+    - generic [ref=e87]:
+      - heading "Know your thrift eye." [level=2] [ref=e88]:
+        - text: Know your
+        - emphasis [ref=e89]: thrift eye.
+      - paragraph [ref=e90]: Find the rare pieces your aesthetic keeps searching for — before anyone else does.
+      - link "Start the hunt →" [ref=e91] [cursor=pointer]:
+        - /url: /style-quiz
+      - paragraph [ref=e92]: Free · 30 seconds · No account needed
+    - contentinfo [ref=e93]:
+      - paragraph [ref=e94]: © 2026 My Next Thrift · collected, not bought
+  - alert [ref=e95]

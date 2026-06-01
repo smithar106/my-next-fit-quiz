@@ -256,13 +256,6 @@ export default function ResultVisualCards({ cards, accent }: Props) {
                 <p className="text-white text-[12px] font-semibold leading-tight drop-shadow-sm">
                   {card.label}
                 </p>
-                <div className="flex gap-1 mt-1 flex-wrap">
-                  {card.tags.map(tag => (
-                    <span key={tag} className="text-[9px] text-white/65 font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           );

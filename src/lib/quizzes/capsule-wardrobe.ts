@@ -243,7 +243,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'Two pairs of shoes: one casual, one elevated — keeps the capsule tight',
       ],
       visualCards: [
-        { label: 'TOP', gradient: 'linear-gradient(145deg, #E8E4E0 0%, #C0B8B0 100%)', tags: ['tee', 'knit'], query: ['cat_tops', 'style_minimalist', 'cond_secondhand'], titleKeywords: ['tee', 'knit', 'blazer', 'blouse', 'sweater'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #E8E4E0 0%, #C0B8B0 100%)', tags: ['tee', 'knit'], query: ['cat_tops', 'style_minimalist', 'cond_secondhand'], titleKeywords: ['shirt', 'knit', 'blazer', 'blouse', 'sweater'] },
         { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #D8DCE8 0%, #A8B0C8 100%)', tags: ['trouser', 'denim'], query: ['cat_bottoms', 'style_minimalist', 'cond_secondhand'], titleKeywords: ['trouser', 'denim', 'jean', 'pant', 'straight'] },
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #E4E0DC 0%, #B8B0A8 100%)', tags: ['loafer', 'boot'], query: ['cat_footwear', 'style_minimalist', 'cond_secondhand'], titleKeywords: ['loafer', 'boot', 'sneaker', 'mule', 'flat'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #DCDCDC 0%, #A8A8A8 100%)', tags: ['bag', 'belt'], query: ['cat_accessories', 'style_minimalist', 'cond_secondhand'], titleKeywords: ['bag', 'belt', 'earring', 'watch', 'tote'] },
@@ -295,7 +295,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'Accessories do the heavy lifting — a great bag and earrings elevate any basic',
       ],
       visualCards: [
-        { label: 'TOP', gradient: 'linear-gradient(145deg, #F0D870 0%, #D8B820 100%)', tags: ['tee', 'sweatshirt'], query: ['cat_tops', 'style_classic', 'cond_vintage'], titleKeywords: ['tee', 'sweatshirt', 'crewneck', 'knit', 'hoodie'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #F0D870 0%, #D8B820 100%)', tags: ['tee', 'sweatshirt'], query: ['cat_tops', 'style_classic', 'cond_vintage'], titleKeywords: ['sweatshirt', 'crewneck', 'knit', 'hoodie', 'flannel'] },
         { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #F8E880 0%, #E0C830 100%)', tags: ['denim', 'jean'], query: ['cat_bottoms', 'style_classic', 'cond_vintage'], titleKeywords: ['denim', 'jean', 'trouser', 'maxi', 'midi'] },
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #FFF0A0 0%, #F0D848 100%)', tags: ['sneaker', 'loafer'], query: ['cat_footwear', 'style_classic', 'cond_vintage'], titleKeywords: ['sneaker', 'loafer', 'flat', 'boot', 'slide'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #F8E890 0%, #E8D050 100%)', tags: ['bag', 'earring'], query: ['cat_accessories', 'style_classic', 'cond_vintage'], titleKeywords: ['bag', 'earring', 'tote', 'belt', 'necklace'] },
@@ -347,7 +347,7 @@ export const capsuleWardrobeQuiz: QuizConfig = {
         'The formula: 3 neutrals + 1 statement color + 2 shoes = 20+ outfits',
       ],
       visualCards: [
-        { label: 'TOP', gradient: 'linear-gradient(145deg, #90E8C0 0%, #40C080 100%)', tags: ['coat', 'blazer'], query: ['cat_tops', 'style_classic', 'cond_secondhand'], titleKeywords: ['coat', 'blazer', 'jacket', 'knit', 'tee'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #90E8C0 0%, #40C080 100%)', tags: ['coat', 'blazer'], query: ['cat_tops', 'style_classic', 'cond_secondhand'], titleKeywords: ['coat', 'blazer', 'jacket', 'knit', 'shirt'] },
         { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #A8F0D0 0%, #58C890 100%)', tags: ['denim', 'trouser'], query: ['cat_bottoms', 'style_classic', 'cond_secondhand'], titleKeywords: ['denim', 'trouser', 'jean', 'pant', 'straight'] },
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #C0F8E0 0%, #78E0A8 100%)', tags: ['boot', 'sneaker'], query: ['cat_footwear', 'style_classic', 'cond_secondhand'], titleKeywords: ['boot', 'sneaker', 'loafer', 'flat', 'oxford'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #B8F8D8 0%, #68D8A0 100%)', tags: ['bag', 'belt'], query: ['cat_accessories', 'style_classic', 'cond_secondhand'], titleKeywords: ['bag', 'belt', 'tote', 'earring', 'watch'] },

@@ -243,7 +243,7 @@ export const styleDnaQuiz: QuizConfig = {
         'The piece with the best drape or cut you own, worn simply',
       ],
       visualCards: [
-        { label: 'TOP', gradient: 'linear-gradient(145deg, #E8E0D4 0%, #C4B8A8 100%)', tags: ['knit', 'sweater'], query: ['cat_tops', 'style_minimalist', 'cond_vintage'], titleKeywords: ['knit', 'sweater', 'cardigan', 'blouse', 'tee'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #E8E0D4 0%, #C4B8A8 100%)', tags: ['knit', 'sweater'], query: ['cat_tops', 'style_minimalist', 'cond_vintage'], titleKeywords: ['knit', 'sweater', 'cardigan', 'blouse', 'linen'] },
         { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #C8D4E0 0%, #8FA8C0 100%)', tags: ['trouser', 'wide-leg'], query: ['cat_bottoms', 'style_minimalist', 'cond_vintage'], titleKeywords: ['trouser', 'wide-leg', 'linen', 'pant', 'straight'] },
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #D8D4CC 0%, #A8A098 100%)', tags: ['loafer', 'mule'], query: ['cat_footwear', 'style_minimalist', 'cond_vintage'], titleKeywords: ['loafer', 'mule', 'flat', 'sandal', 'oxford'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #E0D8CC 0%, #B8ADA0 100%)', tags: ['earring', 'ring'], query: ['cat_accessories', 'style_minimalist', 'cond_vintage'], titleKeywords: ['earring', 'ring', 'belt', 'necklace', 'cuff'] },
@@ -347,7 +347,7 @@ export const styleDnaQuiz: QuizConfig = {
         'A combination of eras, aesthetics, or intentions — worn like it was obvious',
       ],
       visualCards: [
-        { label: 'TOP', gradient: 'linear-gradient(145deg, #9880F0 0%, #6048C8 100%)', tags: ['jacket', 'blazer'], query: ['cat_tops', 'style_streetwear', 'cond_vintage'], titleKeywords: ['jacket', 'blazer', 'graphic', 'tee', 'vest'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #9880F0 0%, #6048C8 100%)', tags: ['jacket', 'blazer'], query: ['cat_tops', 'style_streetwear', 'cond_vintage'], titleKeywords: ['jacket', 'blazer', 'graphic', 'band', 'vest'] },
         { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #A890F8 0%, #7050D8 100%)', tags: ['baggy', 'wide-leg'], query: ['cat_bottoms', 'style_streetwear', 'cond_vintage'], titleKeywords: ['jean', 'denim', 'trouser', 'baggy', 'wide'] },
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #B8A4F8 0%, #8060E0 100%)', tags: ['sneaker', 'boot'], query: ['cat_footwear', 'style_streetwear', 'cond_vintage'], titleKeywords: ['sneaker', 'boot', 'platform', 'chunky', 'ankle'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #C4B0FF 0%, #9070E8 100%)', tags: ['necklace', 'ring'], query: ['cat_accessories', 'style_streetwear', 'cond_vintage'], titleKeywords: ['necklace', 'ring', 'earring', 'pendant', 'chain'] },

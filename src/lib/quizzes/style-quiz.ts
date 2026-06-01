@@ -286,7 +286,7 @@ export const styleQuiz: QuizConfig = {
         'ACCESSORY — One bold, strange piece that anchors the whole look',
       ],
       visualCards: [
-        { label: 'TOP', gradient: 'linear-gradient(145deg, #141420 0%, #0C0C18 100%)', tags: ['graphic tee'], query: ['cat_tops', 'style_streetwear', 'cond_vintage'], titleKeywords: ['tee', 'graphic', 'band', 'print', 'jersey'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #141420 0%, #0C0C18 100%)', tags: ['graphic tee'], query: ['cat_tops', 'style_streetwear', 'cond_vintage'], titleKeywords: ['graphic', 'band', 'print', 'jersey', 'vintage'] },
         { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #12141E 0%, #0C0E16 100%)', tags: ['wide-leg denim'], query: ['cat_bottoms', 'style_streetwear', 'cond_vintage'], titleKeywords: ['denim', 'jean', 'baggy', 'wide'] },
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #161420 0%, #0E0C18 100%)', tags: ['chunky boots'], query: ['cat_footwear', 'style_streetwear', 'cond_vintage'], titleKeywords: ['boot', 'sneaker', 'platform', 'chunky'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #181420 0%, #100C18 100%)', tags: ['bold accessory'], query: ['cat_accessories', 'style_streetwear', 'cond_vintage'], titleKeywords: ['necklace', 'ring', 'earring', 'pendant'] },

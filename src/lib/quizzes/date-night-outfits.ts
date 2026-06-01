@@ -269,7 +269,7 @@ export const dateNightOutfitsQuiz: QuizConfig = {
         'A slip skirt + a cropped leather jacket + clean sneakers — elevated casual',
       ],
       visualCards: [
-        { label: 'TOP', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['jacket', 'blazer'], query: ['cat_tops', 'style_classic', 'cond_vintage'], titleKeywords: ['jacket', 'blazer', 'leather', 'top', 'tee'] },
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #6EE7B7 0%, #20C880 100%)', tags: ['jacket', 'blazer'], query: ['cat_tops', 'style_classic', 'cond_vintage'], titleKeywords: ['jacket', 'blazer', 'leather', 'top', 'bodysuit'] },
         { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #A7F3D0 0%, #50D898 100%)', tags: ['jean', 'trouser'], query: ['cat_bottoms', 'style_classic', 'cond_vintage'], titleKeywords: ['jean', 'denim', 'trouser', 'slip', 'skirt'] },
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #C0FBE0 0%, #6EE7B7 100%)', tags: ['boot', 'sneaker'], query: ['cat_footwear', 'style_classic', 'cond_vintage'], titleKeywords: ['boot', 'sneaker', 'ankle', 'heel', 'flat'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #B0F5D8 0%, #40D088 100%)', tags: ['chain', 'earring'], query: ['cat_accessories', 'style_classic', 'cond_vintage'], titleKeywords: ['chain', 'earring', 'necklace', 'ring', 'bag'] },

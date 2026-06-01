@@ -7,7 +7,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'What Capsule Wardrobe Do You Actually Need? — My Next Thrift',
   description:
-    'Minimal, workwear, travel, weekend, or budget capsule — discover the exact wardrobe system for your life. 60-second quiz.',
+    'Minimal, workwear, travel, weekend, or budget capsule — discover the exact wardrobe system for your life. 30-second quiz.',
   openGraph: {
     title: 'What Capsule Wardrobe Do You Actually Need?',
     description: 'Build the exact wardrobe your life calls for.',

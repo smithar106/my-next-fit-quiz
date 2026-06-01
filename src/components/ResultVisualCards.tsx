@@ -127,13 +127,14 @@ async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, ti
     if (data?.length) candidates.push(...collectUnused(data as { image_url: string }[], 5));
   } catch {}
 
-  // Pass 2: category + style tag only (drop title keywords but keep aesthetic filter)
+  // Pass 2: category + style tag + title keywords (drop only extra query tags)
   if (candidates.length < 3) {
     try {
       let q = baseSelect(supabase!.from('items'));
       q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId || query[0]}"}]`);
       if (styleTagId) q = (q as any).filter('tags', 'cs', `[{"id":"${styleTagId}"}]`);
       if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
+      q = applyTitleKeywords(q);
       const { data } = await (q as any);
       if (data?.length) {
         for (const u of collectUnused(data as { image_url: string }[], 5)) {
@@ -143,8 +144,26 @@ async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, ti
     } catch {}
   }
 
-  // Pass 3: category only — last resort, no style filter
+  // Pass 3: category + title keywords only (drop style tag)
   if (candidates.length < 3 && categoryTagId) {
+    try {
+      let q = baseSelect(supabase!.from('items'));
+      q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
+      q = applySlotExclusions(q as any, categoryTagId) as any;
+      q = applyTitleKeywords(q);
+      const { data } = await (q as any);
+      if (data?.length) {
+        for (const u of collectUnused(data as { image_url: string }[], 5)) {
+          if (!seen.has(u)) { candidates.push(u); seen.add(u); }
+        }
+      }
+    } catch {}
+  }
+
+  // Pass 4: category only, NO title keywords — last resort for non-accessory slots only.
+  // Accessories are never fetched without title keywords because non-wearable items
+  // (decor, sculptures, art objects) are tagged cat_accessories in the catalog.
+  if (candidates.length < 3 && categoryTagId && categoryTagId !== 'cat_accessories') {
     try {
       let q = baseSelect(supabase!.from('items'));
       q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
@@ -219,7 +238,7 @@ export default function ResultVisualCards({ cards, accent }: Props) {
                       )
                     )
                   }
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain"
                   style={{ opacity: showImage ? 1 : 0, transition: 'opacity 0.4s ease' }}
                 />
               )}

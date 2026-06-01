@@ -155,18 +155,6 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* Scroll indicator */}
-        <div style={{
-          position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-          opacity: 0.65, zIndex: 2,
-        }}>
-          <span style={{ fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600 }}>scroll</span>
-          <div style={{
-            width: 1, height: 40,
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.6), transparent)',
-          }} />
-        </div>
       </section>
 
       {/* ── ARCHETYPE REVEAL ── */}
@@ -261,15 +249,6 @@ export default function HomePage() {
           background: 'linear-gradient(to bottom, transparent, rgba(196,150,90,0.5), transparent)',
           margin: '0 auto 48px',
         }} />
-        <blockquote style={{
-          fontFamily: 'var(--font-cormorant, Georgia, serif)',
-          fontSize: 'clamp(28px, 5.5vw, 46px)',
-          fontWeight: 400, fontStyle: 'italic',
-          lineHeight: 1.25, color: 'rgba(255,255,255,0.9)',
-          marginBottom: 32,
-        }}>
-          "The best pieces aren't bought.<br />They're found."
-        </blockquote>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 24px' }}>
           {PROOF_LINES.map(line => (
             <span key={line} style={{

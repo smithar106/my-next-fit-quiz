@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'Decode the style identity you already have. 6 questions to find out what your clothes say about you when you\'re not trying.',
   openGraph: {
     title: 'What\'s Your Style DNA?',
-    description: 'Decode your style identity in 60 seconds.',
+    description: 'Decode your style identity in 30 seconds.',
   },
 };
 

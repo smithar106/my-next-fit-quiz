@@ -7,7 +7,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'What\'s Your Date Night Outfit Personality? — My Next Thrift',
   description:
-    'Elegant romantic, effortless cool, bold statement, soft feminine, or minimal chic — find your date night style in 60 seconds.',
+    'Elegant romantic, effortless cool, bold statement, soft feminine, or minimal chic — find your date night style in 30 seconds.',
   openGraph: {
     title: 'What\'s Your Date Night Outfit Personality?',
     description: 'Because the right outfit is half the date.',

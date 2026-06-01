@@ -108,13 +108,14 @@ async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, ti
     return q.or(orFilter);
   };
 
-  // Detect the category slot (first cat_* tag in query, if any)
+  // Detect the category and style tags from query
   const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
+  const styleTagId = query.find(id => id.startsWith('style_') || id.startsWith('cond_')) ?? '';
 
   const seen = new Set<string>(usedUrls);
   const candidates: string[] = [];
 
-  // Pass 1: all tags AND'd + title keywords — strictest, highest quality
+  // Pass 1: category + style/cond tags + title keywords — most specific
   try {
     let q = baseSelect(supabase!.from('items'));
     for (const id of query) {
@@ -126,11 +127,12 @@ async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, ti
     if (data?.length) candidates.push(...collectUnused(data as { image_url: string }[], 5));
   } catch {}
 
-  // Pass 2: category tag only — looser on style
-  if (candidates.length < 5) {
+  // Pass 2: category + style tag only (drop title keywords but keep aesthetic filter)
+  if (candidates.length < 3) {
     try {
       let q = baseSelect(supabase!.from('items'));
       q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId || query[0]}"}]`);
+      if (styleTagId) q = (q as any).filter('tags', 'cs', `[{"id":"${styleTagId}"}]`);
       if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
       const { data } = await (q as any);
       if (data?.length) {
@@ -141,8 +143,8 @@ async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, ti
     } catch {}
   }
 
-  // Pass 3: widest net — category only, no style tags
-  if (candidates.length < 5 && categoryTagId) {
+  // Pass 3: category only — last resort, no style filter
+  if (candidates.length < 3 && categoryTagId) {
     try {
       let q = baseSelect(supabase!.from('items'));
       q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
@@ -168,16 +170,15 @@ export default function ResultVisualCards({ cards, accent }: Props) {
 
   useEffect(() => {
     let cancelled = false;
-    async function loadImages() {
-      const usedUrls = new Set<string>();
-      const results: CardImage[] = [];
-      for (const card of cards) {
-        const candidates = await fetchCandidatesForCard(card.query ?? [], usedUrls, card.titleKeywords);
-        results.push({ candidates, idx: 0, loaded: false });
-      }
-      if (!cancelled) setImages(results);
-    }
-    loadImages();
+    // Shared usedUrls — protected by insertion order; races are benign (at worst two cards share an image)
+    const usedUrls = new Set<string>();
+    cards.forEach((card, i) => {
+      fetchCandidatesForCard(card.query ?? [], usedUrls, card.titleKeywords).then(candidates => {
+        if (!cancelled) {
+          setImages(prev => prev.map((p, idx) => idx === i ? { ...p, candidates } : p));
+        }
+      });
+    });
     return () => { cancelled = true; };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

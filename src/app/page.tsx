@@ -68,7 +68,7 @@ export default function HomePage() {
       </nav>
 
       {/* ── HERO ── */}
-      <section style={{ position: 'relative', minHeight: '100svh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '120px 24px 80px', overflow: 'hidden' }}>
+      <section style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 48px', overflow: 'hidden' }}>
 
         {/* Atmospheric glow — changes with archetype */}
         <div style={{
@@ -94,7 +94,7 @@ export default function HomePage() {
           opacity: 0.4,
         }} />
 
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: 560, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32 }}>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: 560, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
 
           {/* Pill badge */}
           <div style={{
@@ -158,8 +158,8 @@ export default function HomePage() {
       </section>
 
       {/* ── ARCHETYPE REVEAL ── */}
-      <section style={{ padding: '100px 24px', maxWidth: 680, margin: '0 auto' }}>
-        <div style={{ marginBottom: 56, textAlign: 'center' }}>
+      <section style={{ padding: '48px 24px', maxWidth: 680, margin: '0 auto' }}>
+        <div style={{ marginBottom: 32, textAlign: 'center' }}>
           <p style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.55)', marginBottom: 16 }}>
             The 8 thrift identities
           </p>
@@ -228,7 +228,7 @@ export default function HomePage() {
           })}
         </div>
 
-        <div style={{ marginTop: 48, textAlign: 'center' }}>
+        <div style={{ marginTop: 28, textAlign: 'center' }}>
           <Link href="/style-quiz" style={{
             display: 'inline-block',
             padding: '14px 36px', borderRadius: 999,
@@ -243,11 +243,11 @@ export default function HomePage() {
       </section>
 
       {/* ── CATALOG PROOF ── */}
-      <section style={{ padding: '80px 24px', maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+      <section style={{ padding: '36px 24px', maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
         <div style={{
-          width: 1, height: 72,
+          width: 1, height: 40,
           background: 'linear-gradient(to bottom, transparent, rgba(196,150,90,0.5), transparent)',
-          margin: '0 auto 48px',
+          margin: '0 auto 28px',
         }} />
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 24px' }}>
           {PROOF_LINES.map(line => (
@@ -262,21 +262,21 @@ export default function HomePage() {
       </section>
 
       {/* ── PHILOSOPHY ── */}
-      <section style={{ padding: '100px 24px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
+      <section style={{ padding: '36px 24px 48px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
         <div style={{
-          width: 1, height: 80, background: 'linear-gradient(to bottom, transparent, rgba(196,150,90,0.6), transparent)',
-          margin: '0 auto 48px',
+          width: 1, height: 40, background: 'linear-gradient(to bottom, transparent, rgba(196,150,90,0.6), transparent)',
+          margin: '0 auto 28px',
         }} />
         <blockquote style={{
           fontFamily: 'var(--font-cormorant, Georgia, serif)',
           fontSize: 'clamp(28px, 5.5vw, 46px)',
           fontWeight: 400, fontStyle: 'italic',
           lineHeight: 1.25, color: 'rgba(255,255,255,0.9)',
-          marginBottom: 32,
+          marginBottom: 20,
         }}>
           "The best pieces aren't bought.<br />They're found."
         </blockquote>
-        <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.72)', marginBottom: 48 }}>
+        <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.72)', marginBottom: 24 }}>
           You don't get outfits. You see future versions of yourself — built from pieces that feel found, not recommended.
         </p>
         <p style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.5)' }}>
@@ -286,7 +286,7 @@ export default function HomePage() {
 
       {/* ── FINAL CTA ── */}
       <section style={{
-        padding: '100px 24px 120px',
+        padding: '48px 24px 72px',
         textAlign: 'center',
         position: 'relative', overflow: 'hidden',
       }}>
@@ -296,7 +296,7 @@ export default function HomePage() {
           background: 'radial-gradient(ellipse, rgba(196,150,90,0.18) 0%, transparent 65%)',
           filter: 'blur(40px)',
         }} />
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 480, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 480, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <h2 style={{
             fontFamily: 'var(--font-cormorant, Georgia, serif)',
             fontSize: 'clamp(40px, 8vw, 72px)',

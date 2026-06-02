@@ -113,11 +113,13 @@ async function fetchCandidatesForCard(
     return q.or(titleKeywords.map(kw => `title.ilike.%${kw}%`).join(','));
   };
 
-  // Build all 4 queries upfront
+  // Build all 4 queries upfront.
+  // Pass 1: 3 tag filters + title keywords — skip URL exclusions (they add 12+ NOT ILIKEs
+  // on a 16K-row JSONB scan and cause statement timeouts when all 4 slots fire in parallel).
+  // URL exclusions are only needed on passes 3-4 where tag filtering is loose.
   const buildPass1 = () => {
     let q = base(supabase!.from('items'));
     for (const id of query) q = (q as any).filter('tags', 'cs', `[{"id":"${id}"}]`);
-    if (categoryTagId) q = applySlotExclusions(q, categoryTagId);
     return withKeywords(q);
   };
 
@@ -125,7 +127,6 @@ async function fetchCandidatesForCard(
     let q = base(supabase!.from('items'));
     q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId || query[0]}"}]`);
     if (styleTagId) q = (q as any).filter('tags', 'cs', `[{"id":"${styleTagId}"}]`);
-    if (categoryTagId) q = applySlotExclusions(q, categoryTagId);
     return withKeywords(q);
   };
 

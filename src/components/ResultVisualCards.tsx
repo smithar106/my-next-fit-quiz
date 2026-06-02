@@ -64,9 +64,10 @@ function proxyUrl(url: string): string {
   return `/api/img?url=${encodeURIComponent(url)}`;
 }
 
-// Show only high-quality items (70+) in quiz result cards.
-// Rescore in progress — raise to 81 once rescore completes and footwear bucket fills.
-const GEM_FLOOR = 70;
+// 65+ floor — price fairness scoring shifted many legitimate boutique items
+// from 70-74 down to 65-69 (items priced above category median get a small penalty).
+// Quality is still high; 65 is the right threshold post-rescore.
+const GEM_FLOOR = 65;
 
 // Returns an ordered list of candidate URLs for a slot.
 // The component tries each in sequence on onError, so dead URLs don't blank the slot.

@@ -25,7 +25,11 @@ export async function GET(req: NextRequest) {
       status: 200,
       headers: {
         'Content-Type': contentType,
-        'Cache-Control': 'public, max-age=86400, stale-while-revalidate=604800',
+        // Browser: 7 days. CDN/edge (s-maxage): 30 days. SWR: serve stale for 7 more days.
+        // Shopify product images are content-addressed (URL changes when image changes),
+        // so long TTLs are safe.
+        'Cache-Control': 'public, max-age=604800, s-maxage=2592000, stale-while-revalidate=604800',
+        'Vary': 'Accept',
       },
     });
   } catch {

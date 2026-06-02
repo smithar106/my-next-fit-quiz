@@ -98,24 +98,25 @@ export async function GET(req: NextRequest) {
     (_r: Row) => true,
   ];
 
-  const imageUrls: string[] = [];
+  // Return top 10 candidates deterministically (score order) so this response
+  // is cacheable. Client shuffles the list for variety — server stays pure.
+  const candidates: string[] = [];
   const seen = new Set<string>();
 
   for (const passFilter of passes) {
-    if (imageUrls.length >= 3) break;
-    const pool = [...rows.slice(0, 20).sort(() => Math.random() - 0.5), ...rows.slice(20)];
-    for (const item of pool) {
+    if (candidates.length >= 10) break;
+    for (const item of rows) {
       if (!item.image_url || seen.has(item.image_url)) continue;
       if (passFilter(item)) {
-        imageUrls.push(item.image_url);
+        candidates.push(item.image_url);
         seen.add(item.image_url);
-        if (imageUrls.length >= 3) break;
+        if (candidates.length >= 10) break;
       }
     }
   }
 
   return NextResponse.json(
-    { imageUrls },
+    { imageUrls: candidates },
     { headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600' } },
   );
 }

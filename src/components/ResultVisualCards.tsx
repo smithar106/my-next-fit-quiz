@@ -39,7 +39,10 @@ async function fetchCandidatesForCard(
     const res = await fetch(`/api/quiz-cards?${params.toString()}`);
     if (!res.ok) return [];
     const { imageUrls } = await res.json();
-    return imageUrls ?? [];
+    const urls: string[] = imageUrls ?? [];
+    // Shuffle client-side so each user sees different ordering.
+    // Server returns deterministic results so the response is cacheable.
+    return [...urls.slice(0, 5).sort(() => Math.random() - 0.5), ...urls.slice(5)];
   } catch {
     return [];
   }

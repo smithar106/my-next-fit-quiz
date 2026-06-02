@@ -15,10 +15,6 @@ interface Props {
   accent: string;
 }
 
-// Items mislabeled cat_tops (backfill defaulted all untagged items to tops).
-// These exclusions prevent trousers, sunglasses, bags, shoes from showing in the TOP slot.
-// URL slug keywords — items whose product_url contains any of these are excluded from the slot.
-// Catches mis-categorized items (dress tagged cat_bottoms, bag in footwear, etc.)
 const SLOT_EXCLUSIONS: Record<string, string[]> = {
   cat_tops: [
     'pant', 'trouser', 'jean', 'denim', 'short', 'skirt', 'legging',
@@ -46,11 +42,7 @@ const SLOT_EXCLUSIONS: Record<string, string[]> = {
   ],
 };
 
-function applySlotExclusions(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  q: any,
-  categoryTagId: string,
-) {
+function applySlotExclusions(q: any, categoryTagId: string) {
   const exclusions = SLOT_EXCLUSIONS[categoryTagId] ?? [];
   for (const kw of exclusions) {
     q = (q as any).not('product_url', 'ilike', `%${kw}%`);
@@ -59,36 +51,53 @@ function applySlotExclusions(
 }
 
 // Route all images through our server-side proxy to bypass Shopify CDN hotlink protection.
-// The browser sends a Referer header which Shopify blocks; our server does not.
 function proxyUrl(url: string): string {
   return `/api/img?url=${encodeURIComponent(url)}`;
 }
 
 // 65+ floor — price fairness scoring shifted many legitimate boutique items
-// from 70-74 down to 65-69 (items priced above category median get a small penalty).
-// Quality is still high; 65 is the right threshold post-rescore.
+// from 70-74 to 65-69 (items priced above category median get a small penalty).
 const GEM_FLOOR = 65;
 
-// Returns an ordered list of candidate URLs for a slot.
-// The component tries each in sequence on onError, so dead URLs don't blank the slot.
-async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, titleKeywords?: string[]): Promise<string[]> {
-  if (!supabase || query.length === 0) return [];
-  // Collect up to N unused URLs from a result set, shuffling within the top-8 for variety.
-  const collectUnused = (data: { image_url: string }[], n = 5): string[] => {
-    const pool = data.slice(0, 8).sort(() => Math.random() - 0.5);
-    const rest = data.slice(8);
-    const out: string[] = [];
-    for (const item of [...pool, ...rest]) {
-      if (item.image_url && !usedUrls.has(item.image_url)) {
-        out.push(item.image_url);
-        if (out.length >= n) break;
-      }
+// Prefetch an image URL into the browser cache so it's ready when React renders it.
+function prefetch(url: string) {
+  if (typeof window === 'undefined') return;
+  const img = new window.Image();
+  img.src = proxyUrl(url);
+}
+
+async function runQuery(q: any): Promise<{ image_url: string }[]> {
+  const { data } = await q;
+  return data ?? [];
+}
+
+function collectUnused(data: { image_url: string }[], usedUrls: Set<string>, n = 5): string[] {
+  const pool = data.slice(0, 8).sort(() => Math.random() - 0.5);
+  const rest = data.slice(8);
+  const out: string[] = [];
+  for (const item of [...pool, ...rest]) {
+    if (item.image_url && !usedUrls.has(item.image_url)) {
+      out.push(item.image_url);
+      if (out.length >= n) break;
     }
-    return out;
-  };
+  }
+  return out;
+}
+
+// Runs all 4 passes in parallel, takes the first that returns enough results.
+// Falls back through passes in priority order but doesn't wait serially.
+async function fetchCandidatesForCard(
+  query: string[],
+  usedUrls: Set<string>,
+  titleKeywords?: string[],
+): Promise<string[]> {
+  if (!supabase || query.length === 0) return [];
+
+  const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
+  const styleTagId    = query.find(id => id.startsWith('style_') || id.startsWith('cond_')) ?? '';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const baseSelect = (q: any) =>
+  const base = (q: any) =>
     (q as any)
       .select('image_url, gem_score')
       .gte('gem_score', GEM_FLOOR)
@@ -98,88 +107,68 @@ async function fetchCandidatesForCard(query: string[], usedUrls: Set<string>, ti
       .order('gem_score', { ascending: false })
       .limit(40);
 
-  // Apply title keyword OR filter — ensures item actually matches the display label.
-  // e.g. titleKeywords=['blazer','jacket'] means title must contain at least one.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const applyTitleKeywords = (q: any): any => {
+  const withKeywords = (q: any): any => {
     if (!titleKeywords?.length) return q;
-    // Supabase doesn't support OR on a single column natively in the JS client,
-    // so we use the PostgREST `or` filter string.
-    const orFilter = titleKeywords.map(kw => `title.ilike.%${kw}%`).join(',');
-    return q.or(orFilter);
+    return q.or(titleKeywords.map(kw => `title.ilike.%${kw}%`).join(','));
   };
 
-  // Detect the category and style tags from query
-  const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
-  const styleTagId = query.find(id => id.startsWith('style_') || id.startsWith('cond_')) ?? '';
+  // Build all 4 queries upfront
+  const buildPass1 = () => {
+    let q = base(supabase!.from('items'));
+    for (const id of query) q = (q as any).filter('tags', 'cs', `[{"id":"${id}"}]`);
+    if (categoryTagId) q = applySlotExclusions(q, categoryTagId);
+    return withKeywords(q);
+  };
 
+  const buildPass2 = () => {
+    let q = base(supabase!.from('items'));
+    q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId || query[0]}"}]`);
+    if (styleTagId) q = (q as any).filter('tags', 'cs', `[{"id":"${styleTagId}"}]`);
+    if (categoryTagId) q = applySlotExclusions(q, categoryTagId);
+    return withKeywords(q);
+  };
+
+  const buildPass3 = () => {
+    if (!categoryTagId) return null;
+    let q = base(supabase!.from('items'));
+    q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
+    q = applySlotExclusions(q, categoryTagId);
+    return withKeywords(q);
+  };
+
+  const buildPass4 = () => {
+    if (!categoryTagId || categoryTagId === 'cat_accessories') return null;
+    let q = base(supabase!.from('items'));
+    q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
+    return applySlotExclusions(q, categoryTagId);
+  };
+
+  // Fire all passes in parallel
+  const [r1, r2, r3, r4] = await Promise.all([
+    runQuery(buildPass1()).catch(() => [] as { image_url: string }[]),
+    runQuery(buildPass2()).catch(() => [] as { image_url: string }[]),
+    buildPass3() ? runQuery(buildPass3()!).catch(() => [] as { image_url: string }[]) : Promise.resolve([] as { image_url: string }[]),
+    buildPass4() ? runQuery(buildPass4()!).catch(() => [] as { image_url: string }[]) : Promise.resolve([] as { image_url: string }[]),
+  ]);
+
+  // Merge in priority order, deduping against usedUrls
   const seen = new Set<string>(usedUrls);
   const candidates: string[] = [];
 
-  // Pass 1: category + style/cond tags + title keywords — most specific
-  try {
-    let q = baseSelect(supabase!.from('items'));
-    for (const id of query) {
-      q = (q as any).filter('tags', 'cs', `[{"id":"${id}"}]`);
+  for (const results of [r1, r2, r3, r4]) {
+    if (candidates.length >= 3) break;
+    for (const u of collectUnused(results, seen, 5)) {
+      if (!seen.has(u)) { candidates.push(u); seen.add(u); }
     }
-    if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
-    q = applyTitleKeywords(q);
-    const { data } = await (q as any);
-    if (data?.length) candidates.push(...collectUnused(data as { image_url: string }[], 5));
-  } catch {}
-
-  // Pass 2: category + style tag + title keywords (drop only extra query tags)
-  if (candidates.length < 3) {
-    try {
-      let q = baseSelect(supabase!.from('items'));
-      q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId || query[0]}"}]`);
-      if (styleTagId) q = (q as any).filter('tags', 'cs', `[{"id":"${styleTagId}"}]`);
-      if (categoryTagId) q = applySlotExclusions(q as any, categoryTagId) as any;
-      q = applyTitleKeywords(q);
-      const { data } = await (q as any);
-      if (data?.length) {
-        for (const u of collectUnused(data as { image_url: string }[], 5)) {
-          if (!seen.has(u)) { candidates.push(u); seen.add(u); }
-        }
-      }
-    } catch {}
   }
 
-  // Pass 3: category + title keywords only (drop style tag)
-  if (candidates.length < 3 && categoryTagId) {
-    try {
-      let q = baseSelect(supabase!.from('items'));
-      q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
-      q = applySlotExclusions(q as any, categoryTagId) as any;
-      q = applyTitleKeywords(q);
-      const { data } = await (q as any);
-      if (data?.length) {
-        for (const u of collectUnused(data as { image_url: string }[], 5)) {
-          if (!seen.has(u)) { candidates.push(u); seen.add(u); }
-        }
-      }
-    } catch {}
+  // Prefetch the first candidate immediately so it's in cache when React renders
+  if (candidates[0]) {
+    prefetch(candidates[0]);
+    usedUrls.add(candidates[0]);
   }
 
-  // Pass 4: category only, NO title keywords — last resort for non-accessory slots only.
-  // Accessories are never fetched without title keywords because non-wearable items
-  // (decor, sculptures, art objects) are tagged cat_accessories in the catalog.
-  if (candidates.length < 3 && categoryTagId && categoryTagId !== 'cat_accessories') {
-    try {
-      let q = baseSelect(supabase!.from('items'));
-      q = (q as any).filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`);
-      q = applySlotExclusions(q as any, categoryTagId) as any;
-      const { data } = await (q as any);
-      if (data?.length) {
-        for (const u of collectUnused(data as { image_url: string }[], 5)) {
-          if (!seen.has(u)) { candidates.push(u); seen.add(u); }
-        }
-      }
-    } catch {}
-  }
-
-  // Mark the first candidate as "used" so sibling slots don't pick the same image
-  if (candidates[0]) usedUrls.add(candidates[0]);
   return candidates;
 }
 
@@ -190,15 +179,19 @@ export default function ResultVisualCards({ cards, accent }: Props) {
 
   useEffect(() => {
     let cancelled = false;
-    // Shared usedUrls — protected by insertion order; races are benign (at worst two cards share an image)
     const usedUrls = new Set<string>();
-    cards.forEach((card, i) => {
-      fetchCandidatesForCard(card.query ?? [], usedUrls, card.titleKeywords).then(candidates => {
-        if (!cancelled) {
-          setImages(prev => prev.map((p, idx) => idx === i ? { ...p, candidates } : p));
-        }
-      });
-    });
+
+    // All slots fire in parallel — Promise.all ensures concurrent Supabase queries
+    Promise.all(
+      cards.map((card, i) =>
+        fetchCandidatesForCard(card.query ?? [], usedUrls, card.titleKeywords).then(candidates => {
+          if (!cancelled) {
+            setImages(prev => prev.map((p, idx) => idx === i ? { ...p, candidates } : p));
+          }
+        })
+      )
+    );
+
     return () => { cancelled = true; };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -231,7 +224,6 @@ export default function ResultVisualCards({ cards, accent }: Props) {
                     )
                   }
                   onError={() =>
-                    // Advance to next candidate; if exhausted, stays blank (gradient shows)
                     setImages(prev =>
                       prev.map((p, idx) => idx === i
                         ? { ...p, idx: p.idx + 1, loaded: false }
@@ -240,7 +232,7 @@ export default function ResultVisualCards({ cards, accent }: Props) {
                     )
                   }
                   className="absolute inset-0 w-full h-full object-contain"
-                  style={{ opacity: showImage ? 1 : 0, transition: 'opacity 0.4s ease' }}
+                  style={{ opacity: showImage ? 1 : 0, transition: 'opacity 0.3s ease' }}
                 />
               )}
 

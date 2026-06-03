@@ -1,85 +1,55 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { resolveCanonicalArchetype } from '@/lib/archetypes';
 
-// Server-side Supabase client using service key — higher rate limits,
-// no browser connection pool issues, no anon key restrictions.
 const sb = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_KEY!,
 );
 
-const SLOT_EXCLUSIONS: Record<string, string[]> = {
-  cat_tops: [
-    'pant', 'trouser', 'jean', 'denim', 'short', 'skirt', 'legging',
-    'dress', 'jumpsuit', 'romper', 'sunglass', 'eyewear', 'optical', 'watch',
-    'boot', 'shoe', 'sandal', 'sneaker', 'heel', 'mule', 'loafer', 'pump',
-    'bag', 'purse', 'wallet', 'tote', 'clutch', 'handbag', 'backpack',
-  ],
-  cat_bottoms: [
-    'shirt', 'blouse', 'top', 'tee', 'tank', 'jacket', 'coat', 'sweater', 'cardigan', 'hoodie',
-    'dress', 'jumpsuit', 'romper',
-    'boot', 'shoe', 'sandal', 'sneaker', 'heel', 'mule', 'loafer', 'pump',
-    'sunglass', 'bag', 'purse', 'wallet', 'tote', 'clutch', 'handbag', 'backpack',
-  ],
-  cat_footwear: [
-    'shirt', 'blouse', 'tee', 'tank', 'pant', 'jean', 'trouser', 'skirt', 'dress',
-    'jacket', 'coat', 'sweater', 'cardigan',
-    'bag', 'purse', 'wallet', 'tote', 'clutch', 'handbag', 'backpack',
-    'sunglass', 'watch', 'belt', 'scarf', 'hat',
-  ],
-  cat_accessories: [
-    'shirt', 'blouse', 'tee', 'tank', 'pant', 'jean', 'trouser', 'skirt', 'dress',
-    'jacket', 'coat', 'sweater', 'cardigan',
-    'boot', 'shoe', 'sandal', 'sneaker', 'heel', 'mule', 'loafer', 'pump',
-  ],
-};
-
-interface Row {
-  image_url: string;
-  product_url?: string | null;
-  title?: string | null;
-  tags?: Array<{ id: string }>;
-}
-
-function passesExclusion(item: Row, categoryTagId: string): boolean {
-  const url = (item.product_url ?? '').toLowerCase();
-  return !(SLOT_EXCLUSIONS[categoryTagId] ?? []).some(kw => url.includes(kw));
-}
-
-function hasStyleTag(item: Row, styleTagId: string): boolean {
-  return (item.tags ?? []).some(t => t.id === styleTagId);
-}
-
-function hasKeyword(item: Row, keywords: string[]): boolean {
-  if (!keywords.length) return true;
-  const title = (item.title ?? '').toLowerCase();
-  return keywords.some(kw => title.includes(kw.toLowerCase()));
-}
-
+const CACHE_TTL_HOURS = 24;
 const GEM_FLOOR = 65;
 
-// GET /api/quiz-cards?query=cat_tops,style_classic,cond_vintage&keywords=blazer,jacket
 export async function GET(req: NextRequest) {
+  const archetypeParam = req.nextUrl.searchParams.get('archetype');
+  const slotParam      = req.nextUrl.searchParams.get('slot');
+
   const queryParam = req.nextUrl.searchParams.get('query') ?? '';
-  const keywordsParam = req.nextUrl.searchParams.get('keywords') ?? '';
+  const queryParts = queryParam.split(',').filter(Boolean);
+  const slot = slotParam ?? queryParts.find(id => id.startsWith('cat_')) ?? '';
+  const rawArchetype = archetypeParam ?? '';
+  const archetypeId  = rawArchetype ? resolveCanonicalArchetype(rawArchetype) : '';
 
-  const query = queryParam.split(',').filter(Boolean);
-  const titleKeywords = keywordsParam.split(',').filter(Boolean);
+  if (!slot) return NextResponse.json({ imageUrls: [] });
 
-  const categoryTagId = query.find(id => id.startsWith('cat_')) ?? '';
-  const styleTagId    = query.find(id => id.startsWith('style_') || id.startsWith('cond_')) ?? '';
+  // 1. Try cache
+  if (archetypeId) {
+    const { data: cached } = await sb
+      .from('quiz_card_cache')
+      .select('image_urls, updated_at')
+      .eq('archetype_id', archetypeId)
+      .eq('slot', slot)
+      .single();
 
-  if (!categoryTagId) {
-    return NextResponse.json({ imageUrls: [] });
+    if (cached && cached.image_urls?.length > 0) {
+      const ageHours = (Date.now() - new Date(cached.updated_at).getTime()) / 3_600_000;
+      if (ageHours < CACHE_TTL_HOURS) {
+        return NextResponse.json(
+          { imageUrls: cached.image_urls },
+          { headers: { 'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200', 'X-Cache': 'HIT' } },
+        );
+      }
+    }
   }
 
+  // 2. Live fallback
+  const styleTagId = queryParts.find(id => id.startsWith('style_') || id.startsWith('cond_')) ?? '';
+
   const { data, error } = await (sb.from('items') as any)
-    .select('image_url, product_url, title, tags, gem_score')
+    .select('image_url, product_url, title, tags')
     .gte('gem_score', GEM_FLOOR)
     .not('image_url', 'is', null)
-    .not('image_url', 'like', '%picsum%')
-    .not('image_url', 'like', '%loremflickr%')
-    .filter('tags', 'cs', `[{"id":"${categoryTagId}"}]`)
+    .filter('tags', 'cs', `[{"id":"${slot}"}]`)
     .order('gem_score', { ascending: false })
     .limit(100);
 
@@ -87,22 +57,30 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ imageUrls: [] }, { status: 500 });
   }
 
+  type Row = { image_url: string; product_url?: string | null; tags?: Array<{ id: string }> };
   const rows = data as Row[];
 
-  // Client-side filtering in priority order
+  const SLOT_EXCLUSIONS: Record<string, string[]> = {
+    cat_tops:        ['pant','trouser','jean','denim','short','skirt','legging','dress','jumpsuit','boot','shoe','sandal','sneaker','bag'],
+    cat_bottoms:     ['shirt','blouse','top','tee','tank','jacket','coat','sweater','dress','boot','shoe','bag'],
+    cat_footwear:    ['shirt','blouse','tee','pant','jean','skirt','dress','jacket','coat','bag'],
+    cat_accessories: ['shirt','blouse','tee','pant','jean','skirt','dress','jacket','coat','boot','shoe','sneaker'],
+  };
+
+  const exclusions = SLOT_EXCLUSIONS[slot] ?? [];
+  const passesExclusion = (r: Row) =>
+    !exclusions.some(kw => (r.product_url ?? '').toLowerCase().includes(kw));
+  const hasStyleTag = (r: Row) =>
+    styleTagId ? (r.tags ?? []).some(t => t.id === styleTagId) : false;
+
   const passes = [
-    (r: Row) => styleTagId ? (hasStyleTag(r, styleTagId) && hasKeyword(r, titleKeywords) && passesExclusion(r, categoryTagId)) : false,
-    (r: Row) => styleTagId ? (hasStyleTag(r, styleTagId) && passesExclusion(r, categoryTagId)) : false,
-    (r: Row) => hasKeyword(r, titleKeywords) && passesExclusion(r, categoryTagId),
-    (r: Row) => passesExclusion(r, categoryTagId),
+    (r: Row) => styleTagId ? hasStyleTag(r) && passesExclusion(r) : false,
+    (r: Row) => passesExclusion(r),
     (_r: Row) => true,
   ];
 
-  // Return top 10 candidates deterministically (score order) so this response
-  // is cacheable. Client shuffles the list for variety — server stays pure.
-  const candidates: string[] = [];
   const seen = new Set<string>();
-
+  const candidates: string[] = [];
   for (const passFilter of passes) {
     if (candidates.length >= 10) break;
     for (const item of rows) {
@@ -117,6 +95,6 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json(
     { imageUrls: candidates },
-    { headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600' } },
+    { headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600', 'X-Cache': 'MISS' } },
   );
 }

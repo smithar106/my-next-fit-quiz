@@ -75,10 +75,10 @@ export async function GET(req: NextRequest) {
   const hasStyleTag = (r: Row) =>
     styleTagId ? (r.tags ?? []).some(t => t.id === styleTagId) : false;
 
+  // Pass 1: style tag + exclusions. Pass 2: exclusions only. No pass 3 — never degrade to unfiltered.
   const passes = [
     (r: Row) => styleTagId ? hasStyleTag(r) && passesExclusion(r) : false,
     (r: Row) => passesExclusion(r),
-    (_r: Row) => true,
   ];
 
   const seen = new Set<string>();
@@ -93,6 +93,14 @@ export async function GET(req: NextRequest) {
         if (candidates.length >= 10) break;
       }
     }
+  }
+
+  // Only cache if we got clean results — never seed the cache with a degraded set
+  if (archetypeId && candidates.length > 0) {
+    await sb.from('quiz_card_cache').upsert(
+      { archetype_id: archetypeId, slot, image_urls: candidates, updated_at: new Date().toISOString() },
+      { onConflict: 'archetype_id,slot' },
+    );
   }
 
   return NextResponse.json(

@@ -56,7 +56,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
       fetch('/api/email-capture', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, resultLabel: result.label, quizId: quiz.id }),
+        body: JSON.stringify({ email, resultLabel: result.label, resultId: result.id, quizId: quiz.id }),
       }).catch(() => {});
       onEmailSubmit(email);
     } catch {

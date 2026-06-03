@@ -57,19 +57,21 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ imageUrls: [] }, { status: 500 });
   }
 
-  type Row = { image_url: string; product_url?: string | null; tags?: Array<{ id: string }> };
+  type Row = { image_url: string; product_url?: string | null; title?: string | null; tags?: Array<{ id: string }> };
   const rows = data as Row[];
 
   const SLOT_EXCLUSIONS: Record<string, string[]> = {
     cat_tops:        ['pant','trouser','jean','denim','short','skirt','legging','dress','jumpsuit','boot','shoe','sandal','sneaker','bag'],
     cat_bottoms:     ['shirt','blouse','top','tee','tank','jacket','coat','sweater','dress','boot','shoe','bag'],
     cat_footwear:    ['shirt','blouse','tee','pant','jean','skirt','dress','jacket','coat','bag'],
-    cat_accessories: ['shirt','blouse','tee','pant','jean','skirt','dress','jacket','coat','boot','shoe','sneaker'],
+    cat_accessories: ['shirt','blouse','tee','pant','jean','skirt','dress','jacket','coat','boot','shoe','sneaker','glasses','sunglasses','eyewear','eyeglasses','spectacles','optical','lens'],
   };
 
   const exclusions = SLOT_EXCLUSIONS[slot] ?? [];
-  const passesExclusion = (r: Row) =>
-    !exclusions.some(kw => (r.product_url ?? '').toLowerCase().includes(kw));
+  const passesExclusion = (r: Row) => {
+    const haystack = ((r.title ?? '') + ' ' + (r.product_url ?? '')).toLowerCase();
+    return !exclusions.some(kw => haystack.includes(kw));
+  };
   const hasStyleTag = (r: Row) =>
     styleTagId ? (r.tags ?? []).some(t => t.id === styleTagId) : false;
 

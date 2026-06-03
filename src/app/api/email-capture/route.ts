@@ -1,28 +1,61 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { createClient } from '@supabase/supabase-js';
+import { resolveCanonicalArchetype } from '@/lib/archetypes';
 
 const QUIZ_LABELS: Record<string, string> = {
-  'style-quiz': 'Personal Style Quiz',
-  'old-money-style': 'Old Money Style Quiz',
-  'capsule-wardrobe': 'Capsule Wardrobe Quiz',
-  'date-night-outfits': 'Date Night Outfit Quiz',
+  'style-quiz':          'Personal Style Quiz',
+  'old-money-style':     'Old Money Style Quiz',
+  'capsule-wardrobe':    'Capsule Wardrobe Quiz',
+  'date-night-outfits':  'Date Night Outfit Quiz',
   'creator-style-match': 'Creator Style Match',
-  'style-dna': 'Style DNA Quiz',
+  'style-dna':           'Style DNA Quiz',
 };
+
+const sb = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_KEY!,
+);
 
 export async function POST(req: NextRequest) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const { email, resultLabel, quizId } = await req.json();
+    const { email, resultLabel, resultId, quizId } = await req.json() as {
+      email: string;
+      resultLabel: string;
+      resultId: string;
+      quizId: string;
+    };
 
     if (!email || !email.includes('@')) {
       return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
 
     const quizName = QUIZ_LABELS[quizId] ?? 'Style Quiz';
+    const canonicalArchetypeId = resolveCanonicalArchetype(resultId ?? '');
+
+    let sessionToken: string | null = null;
+    try {
+      const { data: session } = await sb
+        .from('quiz_sessions')
+        .insert({
+          quiz_slug: quizId,
+          quiz_result_id: resultId,
+          canonical_archetype_id: canonicalArchetypeId,
+          email,
+        })
+        .select('session_token')
+        .single();
+      sessionToken = session?.session_token ?? null;
+    } catch {
+      // non-fatal
+    }
+
+    const appUrl = sessionToken
+      ? `https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768?quiz_token=${sessionToken}`
+      : 'https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768';
 
     await Promise.all([
-      // Welcome email to user
       resend.emails.send({
         from: 'My Next Thrift <hello@mynextthrift.app>',
         to: email,
@@ -32,13 +65,11 @@ export async function POST(req: NextRequest) {
             <p style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#C4965A;margin-bottom:8px;">My Next Thrift</p>
             <h1 style="font-size:32px;font-weight:900;margin:0 0 8px 0;color:#ffffff;">${resultLabel}</h1>
             <p style="font-size:16px;color:rgba(255,255,255,0.75);margin:0 0 32px 0;">That's your thrift identity — and now My Next Thrift can surface the rare finds your eye naturally notices.</p>
-            <a href="https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768" style="display:inline-block;background:linear-gradient(135deg,#C4965A,#8B5E3C);color:#ffffff;font-weight:700;font-size:15px;padding:16px 32px;border-radius:12px;text-decoration:none;">Start the hunt →</a>
+            <a href="${appUrl}" style="display:inline-block;background:linear-gradient(135deg,#C4965A,#8B5E3C);color:#ffffff;font-weight:700;font-size:15px;padding:16px 32px;border-radius:12px;text-decoration:none;">Start the hunt →</a>
             <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:40px;">You received this because you took the ${quizName} at quiz.mynextthrift.app. <a href="#" style="color:rgba(255,255,255,0.3);">Unsubscribe</a>.</p>
           </div>
         `,
       }),
-
-      // Lead notification to Arthur
       resend.emails.send({
         from: 'My Next Thrift <hello@mynextthrift.app>',
         to: 'smithar106@gmail.com',
@@ -46,15 +77,16 @@ export async function POST(req: NextRequest) {
         html: `
           <p><strong>New quiz lead</strong></p>
           <p>Email: ${email}</p>
-          <p>Result: ${resultLabel}</p>
+          <p>Result: ${resultLabel} (${resultId} → ${canonicalArchetypeId})</p>
           <p>Quiz: ${quizName}</p>
+          ${sessionToken ? `<p>Session token: ${sessionToken}</p>` : ''}
         `,
       }),
     ]);
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, sessionToken });
   } catch (err) {
-    console.error('Resend error:', err);
+    console.error('email-capture error:', err);
     return NextResponse.json({ error: 'Failed to send' }, { status: 500 });
   }
 }

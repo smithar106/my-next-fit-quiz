@@ -3,6 +3,22 @@ import { Resend } from 'resend';
 import { createClient } from '@supabase/supabase-js';
 import { resolveCanonicalArchetype } from '@/lib/archetypes';
 
+const rateMap = new Map<string, { count: number; reset: number }>();
+const LIMIT = 20;
+const WINDOW = 60_000;
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateMap.get(ip);
+  if (!entry || now > entry.reset) {
+    rateMap.set(ip, { count: 1, reset: now + WINDOW });
+    return true;
+  }
+  if (entry.count >= LIMIT) return false;
+  entry.count++;
+  return true;
+}
+
 const QUIZ_LABELS: Record<string, string> = {
   'style-quiz':          'Personal Style Quiz',
   'old-money-style':     'Old Money Style Quiz',
@@ -18,6 +34,11 @@ const sb = createClient(
 );
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'unknown';
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+  }
+
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { email, resultLabel, resultId, quizId } = await req.json() as {

@@ -14,14 +14,6 @@ const ARCHETYPES = [
   { label: 'Downtown Treasure Hunter', color: '#8B7355', desc: 'Your wardrobe is a map of everywhere you\'ve looked.' },
 ];
 
-const PROOF_LINES = [
-  'Anti-fast fashion',
-  'Archive instinct',
-  'Rare finds',
-  '80K+ curated pieces',
-  '80+ vintage boutiques',
-  '100% secondhand',
-];
 
 export default function HomePage() {
   const [activeArchetype, setActiveArchetype] = useState(0);
@@ -158,7 +150,7 @@ export default function HomePage() {
       </section>
 
       {/* ── ARCHETYPE REVEAL ── */}
-      <section style={{ padding: '48px 24px', maxWidth: 680, margin: '0 auto' }}>
+      <section style={{ padding: '32px 24px', maxWidth: 680, margin: '0 auto' }}>
         <div style={{ marginBottom: 32, textAlign: 'center' }}>
           <p style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.55)', marginBottom: 16 }}>
             The 8 thrift identities
@@ -242,27 +234,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CATALOG PROOF ── */}
-      <section style={{ padding: '36px 24px', maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
-        <div style={{
-          width: 1, height: 40,
-          background: 'linear-gradient(to bottom, transparent, rgba(196,150,90,0.5), transparent)',
-          margin: '0 auto 28px',
-        }} />
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 24px' }}>
-          {PROOF_LINES.map(line => (
-            <span key={line} style={{
-              fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
-              fontWeight: 700, color: 'rgba(255,255,255,0.5)',
-            }}>
-              {line}
-            </span>
-          ))}
-        </div>
-      </section>
-
       {/* ── PHILOSOPHY ── */}
-      <section style={{ padding: '36px 24px 48px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
+      <section style={{ padding: '24px 24px 36px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
         <div style={{
           width: 1, height: 40, background: 'linear-gradient(to bottom, transparent, rgba(196,150,90,0.6), transparent)',
           margin: '0 auto 28px',
@@ -278,9 +251,6 @@ export default function HomePage() {
         </blockquote>
         <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.72)', marginBottom: 24 }}>
           You don't get outfits. You see future versions of yourself — built from pieces that feel found, not recommended.
-        </p>
-        <p style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, color: 'rgba(255,255,255,0.5)' }}>
-          Anti-fast fashion &nbsp;·&nbsp; Archive instinct &nbsp;·&nbsp; Rare finds
         </p>
       </section>
 

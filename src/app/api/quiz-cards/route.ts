@@ -14,9 +14,8 @@ export async function GET(req: NextRequest) {
   const archetypeParam = req.nextUrl.searchParams.get('archetype');
   const slotParam      = req.nextUrl.searchParams.get('slot');
 
-  const queryParam = req.nextUrl.searchParams.get('query') ?? '';
-  const queryParts = queryParam.split(',').filter(Boolean);
-  const slot = slotParam ?? queryParts.find(id => id.startsWith('cat_')) ?? '';
+  const styleTagParam = req.nextUrl.searchParams.get('styleTag') ?? '';
+  const slot = slotParam ?? '';
   const rawArchetype = archetypeParam ?? '';
   const archetypeId  = rawArchetype ? resolveCanonicalArchetype(rawArchetype) : '';
 
@@ -43,7 +42,7 @@ export async function GET(req: NextRequest) {
   }
 
   // 2. Live fallback
-  const styleTagId = queryParts.find(id => id.startsWith('style_') || id.startsWith('cond_')) ?? '';
+  const styleTagId = styleTagParam;
 
   const { data, error } = await (sb.from('items') as any)
     .select('image_url, product_url, title, tags')

@@ -33,9 +33,11 @@ async function fetchCandidatesForCard(
 
   const slot = query.find(id => id.startsWith('cat_')) ?? '';
   if (!slot) return [];
+  const styleTag = query.find(id => id.startsWith('style_') || id.startsWith('cond_')) ?? '';
 
   const params = new URLSearchParams({ slot });
   if (archetypeId) params.set('archetype', archetypeId);
+  if (styleTag) params.set('styleTag', styleTag);
 
   try {
     const res = await fetch(`/api/quiz-cards?${params.toString()}`);

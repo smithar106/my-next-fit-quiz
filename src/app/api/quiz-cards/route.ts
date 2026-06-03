@@ -55,7 +55,7 @@ export async function GET(req: NextRequest) {
 
   if (error || !data) {
     console.error('[quiz-cards] Supabase error:', JSON.stringify(error), 'slot:', slot, 'archetypeId:', archetypeId);
-    return NextResponse.json({ imageUrls: [], error: error?.message }, { status: 500 });
+    return NextResponse.json({ imageUrls: [] }, { status: 500 });
   }
 
   type Row = { image_url: string; product_url?: string | null; tags?: Array<{ id: string }> };

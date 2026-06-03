@@ -12,6 +12,7 @@ interface CardImage {
 interface Props {
   cards: VisualCard[];
   accent: string;
+  archetypeId?: string;
 }
 
 function proxyUrl(url: string): string {
@@ -26,14 +27,15 @@ function prefetch(url: string) {
 
 async function fetchCandidatesForCard(
   query: string[],
-  titleKeywords?: string[],
+  archetypeId?: string,
 ): Promise<string[]> {
   if (query.length === 0) return [];
 
-  const params = new URLSearchParams({
-    query: query.join(','),
-    keywords: (titleKeywords ?? []).join(','),
-  });
+  const slot = query.find(id => id.startsWith('cat_')) ?? '';
+  if (!slot) return [];
+
+  const params = new URLSearchParams({ slot });
+  if (archetypeId) params.set('archetype', archetypeId);
 
   try {
     const res = await fetch(`/api/quiz-cards?${params.toString()}`);
@@ -48,7 +50,7 @@ async function fetchCandidatesForCard(
   }
 }
 
-export default function ResultVisualCards({ cards, accent }: Props) {
+export default function ResultVisualCards({ cards, accent, archetypeId }: Props) {
   const [images, setImages] = useState<CardImage[]>(
     cards.map(() => ({ candidates: [], idx: 0, loaded: false }))
   );
@@ -60,7 +62,7 @@ export default function ResultVisualCards({ cards, accent }: Props) {
     // which runs server-side with the service key. No browser Supabase connections.
     Promise.all(
       cards.map((card, i) =>
-        fetchCandidatesForCard(card.query ?? [], card.titleKeywords).then(candidates => {
+        fetchCandidatesForCard(card.query ?? [], archetypeId).then(candidates => {
           if (candidates[0]) prefetch(candidates[0]);
           if (!cancelled) {
             setImages(prev => prev.map((p, idx) => idx === i ? { ...p, candidates } : p));

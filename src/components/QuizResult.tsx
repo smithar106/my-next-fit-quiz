@@ -138,7 +138,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
 
         {/* ── VISUAL CARDS ── */}
         {result.visualCards && result.visualCards.length > 0 && (
-          <ResultVisualCards cards={result.visualCards} accent={accent} />
+          <ResultVisualCards cards={result.visualCards} accent={accent} archetypeId={result.id} />
         )}
 
         {/* ── OUTFIT DIRECTIONS ── */}

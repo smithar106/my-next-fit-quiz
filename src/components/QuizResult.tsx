@@ -97,7 +97,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         <div className="flex flex-col items-center text-center pt-14 pb-8 gap-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase"
             style={{ background: `${accent}22`, border: `1px solid ${accent}60`, color: accent }}>
-            Your Thrift Identity
+            Your Starting Archetype
           </div>
           <h1 style={{
             fontFamily: 'var(--font-cormorant, Georgia, serif)',

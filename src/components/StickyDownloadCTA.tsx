@@ -63,7 +63,7 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
             My Next Thrift
           </p>
           <p className="text-[14px] text-white font-semibold leading-snug truncate">
-            Your thrift identity continues in the app.
+            Your starting archetype. The app learns from there.
           </p>
         </div>
 

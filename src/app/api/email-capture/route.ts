@@ -72,9 +72,15 @@ export async function POST(req: NextRequest) {
       // non-fatal
     }
 
-    const appUrl = sessionToken
-      ? `https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768?quiz_token=${sessionToken}`
-      : 'https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768';
+    // Universal link to mynextthrift.app/open — iOS intercepts via AASA and opens the app
+    // directly, carrying result_id + archetype_name into _layout.tsx's deep-link handler.
+    // Falls back to the /open page (App Store redirect) when the app isn't installed.
+    const deepLinkParams = new URLSearchParams({
+      result_id:      resultId,
+      archetype_name: resultLabel,
+      quiz_id:        quizId,
+    });
+    const appUrl = `https://mynextthrift.app/open?${deepLinkParams.toString()}`;
 
     await Promise.all([
       resend.emails.send({

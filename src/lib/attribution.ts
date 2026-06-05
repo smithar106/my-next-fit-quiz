@@ -44,14 +44,22 @@ export function getAttribution(): Attribution {
   }
 }
 
-// Direct App Store link — sends users straight to the App Store listing.
-const SMART_LINK_BASE = 'https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768';
+const APP_STORE_URL  = 'https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768';
+// Universal link — iOS intercepts via AASA on mynextthrift.app and opens the app directly,
+// passing result_id + archetype_name as query params to _layout.tsx's deep-link handler.
+// Falls back to the /open page (which shows an App Store redirect) when app isn't installed.
+const DEEP_LINK_BASE = 'https://mynextthrift.app/open';
 
 export function buildSmartLink(
   _attr: Attribution,
-  _extras?: { result_id?: string; archetype_name?: string; quiz_id?: string }
+  extras?: { result_id?: string; archetype_name?: string; quiz_id?: string }
 ): string {
-  return SMART_LINK_BASE;
+  if (!extras?.result_id && !extras?.archetype_name) return APP_STORE_URL;
+  const params = new URLSearchParams();
+  if (extras.result_id)      params.set('result_id',      extras.result_id);
+  if (extras.archetype_name) params.set('archetype_name', extras.archetype_name);
+  if (extras.quiz_id)        params.set('quiz_id',        extras.quiz_id);
+  return `${DEEP_LINK_BASE}?${params.toString()}`;
 }
 
 /** @deprecated Use buildSmartLink — baseUrl arg is ignored, kept for call-site compatibility */

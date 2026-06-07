@@ -5,7 +5,8 @@ import { QuizConfig, QuizQuestion, QuizResultDef } from '@/types/quiz';
 import { captureAttribution } from '@/lib/attribution';
 import { trackEvent } from '@/lib/events';
 import { supabase } from '@/lib/supabase';
-import { getAttribution } from '@/lib/attribution';
+import { getAttribution, persistHandoffPayload } from '@/lib/attribution';
+import type { QuizHandoffPayload } from '@/types/quiz';
 import QuizLanding from './QuizLanding';
 import QuizQuestionComponent from './QuizQuestion';
 import QuizResult from './QuizResult';
@@ -16,6 +17,18 @@ interface Answer {
   optionId: string;
   question: QuizQuestion;
 }
+
+// Maps archetype IDs to their dominant style signal tags (mirrors app archetypePrior.ts)
+const ARCHETYPE_SIGNALS: Record<string, string[]> = {
+  archive_hunter:           ['style_classic', 'cond_vintage', 'style_workwear'],
+  quiet_luxury_collector:   ['style_luxury', 'style_minimalist', 'mat_cashmere'],
+  designer_score_seeker:    ['style_luxury', 'cond_vintage', 'style_classic'],
+  eclectic_archivist:       ['style_streetwear', 'style_bold', 'cond_vintage'],
+  hidden_gem_collector:     ['style_minimalist', 'cond_vintage', 'color_neutral'],
+  soft_vintage_curator:     ['style_bohemian', 'cond_vintage', 'mat_linen'],
+  street_romantic:          ['style_bohemian', 'style_bold', 'cond_vintage'],
+  downtown_treasure_hunter: ['style_workwear', 'cond_vintage', 'style_classic'],
+};
 
 function computeResult(answers: Answer[], quiz: QuizConfig): QuizResultDef {
   const scores: Record<string, number> = {};
@@ -114,13 +127,43 @@ export default function QuizEngine({ quiz }: QuizEngineProps) {
         created_at: new Date().toISOString(),
       });
 
+      const dominantSignals = ARCHETYPE_SIGNALS[finalResult.id] ?? [];
+      const sortedArchetypes = Object.entries(scores).sort((a, b) => a[1] - b[1]);
+      const avoidedArchetype = sortedArchetypes[0]?.[0] ?? '';
+      const avoidedSignals = avoidedArchetype ? (ARCHETYPE_SIGNALS[avoidedArchetype] ?? []) : [];
+
       supabase?.from('quiz_sessions').upsert({
         quiz_id: quiz.id,
         session_id: sessionId,
         result_id: finalResult.id,
         attribution,
+        dominant_signals: dominantSignals,
+        avoided_signals: avoidedSignals,
+        quiz_responses: newAnswers.map(a => ({ questionId: a.question.id, optionId: a.optionId })),
+        schema_version: 1,
         completed_at: new Date().toISOString(),
       });
+
+      // Build and persist full handoff payload for app onboarding
+      const handoff: QuizHandoffPayload = {
+        schemaVersion: 1,
+        quizId: quiz.id,
+        sessionId,
+        styleArchetype: finalResult.id,
+        archetypeLabel: finalResult.label,
+        dominantSignals,
+        avoidedSignals,
+        hardExclusions: [],
+        quizResponses: newAnswers.map(a => ({ questionId: a.question.id, optionId: a.optionId })),
+        resultSummary: finalResult.tagline,
+        createdAt: new Date().toISOString(),
+      };
+      try {
+        persistHandoffPayload(handoff);
+        trackEvent('quiz_handoff_success', quiz.id, sessionId, { archetype: finalResult.id });
+      } catch {
+        trackEvent('quiz_handoff_failed', quiz.id, sessionId, { archetype: finalResult.id });
+      }
 
       setState('result');
     } else {

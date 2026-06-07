@@ -1,13 +1,12 @@
 'use client';
 
 interface Props {
-  label: string;
   accent: string;
   url: string;
   onClick: () => void;
 }
 
-export default function AppStoreCTA({ label, accent, url, onClick }: Props) {
+export default function AppStoreCTA({ accent, url: _url, onClick }: Props) {
   return (
     <div className="flex flex-col gap-2 mb-6">
       <button
@@ -19,10 +18,10 @@ export default function AppStoreCTA({ label, accent, url, onClick }: Props) {
           boxShadow: `0 0 70px ${accent}90, 0 8px 32px rgba(0,0,0,0.5)`,
         }}
       >
-        {label} →
+        Build my first 3 fits →
       </button>
-      <p className="text-[12px] text-white/75 text-center font-medium tracking-wide">
-        Free download &middot; iOS App Store
+      <p className="text-[12px] text-white/60 text-center font-medium leading-snug px-2">
+        Open the app to review 3 complete fits, name the collection, refine your style, and save pieces to your Archive.
       </p>
     </div>
   );

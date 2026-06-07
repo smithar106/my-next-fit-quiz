@@ -1,4 +1,4 @@
-import { Attribution } from '@/types/quiz';
+import { Attribution, QuizHandoffPayload } from '@/types/quiz';
 
 const ATTRIBUTION_PARAMS = [
   'creator',
@@ -93,4 +93,23 @@ export function getLastStyleResult(): { result_id: string; archetype_name: strin
 
 export function getLastArchetype(): string | null {
   return getLastStyleResult()?.archetype_name ?? null;
+}
+
+const HANDOFF_KEY = 'mnf_quiz_handoff_v1';
+
+export function persistHandoffPayload(payload: QuizHandoffPayload): void {
+  if (typeof localStorage === 'undefined') return;
+  try {
+    localStorage.setItem(HANDOFF_KEY, JSON.stringify(payload));
+  } catch {}
+}
+
+export function getHandoffPayload(): QuizHandoffPayload | null {
+  if (typeof localStorage === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem(HANDOFF_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
 }

@@ -60,7 +60,25 @@ export type FunnelEvent =
   | 'quiz_question_answered'
   | 'quiz_completed'
   | 'result_viewed'
+  | 'quiz_result_viewed'
+  | 'quiz_app_cta_tapped'
+  | 'quiz_handoff_success'
+  | 'quiz_handoff_failed'
   | 'email_submitted'
   | 'app_store_clicked'
   | 'sticky_cta_clicked'
   | 'share_clicked';
+
+export interface QuizHandoffPayload {
+  schemaVersion: 1;
+  quizId: string;
+  sessionId: string;
+  styleArchetype: string;
+  archetypeLabel: string;
+  dominantSignals: string[];
+  avoidedSignals: string[];
+  hardExclusions: string[];
+  quizResponses: Array<{ questionId: string; optionId: string }>;
+  resultSummary: string;
+  createdAt: string;
+}

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { QuizResultDef, QuizConfig } from '@/types/quiz';
 import { supabase } from '@/lib/supabase';
-import { getAttribution, buildAppStoreUrl, persistResult } from '@/lib/attribution';
+import { getAttribution, buildAppStoreUrl, persistResult, getHandoffPayload } from '@/lib/attribution';
 import { trackEvent } from '@/lib/events';
 import EmailCapture from './EmailCapture';
 import ResultVisualCards from './ResultVisualCards';
@@ -19,27 +19,53 @@ interface QuizResultProps {
   onEmailSubmit: (email: string) => void;
 }
 
-const CTA_COPY: Record<string, string> = {
-  'style-quiz': 'See who I\'ll be on my next night out →',
-  'old-money-style': 'See who I\'ll be on my next date →',
-  'capsule-wardrobe': 'Build the version of me that shows up →',
-  'date-night-outfits': 'See who I\'ll be on my next date →',
-  'creator-style-match': 'See myself in every situation →',
+const SIGNAL_COPY: Record<string, string> = {
+  style_minimalist: 'You gravitate toward quiet, considered pieces.',
+  style_luxury:     'You prefer elevated, intentional finds.',
+  style_classic:    'You have an eye for enduring silhouettes.',
+  style_workwear:   'You like structured pieces with real utility.',
+  style_streetwear: 'You lean into street-leaning energy.',
+  style_bold:       'You\'re drawn to statement-driven choices.',
+  style_bohemian:   'You prefer soft, layered texture over clean lines.',
+  style_preppy:     'You like heritage-coded, put-together pieces.',
+  mat_cashmere:     'You gravitate toward natural textures that feel expensive.',
+  mat_linen:        'You prefer clean linen and breathable fabrics.',
+  mat_wool:         'You\'re drawn to quality wool and natural fibers.',
+  color_neutral:    'You stay in neutral and earthed tones.',
+  color_dark:       'You build around a dark, restrained palette.',
+  cond_vintage:     'You like pieces that feel archive and vintage.',
+  fit_tailored:     'You prefer tailored structure over relaxed cuts.',
+  fit_relaxed:      'You lean toward relaxed, easy silhouettes.',
 };
+
+function signalCopy(signalId: string): string {
+  return SIGNAL_COPY[signalId] ?? `You lean toward ${signalId.replace(/_/g, ' ')}.`;
+}
 
 export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: QuizResultProps) {
   const [emailLoading, setEmailLoading] = useState(false);
   const [visible, setVisible] = useState(false);
 
   const appStoreUrl = process.env.NEXT_PUBLIC_APP_STORE_URL ?? 'https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768';
-  const ctaLabel = CTA_COPY[quiz.slug] ?? 'Get My Personalized Outfits';
   const accent = result.accentColor;
+
+  // Derive dominant signals from the persisted handoff payload
+  const handoff = typeof window !== 'undefined' ? getHandoffPayload() : null;
+  const dominantSignals = handoff?.styleArchetype === result.id
+    ? (handoff?.dominantSignals ?? [])
+    : [];
 
   useEffect(() => {
     trackEvent('result_viewed', quiz.id, sessionId, { result_id: result.id });
+    trackEvent('quiz_result_viewed', quiz.id, sessionId, {
+      result_id: result.id,
+      archetype: result.id,
+      dominant_signals: dominantSignals,
+    });
     persistResult(result.id, result.label, quiz.id);
     const t = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quiz.id, sessionId, result.id, result.label]);
 
   async function handleEmailSubmit(email: string) {
@@ -52,7 +78,6 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         attribution, created_at: new Date().toISOString(),
       });
       await trackEvent('email_submitted', quiz.id, sessionId, { result_id: result.id });
-      // Fire Resend emails (welcome to user + lead notify) — non-blocking
       fetch('/api/email-capture', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -72,6 +97,12 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
       result_id: result.id,
       archetype_name: result.label,
       source: 'result_cta',
+    });
+    await trackEvent('quiz_app_cta_tapped', quiz.id, sessionId, {
+      result_id: result.id,
+      archetype_name: result.label,
+      source: 'result_cta',
+      dominant_signals: dominantSignals,
     });
     const url = buildAppStoreUrl(appStoreUrl, attribution, {
       result_id: result.id,
@@ -97,7 +128,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         <div className="flex flex-col items-center text-center pt-14 pb-8 gap-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase"
             style={{ background: `${accent}22`, border: `1px solid ${accent}60`, color: accent }}>
-            Your Starting Archetype
+            Your Style Identity
           </div>
           <h1 style={{
             fontFamily: 'var(--font-cormorant, Georgia, serif)',
@@ -118,13 +149,28 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
           <div className="w-16 h-[3px] rounded-full" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
         </div>
 
+        {/* ── WE NOTICED ── */}
+        {dominantSignals.length > 0 && (
+          <div className="rounded-2xl px-5 py-5 mb-6 flex flex-col gap-3"
+            style={{ background: `${accent}10`, border: `1px solid ${accent}30` }}>
+            <p className="text-[11px] tracking-[0.25em] font-bold uppercase" style={{ color: accent }}>
+              We noticed
+            </p>
+            {dominantSignals.slice(0, 3).map((sig, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="flex-shrink-0 mt-0.5" style={{ color: accent }}>✦</span>
+                <p className="text-[14px] text-white/90 leading-snug">{signalCopy(sig)}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* ── IDENTITY LINES ── */}
         {result.identityLines && result.identityLines.length > 0 && (
           <div className="flex flex-col gap-3 mb-8">
             {result.identityLines.map((line, i) => (
               <div key={i} className="relative flex items-center gap-4 rounded-2xl px-5 py-4 overflow-hidden"
                 style={{ background: `linear-gradient(135deg, ${accent}18, ${accent}08)`, border: `1px solid ${accent}40` }}>
-                {/* Glow spot */}
                 <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl" style={{ background: accent }} />
                 <span className="text-[13px] font-black tracking-[0.12em] uppercase flex-shrink-0 w-5 text-center"
                   style={{ color: `${accent}99` }}>
@@ -136,16 +182,29 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
           </div>
         )}
 
-        {/* ── VISUAL CARDS ── */}
+        {/* ── PREVIEW FIT ── */}
         {result.visualCards && result.visualCards.length > 0 && (
-          <ResultVisualCards cards={result.visualCards} accent={accent} archetypeId={result.id} />
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-[11px] tracking-[0.25em] font-bold uppercase" style={{ color: accent }}>
+                Preview fit
+              </p>
+              <p className="text-[11px] text-white/40 font-medium">
+                The app builds 3 complete fits
+              </p>
+            </div>
+            <ResultVisualCards cards={result.visualCards} accent={accent} archetypeId={result.id} />
+            <p className="text-[13px] text-white/50 text-center mt-2 leading-snug">
+              This is one preview fit. Open the app to review 3 complete fits — top, bottom, shoes, and accessory — built from your style signals.
+            </p>
+          </div>
         )}
 
         {/* ── WHAT HAPPENS NEXT ── */}
         <NextStepSection accent={accent} />
 
         {/* ── APP STORE CTA — primary action at emotional peak ── */}
-        <AppStoreCTA label={ctaLabel} accent={accent} url={appStoreUrl} onClick={handleAppStoreClick} />
+        <AppStoreCTA accent={accent} url={appStoreUrl} onClick={handleAppStoreClick} />
 
         {/* ── SHARE ── */}
         <div className="mb-6">
@@ -160,7 +219,6 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
           <EmailCapture onSubmit={handleEmailSubmit} isLoading={emailLoading} />
         </div>
 
-        {/* Spacer so sticky CTA doesn't overlap last content */}
         <div className="h-24" />
       </div>
 

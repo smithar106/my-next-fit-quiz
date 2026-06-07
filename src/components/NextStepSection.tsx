@@ -1,9 +1,9 @@
 'use client';
 
 const FEATURES = [
-  'See yourself in the moments that matter — your next date, night out, social event',
-  'Pieces that feel collected, not recommended',
-  'A feed that learns what you\'re dressing for — not just what you like',
+  '3 complete fits — top, bottom, shoes, and accessory — built around your signals',
+  'Name your collection. Refine it. Save pieces to your Archive.',
+  'Your Eye: answer questions to sharpen what the app builds for you',
   'The version of you that shows up differently in every room',
 ];
 

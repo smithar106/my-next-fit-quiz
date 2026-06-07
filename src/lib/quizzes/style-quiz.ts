@@ -167,14 +167,14 @@ export const styleQuiz: QuizConfig = {
     },
     {
       id: 'downtown_treasure_hunter',
-      label: 'Downtown Treasure Hunter',
-      tagline: 'You dress like every piece has a better story than the room you\'re in.',
+      label: 'Workwear Classicist',
+      tagline: 'You dress in pieces built to last — utilitarian heritage, worn naturally.',
       description:
         'You\'ve always had an instinct for places others overlook. The back-of-the-rack find. The estate sale blazer. The thrift store gem that turns heads at dinner. Your wardrobe is a map of everywhere you\'ve looked — and found something real.',
       identityLines: [
-        'Every piece in your wardrobe has a story.',
-        'You thrift like you know exactly what you\'re looking for.',
-        'Your eye finds things that take others years to notice.',
+        'Chore coats. Selvedge denim. Canvas that ages correctly.',
+        'Your wardrobe looks like it was assembled over decades, not seasons.',
+        'You know the difference between workwear that works and workwear that performs.',
       ],
       outfitDirections: [
         'TOP — Vintage structured coat or heavy wool overshirt',
@@ -193,14 +193,14 @@ export const styleQuiz: QuizConfig = {
     },
     {
       id: 'hidden_gem_collector',
-      label: 'Hidden Gem Collector',
-      tagline: 'You find beauty in pieces most people overlook.',
+      label: 'Understated Vintage',
+      tagline: 'You dress in things people can\'t quite place — but always look at twice.',
       description:
         'You have a rare kind of patience. You\'re not looking for labels — you\'re looking for something that just feels right. And when you find it, you know immediately. Your eye is trained on what most people walk past, which is exactly why your wardrobe looks like nobody else\'s.',
       identityLines: [
-        'You always notice things others miss.',
-        'You\'re not chasing brands. You\'re chasing feeling.',
-        'Your best finds cost less than dinner.',
+        'Your best pieces have no visible label and no explanation needed.',
+        'Texture before color. Drape before cut. Fabric before everything.',
+        'The fit you get the most compliments on cost less than dinner.',
       ],
       outfitDirections: [
         'TOP — An overlooked vintage piece — interesting texture, odd detail, perfectly cut',
@@ -245,14 +245,14 @@ export const styleQuiz: QuizConfig = {
     },
     {
       id: 'soft_vintage_curator',
-      label: 'Soft Vintage Curator',
-      tagline: 'You collect pieces that feel nostalgic, personal, and emotionally textured.',
+      label: 'Soft Vintage',
+      tagline: 'You buy things that look like they were already worn by someone interesting.',
       description:
         'You\'re drawn to things that feel lived-in, loved, and quietly beautiful. The faded floral. The soft knit washed a hundred times. The blouse that looks like it has a history. Your wardrobe has a warmth to it that people feel before they can describe it.',
       identityLines: [
-        'You dress for how a piece makes you feel, not how it looks on a rack.',
-        'Your favorite items feel like they\'ve always been yours.',
-        'Softness, texture, and history — that\'s the whole brief.',
+        'Faded florals. Worn linen. Earrings that belonged to someone\'s grandmother.',
+        'Your closet looks like a film still from 1974.',
+        'Softness is a point of view, not a style category.',
       ],
       outfitDirections: [
         'TOP — Worn floral blouse or soft vintage knit in a faded, warm tone',

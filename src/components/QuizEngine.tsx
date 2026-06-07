@@ -24,10 +24,10 @@ const ARCHETYPE_SIGNALS: Record<string, string[]> = {
   quiet_luxury_collector:   ['style_luxury', 'style_minimalist', 'mat_cashmere', 'color_neutral'],
   designer_score_seeker:    ['style_luxury', 'cond_vintage', 'style_classic'],
   eclectic_archivist:       ['style_streetwear', 'style_bold', 'cond_vintage'],
-  hidden_gem_collector:     ['style_minimalist', 'cond_vintage', 'color_neutral'],
+  hidden_gem_collector:     ['style_minimalist', 'mat_linen', 'color_neutral'],
   soft_vintage_curator:     ['style_bohemian', 'cond_vintage', 'mat_linen'],
   street_romantic:          ['style_bohemian', 'style_bold', 'cond_vintage', 'color_dark'],
-  downtown_treasure_hunter: ['style_workwear', 'cond_vintage', 'style_classic'],
+  downtown_treasure_hunter: ['style_workwear', 'mat_denim', 'color_earth'],
 };
 
 function computeResult(answers: Answer[], quiz: QuizConfig): QuizResultDef {

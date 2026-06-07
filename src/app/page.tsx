@@ -6,12 +6,12 @@ import { useEffect, useRef, useState } from 'react';
 const ARCHETYPES = [
   { label: 'Archive Hunter', color: '#C4965A', desc: 'You dress like the best pieces already existed before trends caught up.' },
   { label: 'Quiet Luxury Collector', color: '#D4C5A0', desc: 'Fabric, silhouette, restraint. Never logos.' },
-  { label: 'Hidden Gem Collector', color: '#7B9E87', desc: 'You notice things others walk right past.' },
+  { label: 'Understated Vintage', color: '#7B9E87', desc: 'You notice things others walk right past.' },
   { label: 'Street Romantic', color: '#9B7EC8', desc: 'Soft and sharp. Tender and tough. Always both.' },
   { label: 'Eclectic Archivist', color: '#7B8FD0', desc: 'Your outfits shouldn\'t work on paper. They do.' },
-  { label: 'Soft Vintage Curator', color: '#C4907A', desc: 'Pieces that feel lived-in, loved, and quietly beautiful.' },
+  { label: 'Soft Vintage', color: '#C4907A', desc: 'Pieces that feel lived-in, loved, and quietly beautiful.' },
   { label: 'Designer Score Seeker', color: '#D4A830', desc: 'You\'ve found $800 bags for $40. The thrill is the find.' },
-  { label: 'Downtown Treasure Hunter', color: '#8B7355', desc: 'Your wardrobe is a map of everywhere you\'ve looked.' },
+  { label: 'Workwear Classicist', color: '#8B7355', desc: 'Your wardrobe is a map of everywhere you\'ve looked.' },
 ];
 
 

@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
     });
     const appUrl = `https://mynextthrift.app/open?${deepLinkParams.toString()}`;
 
-    await Promise.all([
+    const [userSend, notifSend] = await Promise.all([
       resend.emails.send({
         from: 'My Next Thrift <hello@mynextthrift.app>',
         to: email,
@@ -110,6 +110,14 @@ export async function POST(req: NextRequest) {
         `,
       }),
     ]);
+
+    if (userSend.error) {
+      console.error('email-capture resend error:', userSend.error);
+      return NextResponse.json({ error: 'Failed to send email', detail: userSend.error.message }, { status: 500 });
+    }
+    if (notifSend.error) {
+      console.error('email-capture notif error:', notifSend.error);
+    }
 
     return NextResponse.json({ ok: true, sessionToken });
   } catch (err) {

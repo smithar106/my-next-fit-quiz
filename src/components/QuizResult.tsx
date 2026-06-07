@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase';
 import { getAttribution, buildAppStoreUrl, persistResult, getHandoffPayload } from '@/lib/attribution';
 import { trackEvent } from '@/lib/events';
 import EmailCapture from './EmailCapture';
-import ResultVisualCards from './ResultVisualCards';
+import OutfitDirectionCards from './OutfitDirectionCards';
 import ShareCard from './ShareCard';
 import NextStepSection from './NextStepSection';
 import AppStoreCTA from './AppStoreCTA';
@@ -182,22 +182,9 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
           </div>
         )}
 
-        {/* ── PREVIEW FIT ── */}
-        {result.visualCards && result.visualCards.length > 0 && (
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
-              <p className="text-[11px] tracking-[0.25em] font-bold uppercase" style={{ color: accent }}>
-                Preview fit
-              </p>
-              <p className="text-[11px] text-white/40 font-medium">
-                The app builds 3 complete fits
-              </p>
-            </div>
-            <ResultVisualCards cards={result.visualCards} accent={accent} archetypeId={result.id} />
-            <p className="text-[13px] text-white/50 text-center mt-2 leading-snug">
-              This is one preview fit. Open the app to review 3 complete fits — top, bottom, shoes, and accessory — built from your style signals.
-            </p>
-          </div>
+        {/* ── WHAT TO HUNT FOR ── */}
+        {result.outfitDirections && result.outfitDirections.length > 0 && (
+          <OutfitDirectionCards directions={result.outfitDirections} accent={accent} />
         )}
 
         {/* ── WHAT HAPPENS NEXT ── */}

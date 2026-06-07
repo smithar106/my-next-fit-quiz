@@ -21,12 +21,12 @@ interface Answer {
 // Maps archetype IDs to their dominant style signal tags (mirrors app archetypePrior.ts)
 const ARCHETYPE_SIGNALS: Record<string, string[]> = {
   archive_hunter:           ['style_classic', 'cond_vintage', 'style_workwear'],
-  quiet_luxury_collector:   ['style_luxury', 'style_minimalist', 'mat_cashmere'],
+  quiet_luxury_collector:   ['style_luxury', 'style_minimalist', 'mat_cashmere', 'color_neutral'],
   designer_score_seeker:    ['style_luxury', 'cond_vintage', 'style_classic'],
   eclectic_archivist:       ['style_streetwear', 'style_bold', 'cond_vintage'],
   hidden_gem_collector:     ['style_minimalist', 'cond_vintage', 'color_neutral'],
   soft_vintage_curator:     ['style_bohemian', 'cond_vintage', 'mat_linen'],
-  street_romantic:          ['style_bohemian', 'style_bold', 'cond_vintage'],
+  street_romantic:          ['style_bohemian', 'style_bold', 'cond_vintage', 'color_dark'],
   downtown_treasure_hunter: ['style_workwear', 'cond_vintage', 'style_classic'],
 };
 

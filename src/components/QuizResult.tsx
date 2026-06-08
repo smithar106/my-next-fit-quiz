@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase';
 import { getAttribution, buildAppStoreUrl, persistResult, getHandoffPayload } from '@/lib/attribution';
 import { trackEvent } from '@/lib/events';
 import EmailCapture from './EmailCapture';
-import OutfitDirectionCards from './OutfitDirectionCards';
+import CuratedFitGrid from './CuratedFitGrid';
 import ShareCard from './ShareCard';
 import NextStepSection from './NextStepSection';
 import AppStoreCTA from './AppStoreCTA';
@@ -182,9 +182,9 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
           </div>
         )}
 
-        {/* ── WHAT TO HUNT FOR ── */}
-        {result.outfitDirections && result.outfitDirections.length > 0 && (
-          <OutfitDirectionCards directions={result.outfitDirections} accent={accent} />
+        {/* ── PIECES TO HUNT FOR ── */}
+        {result.curatedImages && result.curatedImages.length > 0 && (
+          <CuratedFitGrid images={result.curatedImages} accent={accent} />
         )}
 
         {/* ── WHAT HAPPENS NEXT ── */}

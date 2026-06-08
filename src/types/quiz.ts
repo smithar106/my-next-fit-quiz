@@ -12,6 +12,12 @@ export interface QuizQuestion {
   options: QuizOption[];
 }
 
+export interface CuratedImage {
+  slot: 'TOP' | 'BOTTOM' | 'SHOES' | 'ACCESSORY';
+  imageUrl: string;
+  title: string;
+}
+
 export interface VisualCard {
   label: string;       // e.g. "Cream Trousers + Silk Tank"
   gradient: string;    // CSS gradient — shown while loading or as fallback
@@ -28,6 +34,7 @@ export interface QuizResultDef {
   identityLines: string[];   // 2-3 punchy one-liners
   outfitDirections: string[];
   visualCards: VisualCard[];  // 3-4 visual outfit cards
+  curatedImages?: CuratedImage[];
   whyMyNextFit: string;
   accentColor: string; // hex
 }

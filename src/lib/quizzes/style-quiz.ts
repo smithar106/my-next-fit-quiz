@@ -1,4 +1,4 @@
-import { QuizConfig } from '@/types/quiz';
+import { QuizConfig, CuratedImage } from '@/types/quiz';
 
 export const styleQuiz: QuizConfig = {
   id: 'style-quiz',
@@ -110,6 +110,28 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1E1810 0%, #140E08 100%)', tags: ['leather boots'], query: ['cat_footwear', 'style_classic', 'cond_vintage'], titleKeywords: ['boot', 'loafer', 'oxford'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #221C12 0%, #18120A 100%)', tags: ['silk scarf'], query: ['cat_accessories', 'style_classic', 'cond_vintage'], titleKeywords: ['scarf', 'crossbody', 'belt', 'wallet'] },
       ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage Levi's Western Denim Shirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECSHI99188V_1.jpg?v=1775788544',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Ralph Lauren Leather Trousers",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/products/beyond-retro-label-womens-ralph-lauren-brown-straight-leg-shiny-leather-trousers-1-E00873322_9dbaac87-eab4-4feb-8f8f-427de78d7ac7.jpg?v=1708500336',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Dr Martens Fur Lined Chelsea Boots",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECFOO71192V_132.jpg?v=1734923785',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s Embroidered Needlepoint Brass Buckle Belt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__awLgLM-compressed.png?v=1665549344',
+        },
+      ] as CuratedImage[],
       whyMyNextFit: 'A feed built around the eye that already knows what it\'s looking for. The pieces that reach you feel excavated, not recommended.',
       accentColor: '#C4965A',
     },
@@ -136,6 +158,28 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1020 0%, #120A16 100%)', tags: ['ankle boots'], query: ['cat_footwear', 'style_bohemian', 'cond_vintage'], titleKeywords: ['boot', 'ankle', 'sneaker', 'chelsea'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201428 0%, #160E1C 100%)', tags: ['layered chains'], query: ['cat_accessories', 'style_bohemian', 'cond_vintage'], titleKeywords: ['necklace', 'chain', 'earring', 'ring'] },
       ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Genuine Leather Vintage 70s Bomber Jacket",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/2651/4700/products/IMG_8489.JPG?v=1552260784',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Tapered Suede Patchwork Trousers",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/products/beyond-retro-label-womens-tapered-suede-brown-patchwork-trousers-1-E00910986_a6baed64-2c45-4814-ac19-67a6afe6e8ca.jpg?v=1708501465',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Three Strap Distressed Wingtip Oxfords",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0229/0897/products/1980s_Three_Strap_Oxfords-002.jpg?v=1571266366',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s Tooled Leather Mexico Mini Purse",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__YrWMzb-compressed.png?v=1668963251',
+        },
+      ] as CuratedImage[],
       whyMyNextFit: 'Pieces with enough edge and softness to hold the tension your eye is always after. The find that works in a context it wasn\'t designed for.',
       accentColor: '#9B7EC8',
     },
@@ -162,6 +206,28 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1A10 0%, #14100A 100%)', tags: ['leather loafers'], query: ['cat_footwear', 'style_luxury', 'cond_secondhand'], titleKeywords: ['loafer', 'pump', 'mule', 'heel'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201E14 0%, #18140C 100%)', tags: ['structured bag'], query: ['cat_accessories', 'style_luxury', 'cond_secondhand'], titleKeywords: ['bag', 'tote', 'clutch', 'purse'] },
       ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage Polo Ralph Lauren Plaid Flannel Shirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECSHI97249V_1.jpg?v=1773023873',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Calvin Klein Black Trousers",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-womens-calvin-klein-black-trousers-1-E00803206.jpg?v=1763693926',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Coach Monogram Heels",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/WOAFOO79030V_2546.jpg?v=1746415201',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s/80s Coach Crossbody Leather Bag",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/il_fullxfull.4124999698_6hze.png?v=1666894795',
+        },
+      ] as CuratedImage[],
       whyMyNextFit: 'The pieces that reach you earned their place. Designer-quality fabric, no logo noise — found before the obvious crowd gets there.',
       accentColor: '#D4C5A0',
     },
@@ -188,6 +254,28 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1A1410 0%, #120E08 100%)', tags: ['heritage boots'], query: ['cat_footwear', 'style_workwear', 'cond_vintage'], titleKeywords: ['boot', 'oxford', 'derby'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #1C1810 0%, #14100A 100%)', tags: ['vintage watch'], query: ['cat_accessories', 'style_workwear', 'cond_vintage'], titleKeywords: ['watch', 'canvas', 'belt', 'wallet'] },
       ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage 80s Pendleton Heavyweight Wool Shirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECSHI70588V_1.jpg?v=1733368795',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Levi's Wide Leg Carpenter Trousers",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECTRO98109V_1.jpg?v=1774233520',
+        },
+        {
+          slot: 'SHOES',
+          title: "Tony Lama Vintage Western Leather Cowboy Boots",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/2651/4700/products/IMG_0189.JPG?v=1563752534',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s Braided and Tooled Leather Belt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__ird4CY-compressed.png?v=1668616208',
+        },
+      ] as CuratedImage[],
       whyMyNextFit: 'A feed that keeps pace with your instinct — the back-of-the-rack gem, the estate sale score, the thing that makes people stop and ask.',
       accentColor: '#8B7355',
     },
@@ -214,6 +302,28 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1A1818 0%, #121010 100%)', tags: ['simple boots'], query: ['cat_footwear', 'style_minimalist', 'cond_vintage'], titleKeywords: ['boot', 'mule', 'loafer'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #1C1A20 0%, #141218 100%)', tags: ['statement piece'], query: ['cat_accessories', 'style_minimalist', 'cond_vintage'], titleKeywords: ['necklace', 'ring', 'earring', 'brooch'] },
       ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage 90s Nygard Floral Top",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/WOCTOP94695V_1.jpg?v=1768962879',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Striped Grey Midi Skirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-womens-striped-grey-midi-skirt-1-E00882627.jpg?v=1763674699',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Coach Monogram Moccasin Boots",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/WOCFOO90354V_7206.jpg?v=1761359751',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "80s/90s Modernist Triangle Earrings",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__MFW7Az-compressed.png?v=1668812786',
+        },
+      ] as CuratedImage[],
       whyMyNextFit: 'Pieces most people walk right past. Your eye catches what others miss — the feed reflects that, not the other way around.',
       accentColor: '#7B9E87',
     },
@@ -240,6 +350,28 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1A12 0%, #141008 100%)', tags: ['heritage footwear'], query: ['cat_footwear', 'style_luxury', 'cond_vintage'], titleKeywords: ['boot', 'loafer', 'pump', 'heel'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201C12 0%, #16120C 100%)', tags: ['designer bag'], query: ['cat_accessories', 'style_luxury', 'cond_vintage'], titleKeywords: ['bag', 'clutch', 'purse', 'tote'] },
       ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage Ralph Lauren Polo Shirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-womens-ralph-lauren-shirt-1-E00925856.jpg?v=1745184676',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Kenneth Cole Pencil Skirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-womens-kenneth-cole-pencil-skirt-1-E00978176.jpg?v=1741208740',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Y2K Coach Monogram Ballet Flats",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/WOAFOO79023V_2562.jpg?v=1746328667',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "Vintage Chanel Red Head Scarf",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-unisex-chanel-red-head-scarf-1-E00939297.jpg?v=1779735322',
+        },
+      ] as CuratedImage[],
       whyMyNextFit: 'The thrill is the find. Rare designer pieces at prices that shouldn\'t exist — the kind your eye spots before anyone else does.',
       accentColor: '#D4A830',
     },
@@ -266,6 +398,28 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1814 0%, #14100C 100%)', tags: ['canvas / sandals'], query: ['cat_footwear', 'style_bohemian', 'cond_vintage'], titleKeywords: ['sandal', 'canvas', 'mule', 'clog'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201A14 0%, #16100E 100%)', tags: ['vintage jewelry'], query: ['cat_accessories', 'style_bohemian', 'cond_vintage'], titleKeywords: ['necklace', 'earring', 'locket', 'pearl', 'chain'] },
       ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage 1970s Lee Embroidered Denim Trucker Jacket",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECOUT101307V_1.jpg?v=1780108427',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Suede Embroidered Festival Skirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/static-a9ba1ed2-9030-4fa4-94ba-c037dd1811f4.png?v=1668549469',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Three Strap Distressed Wingtip Oxfords",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0229/0897/products/1980s_Three_Strap_Oxfords-002.jpg?v=1571266366',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s/80s Braided and Tooled Leather Belt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__ird4CY-compressed.png?v=1668616208',
+        },
+      ] as CuratedImage[],
       whyMyNextFit: 'The worn-in blouse that feels like it was always yours. The faded knit you can\'t explain. Pieces with warmth that shows before you can describe it.',
       accentColor: '#C4907A',
     },
@@ -292,6 +446,28 @@ export const styleQuiz: QuizConfig = {
         { label: 'SHOES', gradient: 'linear-gradient(145deg, #161420 0%, #0E0C18 100%)', tags: ['chunky boots'], query: ['cat_footwear', 'style_streetwear', 'cond_vintage'], titleKeywords: ['boot', 'sneaker', 'platform', 'chunky'] },
         { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #181420 0%, #100C18 100%)', tags: ['bold accessory'], query: ['cat_accessories', 'style_streetwear', 'cond_vintage'], titleKeywords: ['necklace', 'ring', 'earring', 'pendant'] },
       ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage Outback Leather Patina Bomber Jacket",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECOUT95325V_1.jpg?v=1769999626',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage 90s Carhartt Carpenter Shorts",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECSHO75732V_1.jpg?v=1740972383',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Dr Martens Fur Lined Chelsea Boots",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECFOO71192V_132.jpg?v=1734923785',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "Deadstock Vintage Sterling Feather Pin",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/il_fullxfull.4246419654_hkzf-cropped__kk6Vcw.png?v=1668033220',
+        },
+      ] as CuratedImage[],
       whyMyNextFit: 'Pieces with enough character that your combinations keep surprising even you. The find from a different world that somehow completes the look.',
       accentColor: '#7B8FD0',
     },

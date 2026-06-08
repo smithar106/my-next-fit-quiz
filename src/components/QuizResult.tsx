@@ -10,7 +10,7 @@ import OutfitDirectionCards from './OutfitDirectionCards';
 import ShareCard from './ShareCard';
 import NextStepSection from './NextStepSection';
 import AppStoreCTA from './AppStoreCTA';
-import StickyDownloadCTA from './StickyDownloadCTA';
+
 
 interface QuizResultProps {
   result: QuizResultDef;
@@ -209,13 +209,6 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
         <div className="h-24" />
       </div>
 
-      <StickyDownloadCTA
-        accent={accent}
-        quizId={quiz.id}
-        sessionId={sessionId}
-        resultId={result.id}
-        archetypeName={result.label}
-      />
     </div>
   );
 }

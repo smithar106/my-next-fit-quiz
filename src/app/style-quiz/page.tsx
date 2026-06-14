@@ -5,12 +5,12 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'What Kind of Treasure Hunter Is Your Aesthetic? — My Next Thrift',
+  title: "What's Your Thrift Style? | My Next Thrift Quiz",
   description:
-    'Take the 30-second thrift identity quiz. Discover the rare pieces your eye naturally finds. Archive Hunter, Quiet Luxury Collector, Understated Vintage, and more.',
+    'Discover your thrift style archetype in 30 seconds. 8 unique thrift identities — find yours free.',
   openGraph: {
-    title: 'Your closet should feel discovered, not bought.',
-    description: 'Find the rare pieces your aesthetic keeps searching for.',
+    title: "What's Your Thrift Style?",
+    description: 'Discover your thrift style archetype in 30 seconds. 8 unique thrift identities.',
   },
 };
 

@@ -44,14 +44,14 @@ export function getAttribution(): Attribution {
   }
 }
 
-const APP_STORE_URL  = 'https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768';
+const APP_STORE_URL  = 'https://apps.apple.com/us/app/my-next-thrift-ai-outfit-stylist/id6766315768';
 // Universal link — iOS intercepts via AASA on mynextthrift.app and opens the app directly,
 // passing result_id + archetype_name as query params to _layout.tsx's deep-link handler.
 // Falls back to the /open page (which shows an App Store redirect) when app isn't installed.
 const DEEP_LINK_BASE = 'https://mynextthrift.app/open';
 
 export function buildSmartLink(
-  _attr: Attribution,
+  attr: Attribution,
   extras?: { result_id?: string; archetype_name?: string; quiz_id?: string }
 ): string {
   if (!extras?.result_id && !extras?.archetype_name) return APP_STORE_URL;
@@ -59,6 +59,7 @@ export function buildSmartLink(
   if (extras.result_id)      params.set('result_id',      extras.result_id);
   if (extras.archetype_name) params.set('archetype_name', extras.archetype_name);
   if (extras.quiz_id)        params.set('quiz_id',        extras.quiz_id);
+  if (attr.creator)          params.set('utm_content',    attr.creator);
   return `${DEEP_LINK_BASE}?${params.toString()}`;
 }
 

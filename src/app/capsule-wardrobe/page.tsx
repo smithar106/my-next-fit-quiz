@@ -5,12 +5,12 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'What Capsule Wardrobe Do You Actually Need? — My Next Thrift',
+  title: "What's Your Capsule Wardrobe Style? | My Next Thrift Quiz",
   description:
-    'Minimal, workwear, travel, weekend, or budget capsule — discover the exact wardrobe system for your life. 30-second quiz.',
+    'Build your thrift capsule wardrobe. Discover the pieces your style is actually built around.',
   openGraph: {
-    title: 'What Capsule Wardrobe Do You Actually Need?',
-    description: 'Build the exact wardrobe your life calls for.',
+    title: "What's Your Capsule Wardrobe Style?",
+    description: 'Build your thrift capsule wardrobe. Discover what your style is actually built around.',
   },
 };
 

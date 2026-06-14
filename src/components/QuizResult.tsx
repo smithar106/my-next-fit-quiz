@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { QuizResultDef, QuizConfig } from '@/types/quiz';
 import { supabase } from '@/lib/supabase';
 import { getAttribution, buildAppStoreUrl, persistResult, getHandoffPayload } from '@/lib/attribution';
@@ -10,6 +10,7 @@ import CuratedFitGrid from './CuratedFitGrid';
 import ShareCard from './ShareCard';
 import NextStepSection from './NextStepSection';
 import AppStoreCTA from './AppStoreCTA';
+import StickyDownloadCTA from './StickyDownloadCTA';
 
 
 interface QuizResultProps {
@@ -45,7 +46,6 @@ function signalCopy(signalId: string): string {
 function SkeletonLoader({ accent }: { accent: string }) {
   return (
     <div className="min-h-screen flex flex-col items-center relative overflow-hidden" style={{ background: '#080808' }}>
-      {/* Hero glow placeholder */}
       <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[700px] h-[500px] pointer-events-none"
         style={{
           background: `radial-gradient(ellipse at 50% 30%, ${accent}90 0%, ${accent}45 35%, transparent 65%)`,
@@ -54,25 +54,18 @@ function SkeletonLoader({ accent }: { accent: string }) {
         }} />
 
       <div className="relative w-full max-w-[440px] flex flex-col px-6 pb-16 pt-14">
-        {/* Badge shimmer */}
         <div className="flex flex-col items-center text-center gap-4">
           <div className="w-32 h-7 rounded-full animate-pulse" style={{ background: `${accent}22` }} />
-
-          {/* Archetype label placeholder */}
           <div className="w-56 h-16 rounded-xl animate-shimmer mb-1"
             style={{
               background: `linear-gradient(90deg, ${accent}15 25%, ${accent}30 50%, ${accent}15 75%)`,
               backgroundSize: '200% 100%',
             }} />
-
-          {/* Tagline placeholder */}
           <div className="w-48 h-5 rounded-lg animate-shimmer"
             style={{
               background: `linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 75%)`,
               backgroundSize: '200% 100%',
             }} />
-
-          {/* Description placeholder */}
           <div className="w-64 h-4 rounded-lg animate-shimmer mt-1"
             style={{
               background: `linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%)`,
@@ -87,7 +80,7 @@ function SkeletonLoader({ accent }: { accent: string }) {
           100% { background-position: -200% 0; }
         }
         .animate-shimmer {
-          animation: shimmer 2s ease-in-out infinite;
+          animation: shimmer 1.5s ease-in-out infinite;
         }
       `}</style>
     </div>
@@ -97,11 +90,13 @@ function SkeletonLoader({ accent }: { accent: string }) {
 export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: QuizResultProps) {
   const [emailLoading, setEmailLoading] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  const [stickyVisible, setStickyVisible] = useState(false);
+  const resultRef = useRef<HTMLDivElement>(null);
 
-  const appStoreUrl = process.env.NEXT_PUBLIC_APP_STORE_URL ?? 'https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768';
+  const appStoreUrl = process.env.NEXT_PUBLIC_APP_STORE_URL ?? 'https://apps.apple.com/us/app/my-next-thrift-ai-outfit-stylist/id6766315768';
   const accent = result.accentColor;
 
-  // Derive dominant signals from the persisted handoff payload
   const handoff = typeof window !== 'undefined' ? getHandoffPayload() : null;
   const dominantSignals = handoff?.styleArchetype === result.id
     ? (handoff?.dominantSignals ?? [])
@@ -119,6 +114,22 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
     return () => clearTimeout(t);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quiz.id, sessionId, result.id, result.label]);
+
+  // Hide scroll hint after 3 seconds
+  useEffect(() => {
+    const t = setTimeout(() => setShowScrollHint(false), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Show sticky CTA after scrolling past hero
+  useEffect(() => {
+    const onScroll = () => {
+      setStickyVisible(window.scrollY > 300);
+      if (window.scrollY > 100) setShowScrollHint(false);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   async function handleEmailSubmit(email: string) {
     setEmailLoading(true);
@@ -169,7 +180,7 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center relative overflow-hidden" style={{ background: '#080808' }}>
+    <div className="min-h-screen flex flex-col items-center relative overflow-hidden" style={{ background: '#080808' }} ref={resultRef}>
       {/* Top hero glow */}
       <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[700px] h-[500px] pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 50% 30%, ${accent}90 0%, ${accent}45 35%, transparent 65%)`, filter: 'blur(25px)' }} />
@@ -238,6 +249,17 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
           </div>
         )}
 
+        {/* ── SCROLL HINT ── */}
+        {showScrollHint && (
+          <div style={{
+            textAlign: 'center', color: 'rgba(255,255,255,0.4)',
+            fontSize: 12, padding: '16px 0',
+            animation: 'pulse 2s infinite',
+          }}>
+            scroll to see your fits ↓
+          </div>
+        )}
+
         {/* ── PIECES TO HUNT FOR ── */}
         {result.curatedImages && result.curatedImages.length > 0 && (
           <CuratedFitGrid images={result.curatedImages} accent={accent} />
@@ -264,12 +286,24 @@ export default function QuizResult({ result, quiz, sessionId, onEmailSubmit }: Q
             isLoading={emailLoading}
             archetypeLabel={result.label}
             accent={accent}
+            quizId={quiz.id}
+            sessionId={sessionId}
+            resultId={result.id}
+            onAppStoreClick={handleAppStoreClick}
           />
         </div>
 
         <div className="h-24" />
       </div>
 
+      {/* ── STICKY DOWNLOAD CTA ── */}
+      <StickyDownloadCTA
+        accent={accent}
+        quizId={quiz.id}
+        sessionId={sessionId}
+        resultId={result.id}
+        archetypeName={result.label}
+      />
     </div>
   );
 }

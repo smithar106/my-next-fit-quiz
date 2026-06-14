@@ -10,14 +10,15 @@ interface Props {
 export default function AppStoreCTA({ accent, url: _url, onClick, whyMyNextFit }: Props) {
   return (
     <div className="flex flex-col gap-4 mb-6">
-      {/* Final pitch from archetype */}
       {whyMyNextFit && (
-        <p className="text-[13px] text-white/70 text-center leading-relaxed italic px-2">
-          {whyMyNextFit}
+        <p style={{
+          fontStyle: 'italic', color: accent, fontSize: 14,
+          lineHeight: 1.5, marginBottom: 0, textAlign: 'center',
+        }}>
+          &ldquo;{whyMyNextFit}&rdquo;
         </p>
       )}
 
-      {/* Premium pill CTA */}
       <button
         onClick={onClick}
         className="w-full h-[64px] font-black text-[17px] rounded-2xl tracking-wide active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-2"
@@ -31,7 +32,6 @@ export default function AppStoreCTA({ accent, url: _url, onClick, whyMyNextFit }
         <span className="text-[20px] leading-none">→</span>
       </button>
 
-      {/* App Store badge row */}
       <div className="flex items-center justify-center gap-3">
         <a
           href={_url}
@@ -45,7 +45,7 @@ export default function AppStoreCTA({ accent, url: _url, onClick, whyMyNextFit }
             className="h-10"
           />
         </a>
-        <span className="text-[11px] text-white/40 font-medium">iOS only · Free to download</span>
+        <span className="text-[11px] text-white/45 font-medium text-center">iOS · Free to download · 14-day trial included</span>
       </div>
     </div>
   );

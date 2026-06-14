@@ -5,12 +5,12 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'What\'s Your Date Night Outfit Personality? — My Next Thrift',
+  title: "What's Your Date Night Style? | My Next Thrift Quiz",
   description:
-    'Elegant romantic, effortless cool, bold statement, soft feminine, or minimal chic — find your date night style in 30 seconds.',
+    'Find your date night outfit identity. Discover the thrift pieces that make you unforgettable.',
   openGraph: {
-    title: 'What\'s Your Date Night Outfit Personality?',
-    description: 'Because the right outfit is half the date.',
+    title: "What's Your Date Night Style?",
+    description: 'Find your date night outfit identity. Discover the pieces that make you unforgettable.',
   },
 };
 

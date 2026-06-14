@@ -1,26 +1,31 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { trackEvent } from '@/lib/events';
 import AppStoreCTA from './AppStoreCTA';
 
 interface EmailCaptureProps {
   onSubmit: (email: string) => Promise<void>;
   isLoading: boolean;
-  archetypeLabel: string;
+  archetypeLabel?: string;
   accent: string;
+  quizId: string;
+  sessionId: string;
+  resultId: string;
+  onAppStoreClick: () => void;
 }
 
-const appStoreUrl = process.env.NEXT_PUBLIC_APP_STORE_URL ?? 'https://apps.apple.com/us/app/my-next-fit-ai-outfit-stylist/id6766315768';
+const appStoreUrl = process.env.NEXT_PUBLIC_APP_STORE_URL ?? 'https://apps.apple.com/us/app/my-next-thrift-ai-outfit-stylist/id6766315768';
 
 function getTextColor(hex: string): string {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance > 0.55 ? '#080808' : '#ffffff';
+  return luminance > 0.35 ? '#080808' : '#ffffff';
 }
 
-export default function EmailCapture({ onSubmit, isLoading, archetypeLabel, accent }: EmailCaptureProps) {
+export default function EmailCapture({ onSubmit, isLoading, archetypeLabel, accent, quizId, sessionId, resultId, onAppStoreClick }: EmailCaptureProps) {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [skipped, setSkipped] = useState(false);
@@ -30,11 +35,15 @@ export default function EmailCapture({ onSubmit, isLoading, archetypeLabel, acce
   const textColor = getTextColor(accent);
 
   useEffect(() => {
-    // Only auto-focus on non-touch devices (desktop)
     if (typeof window !== 'undefined' && !('ontouchstart' in window)) {
       setTimeout(() => inputRef.current?.focus(), 150);
     }
   }, []);
+
+  function handleSkip() {
+    trackEvent('email_skipped', quizId, sessionId, { result_id: resultId });
+    setSkipped(true);
+  }
 
   if (submitted) {
     return (
@@ -44,22 +53,10 @@ export default function EmailCapture({ onSubmit, isLoading, archetypeLabel, acce
           <span className="text-lg">✓</span>
         </div>
         <p className="text-[14px] text-white/80 font-medium text-center">
-          Check your inbox — and download the app below
+          Saved — download the app to see your {archetypeLabel ?? ''} fits
         </p>
         <div className="w-full mt-1">
-          <a
-            href={appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full h-[52px] rounded-xl text-[14px] font-black tracking-wide active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-2"
-            style={{
-              background: accent,
-              color: textColor,
-              boxShadow: `0 0 40px ${accent}60`,
-            }}
-          >
-            Download My Next Thrift — Free →
-          </a>
+          <AppStoreCTA accent={accent} url={appStoreUrl} onClick={onAppStoreClick} />
         </div>
       </div>
     );
@@ -78,14 +75,18 @@ export default function EmailCapture({ onSubmit, isLoading, archetypeLabel, acce
     setSubmitted(true);
   }
 
+  const headline = archetypeLabel
+    ? `Get your ${archetypeLabel} fits in the app`
+    : 'Get your fits in the app';
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1 mb-3">
         <p className="text-[16px] font-bold text-white leading-snug">
-          Get your {archetypeLabel} fits delivered to the app
+          {headline}
         </p>
-        <p className="text-[12px] text-white/45 leading-relaxed">
-          See the exact pieces your eye is trained for — curated daily.
+        <p className="text-[12px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.72)' }}>
+          Your style profile and outfit direction, saved forever.
         </p>
       </div>
 
@@ -116,19 +117,19 @@ export default function EmailCapture({ onSubmit, isLoading, archetypeLabel, acce
             boxShadow: `0 0 40px ${accent}40`,
           }}
         >
-          {isLoading ? 'Sending...' : 'Send me my fits →'}
+          {isLoading ? 'Saving...' : 'Save my style profile →'}
         </button>
       </form>
 
-      <p className="text-[11px] text-white/40 text-center -mt-1">
-        📱 We&apos;ll also send a link to download the app
+      <p className="text-[12px] text-center" style={{ color: 'rgba(255,255,255,0.55)' }}>
+        📱 Then download the app to see your first 3 fits
       </p>
 
       <button
-        onClick={() => setSkipped(true)}
+        onClick={handleSkip}
         className="text-[13px] text-white/65 hover:text-white/90 transition-colors text-center w-full font-medium"
       >
-        Skip, take me to the app →
+        Skip, just show me the app →
       </button>
     </div>
   );

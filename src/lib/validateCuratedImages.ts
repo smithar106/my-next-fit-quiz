@@ -117,7 +117,7 @@ function collectAllImages(): Array<{
 }
 
 async function run(): Promise<void> {
-  console.log('\n🔍 My Next Fit — Curated Image Validation\n');
+  console.log('\n🔍 My Next Thrift — Curated Image Validation\n');
   console.log(`Checking images across all quiz configs (timeout: ${TIMEOUT_MS}ms each)...\n`);
 
   const allImages = collectAllImages();

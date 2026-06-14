@@ -26,6 +26,8 @@ const QUIZ_LABELS: Record<string, string> = {
   'date-night-outfits':  'Date Night Outfit Quiz',
   'creator-style-match': 'Creator Style Match',
   'style-dna':           'Style DNA Quiz',
+  'vintage-aesthetic':   'Vintage Aesthetic Quiz',
+  'thrift-style-finder': 'Thrift Style Finder Quiz',
 };
 
 let sb: any = null;

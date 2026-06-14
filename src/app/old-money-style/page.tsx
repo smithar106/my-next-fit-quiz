@@ -5,12 +5,12 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'Which Old Money Aesthetic Is Yours? — My Next Thrift',
+  title: 'Do You Have Old Money Style? | My Next Thrift Quiz',
   description:
-    'Quiet luxury, classic prep, modern heiress — discover which old money style is actually yours. Take the 30-second quiz.',
+    'Take the old money style quiz. Find out if you\'re a Quiet Luxury Collector or something else entirely.',
   openGraph: {
-    title: 'Which Old Money Aesthetic Is Yours?',
-    description: 'Quiet luxury has a spectrum. Find your lane in 30 seconds.',
+    title: 'Do You Have Old Money Style?',
+    description: 'Take the old money style quiz. Find out if you\'re a Quiet Luxury Collector.',
   },
 };
 

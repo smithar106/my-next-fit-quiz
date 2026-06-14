@@ -306,6 +306,20 @@ export default function HomePage() {
           <a href="https://mynextthrift.app/terms" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', margin: '0 8px' }}>Terms</a>
         </p>
       </footer>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Quiz',
+            name: 'My Next Thrift Style Quiz',
+            description: 'Discover your thrift style archetype in 30 seconds. 8 unique thrift identities.',
+            url: 'https://quiz.mynextthrift.app',
+            provider: { '@type': 'Organization', name: 'My Next Thrift' },
+          }),
+        }}
+      />
     </div>
   );
 }

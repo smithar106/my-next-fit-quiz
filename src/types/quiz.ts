@@ -72,6 +72,7 @@ export type FunnelEvent =
   | 'quiz_handoff_success'
   | 'quiz_handoff_failed'
   | 'email_submitted'
+  | 'email_skipped'
   | 'app_store_clicked'
   | 'sticky_cta_clicked'
   | 'share_clicked';

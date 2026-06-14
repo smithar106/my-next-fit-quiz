@@ -5,11 +5,11 @@ import { getQuizBySlug } from '@/lib/quizzes';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'What\'s Your Creator Style Aesthetic? — My Next Thrift',
+  title: "What's Your Creator Style Aesthetic? | My Next Thrift Quiz",
   description:
-    'Trend setter, minimalist creator, streetwear muse, soft luxury, or everyday cool — find your creator style identity. 30-second quiz.',
+    'Trend setter, minimalist creator, streetwear muse, soft luxury, or everyday cool — find your creator style identity.',
   openGraph: {
-    title: 'What\'s Your Creator Style Aesthetic?',
+    title: "What's Your Creator Style Aesthetic?",
     description: 'Your feed has a signature. Let\'s name it.',
   },
 };

@@ -16,9 +16,9 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Appear after a short delay so it doesn't compete with the reveal animation
-    const t = setTimeout(() => setVisible(true), 1800);
-    return () => clearTimeout(t);
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   async function handleClick() {
@@ -26,10 +26,8 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
     await trackEvent('sticky_cta_clicked', quizId, sessionId, {
       result_id: resultId,
       archetype_name: archetypeName,
-      source: 'sticky_cta',
+      source: 'sticky',
     });
-    // Build smart link with all attribution + identity params at click time
-    // (not at mount time) so archetype is always current
     const url = buildSmartLink(attribution, {
       result_id: resultId,
       archetype_name: archetypeName,
@@ -57,7 +55,6 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
           boxShadow: `0 8px 40px rgba(0,0,0,0.6), 0 0 0 0.5px rgba(255,255,255,0.06) inset`,
         }}
       >
-        {/* Left copy */}
         <div className="flex flex-col gap-0.5 min-w-0">
           <p className="text-[11px] text-white/50 font-medium tracking-wide leading-none">
             My Next Thrift
@@ -67,7 +64,6 @@ export default function StickyDownloadCTA({ accent, quizId, sessionId, resultId,
           </p>
         </div>
 
-        {/* Button */}
         <button
           onClick={handleClick}
           className="flex-shrink-0 h-[40px] px-5 rounded-xl text-[13px] font-bold tracking-wide active:scale-[0.96] transition-all duration-150 whitespace-nowrap"

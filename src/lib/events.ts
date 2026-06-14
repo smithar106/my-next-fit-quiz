@@ -12,6 +12,11 @@ if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
       capture_pageview: false,
       loaded: (instance) => {
         posthog = instance;
+        // Register creator attribution as a super property
+        const attr = getAttribution();
+        if (attr.creator) {
+          posthog.register({ creator: attr.creator });
+        }
       },
     });
   });

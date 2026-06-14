@@ -1,0 +1,475 @@
+import { QuizConfig, CuratedImage } from '@/types/quiz';
+
+export const styleQuiz: QuizConfig = {
+  id: 'style-quiz',
+  slug: 'style-quiz',
+  hook: 'Your closet should feel discovered, not bought.',
+  hookSubtext: 'Answer a few quick questions and uncover the kinds of rare pieces your eye naturally finds.',
+  ctaLabel: 'Start the hunt →',
+  questions: [
+    {
+      id: 'tq-q1',
+      text: 'What kind of find makes you text your friends immediately?',
+      subtext: 'Go with your gut — no wrong answers.',
+      options: [
+        { id: 'tq-q1-a', label: 'Rare designer piece at a fraction of retail', emoji: '🪙', weights: { designer_score_seeker: 3, quiet_luxury_collector: 1 } },
+        { id: 'tq-q1-b', label: 'Perfect archive blazer nobody else would clock', emoji: '🧥', weights: { archive_hunter: 3, downtown_treasure_hunter: 1 } },
+        { id: 'tq-q1-c', label: 'Strange vintage item nobody else has', emoji: '🗝️', weights: { eclectic_archivist: 3, hidden_gem_collector: 1 } },
+        { id: 'tq-q1-d', label: 'Quiet luxury steal — feels expensive, no logo', emoji: '🤍', weights: { quiet_luxury_collector: 3, hidden_gem_collector: 1 } },
+        { id: 'tq-q1-e', label: 'Worn-in piece with a warm, nostalgic feel', emoji: '✦', weights: { soft_vintage_curator: 3, street_romantic: 1 } },
+        { id: 'tq-q1-f', label: 'Timeless coat or bag with real character', emoji: '🧣', weights: { downtown_treasure_hunter: 3, archive_hunter: 1 } },
+        { id: 'tq-q1-g', label: 'Weird statement item that changes an outfit', emoji: '⚡', weights: { street_romantic: 3, eclectic_archivist: 1 } },
+        { id: 'tq-q1-h', label: 'Overlooked gem others walked right past', emoji: '💎', weights: { hidden_gem_collector: 3, soft_vintage_curator: 1 } },
+      ],
+    },
+    {
+      id: 'tq-q2',
+      text: 'What matters most when a piece catches your eye?',
+      options: [
+        { id: 'tq-q2-a', label: 'Texture and fabric quality', emoji: '🪡', weights: { soft_vintage_curator: 3, quiet_luxury_collector: 1 } },
+        { id: 'tq-q2-b', label: 'Silhouette and structure', emoji: '🖤', weights: { archive_hunter: 3, downtown_treasure_hunter: 1 } },
+        { id: 'tq-q2-c', label: 'Story or history behind it', emoji: '📖', weights: { downtown_treasure_hunter: 3, soft_vintage_curator: 1 } },
+        { id: 'tq-q2-d', label: 'Rarity — nobody else has it', emoji: '💎', weights: { hidden_gem_collector: 3, eclectic_archivist: 1 } },
+        { id: 'tq-q2-e', label: 'Brand or label', emoji: '🏷️', weights: { designer_score_seeker: 3, quiet_luxury_collector: 1 } },
+        { id: 'tq-q2-f', label: 'Restraint — nothing overdone', emoji: '✨', weights: { quiet_luxury_collector: 3, archive_hunter: 1 } },
+        { id: 'tq-q2-g', label: 'Emotional vibe — it just feels right', emoji: '🌙', weights: { street_romantic: 3, soft_vintage_curator: 1 } },
+      ],
+    },
+    {
+      id: 'tq-q3',
+      text: 'What kind of wardrobe feels most impressive to you?',
+      options: [
+        { id: 'tq-q3-a', label: 'Looks expensive without trying', emoji: '🧥', weights: { quiet_luxury_collector: 3, designer_score_seeker: 1 } },
+        { id: 'tq-q3-b', label: 'Feels deeply personal and warm', emoji: '🪞', weights: { soft_vintage_curator: 3, street_romantic: 1 } },
+        { id: 'tq-q3-c', label: 'Full of pieces nobody else noticed', emoji: '💎', weights: { hidden_gem_collector: 3, downtown_treasure_hunter: 1 } },
+        { id: 'tq-q3-d', label: 'Vintage and layered — a real archive', emoji: '📦', weights: { archive_hunter: 3, eclectic_archivist: 1 } },
+        { id: 'tq-q3-e', label: 'Hard to categorize — shouldn\'t work but does', emoji: '⚡', weights: { eclectic_archivist: 3, street_romantic: 1 } },
+        { id: 'tq-q3-f', label: 'Collected over years from unexpected places', emoji: '🗝️', weights: { downtown_treasure_hunter: 3, archive_hunter: 1 } },
+      ],
+    },
+    {
+      id: 'tq-q4',
+      text: 'What instantly ruins a piece for you?',
+      options: [
+        { id: 'tq-q4-a', label: 'Loud branding or visible logos', emoji: '🚫', weights: { quiet_luxury_collector: 3, archive_hunter: 1 } },
+        { id: 'tq-q4-b', label: 'Fast-fashion energy — made to be forgotten', emoji: '⚡', weights: { archive_hunter: 3, downtown_treasure_hunter: 1 } },
+        { id: 'tq-q4-c', label: 'Poor fabric — you feel it immediately', emoji: '✂️', weights: { designer_score_seeker: 3, quiet_luxury_collector: 1 } },
+        { id: 'tq-q4-d', label: 'Looking too new — no history, no wear', emoji: '🏷️', weights: { soft_vintage_curator: 3, downtown_treasure_hunter: 1 } },
+        { id: 'tq-q4-e', label: 'Generic basics with no tension or surprise', emoji: '😐', weights: { eclectic_archivist: 3, street_romantic: 1 } },
+        { id: 'tq-q4-f', label: 'Too obvious — everyone already has one', emoji: '📉', weights: { hidden_gem_collector: 3, soft_vintage_curator: 1 } },
+      ],
+    },
+    {
+      id: 'tq-q5',
+      text: 'What kind of compliment do you actually want?',
+      options: [
+        { id: 'tq-q5-a', label: '"Where did you find that?"', emoji: '🗺️', weights: { hidden_gem_collector: 3, downtown_treasure_hunter: 1 } },
+        { id: 'tq-q5-b', label: '"You always have the best archive pieces."', emoji: '✦', weights: { archive_hunter: 3, eclectic_archivist: 1 } },
+        { id: 'tq-q5-c', label: '"You look expensive."', emoji: '💰', weights: { quiet_luxury_collector: 3, designer_score_seeker: 1 } },
+        { id: 'tq-q5-d', label: '"Nobody dresses like you — I can\'t figure it out."', emoji: '⚡', weights: { eclectic_archivist: 3, street_romantic: 1 } },
+        { id: 'tq-q5-e', label: '"Is that [designer]? How did you find that?"', emoji: '💎', weights: { designer_score_seeker: 3, archive_hunter: 1 } },
+        { id: 'tq-q5-f', label: '"That piece has such a feeling to it."', emoji: '🌙', weights: { street_romantic: 3, soft_vintage_curator: 1 } },
+        { id: 'tq-q5-g', label: '"You always notice things others miss."', emoji: '🔍', weights: { downtown_treasure_hunter: 3, hidden_gem_collector: 1 } },
+      ],
+    },
+    {
+      id: 'tq-q6',
+      text: 'What kind of piece feels impossible to leave behind?',
+      options: [
+        { id: 'tq-q6-a', label: 'Vintage leather jacket with real history', emoji: '🧥', weights: { street_romantic: 3, archive_hunter: 1 } },
+        { id: 'tq-q6-b', label: 'Perfectly worn-in denim or soft knit', emoji: '👖', weights: { soft_vintage_curator: 3, hidden_gem_collector: 1 } },
+        { id: 'tq-q6-c', label: 'Designer archive piece at the wrong price', emoji: '🪙', weights: { designer_score_seeker: 3, quiet_luxury_collector: 1 } },
+        { id: 'tq-q6-d', label: 'Silk blouse or structured coat — forever piece', emoji: '🤍', weights: { quiet_luxury_collector: 3, downtown_treasure_hunter: 1 } },
+        { id: 'tq-q6-e', label: 'Strange graphic or statement item', emoji: '⚡', weights: { eclectic_archivist: 3, street_romantic: 1 } },
+        { id: 'tq-q6-f', label: 'Something nobody else clocked on the rack', emoji: '🪡', weights: { hidden_gem_collector: 3, downtown_treasure_hunter: 1 } },
+        { id: 'tq-q6-g', label: 'Structured vintage blazer or archive silhouette', emoji: '📦', weights: { archive_hunter: 3, quiet_luxury_collector: 1 } },
+      ],
+    },
+  ],
+  results: [
+    {
+      id: 'archive_hunter',
+      label: 'Archive Hunter',
+      tagline: 'You dress like the best pieces already existed before trends caught up.',
+      description:
+        'Your eye goes straight to the things other people walked past. You\'re not shopping — you\'re excavating. Every piece in your wardrobe feels like it was found, not bought, and that\'s the whole point. The archive isn\'t a reference for you. It\'s your native language.',
+      identityLines: [
+        '"Where did you get that?" is your most common compliment.',
+        'You understand value that has nothing to do with price.',
+        'Your wardrobe feels like a collection, not a closet.',
+      ],
+      outfitDirections: [
+        'TOP — Structured vintage blazer in wool or tweed, slightly oversized',
+        'BOTTOM — Straight-leg or wide-leg denim from the 80s or 90s',
+        'SHOES — Worn-in leather loafers or classic Chelsea boots',
+        'ACCESSORY — Silk scarf or archive-logo crossbody worn low',
+      ],
+      visualCards: [
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #2A2018 0%, #1A140E 100%)', tags: ['vintage blazer'], query: ['cat_tops', 'style_classic', 'cond_vintage'], titleKeywords: ['blazer', 'jacket', 'coat'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #1A1E2A 0%, #10141E 100%)', tags: ['archive denim'], query: ['cat_bottoms', 'style_classic', 'cond_vintage'], titleKeywords: ['denim', 'jean', 'trouser', 'cord'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #1E1810 0%, #140E08 100%)', tags: ['leather boots'], query: ['cat_footwear', 'style_classic', 'cond_vintage'], titleKeywords: ['boot', 'loafer', 'oxford'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #221C12 0%, #18120A 100%)', tags: ['silk scarf'], query: ['cat_accessories', 'style_classic', 'cond_vintage'], titleKeywords: ['scarf', 'crossbody', 'belt', 'wallet'] },
+      ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage Levi's Western Denim Shirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECSHI99188V_1.jpg?v=1775788544',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Ralph Lauren Leather Trousers",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/products/beyond-retro-label-womens-ralph-lauren-brown-straight-leg-shiny-leather-trousers-1-E00873322_9dbaac87-eab4-4feb-8f8f-427de78d7ac7.jpg?v=1708500336',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Dr Martens Fur Lined Chelsea Boots",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECFOO71192V_132.jpg?v=1734923785',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s Embroidered Needlepoint Brass Buckle Belt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__awLgLM-compressed.png?v=1665549344',
+        },
+      ] as CuratedImage[],
+      whyMyNextFit: 'A feed built around the eye that already knows what it\'s looking for. The pieces that reach you feel excavated, not recommended.',
+      accentColor: '#C4965A',
+    },
+    {
+      id: 'street_romantic',
+      label: 'Street Romantic',
+      tagline: 'You like softness with edge — pieces that feel emotional but sharp.',
+      description:
+        'You pull off combinations most people wouldn\'t dare try. Feminine pieces with edge, vintage with a soft touch — your aesthetic lives in the tension between the two. People always ask where you got something because they\'ve never seen it worn that way.',
+      identityLines: [
+        'You wear contradictions like they were made for you.',
+        'Soft and sharp. Tender and tough.',
+        'Your fits follow a feeling, not a formula.',
+      ],
+      outfitDirections: [
+        'TOP — Worn vintage leather jacket, slightly cropped',
+        'BOTTOM — Flowy midi skirt or wide-leg trousers in a soft fabric',
+        'SHOES — Vintage sneakers or pointed ankle boots',
+        'ACCESSORY — Layered vintage chain necklaces or a small shoulder bag',
+      ],
+      visualCards: [
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #1A1020 0%, #100818 100%)', tags: ['leather jacket'], query: ['cat_tops', 'style_bohemian', 'cond_vintage'], titleKeywords: ['leather', 'jacket', 'blouse', 'floral'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #1E1428 0%, #140E1E 100%)', tags: ['flowy skirt'], query: ['cat_bottoms', 'style_bohemian', 'cond_vintage'], titleKeywords: ['skirt', 'midi', 'linen', 'flowy'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1020 0%, #120A16 100%)', tags: ['ankle boots'], query: ['cat_footwear', 'style_bohemian', 'cond_vintage'], titleKeywords: ['boot', 'ankle', 'sneaker', 'chelsea'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201428 0%, #160E1C 100%)', tags: ['layered chains'], query: ['cat_accessories', 'style_bohemian', 'cond_vintage'], titleKeywords: ['necklace', 'chain', 'earring', 'ring'] },
+      ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Genuine Leather Vintage 70s Bomber Jacket",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/2651/4700/products/IMG_8489.JPG?v=1552260784',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Tapered Suede Patchwork Trousers",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/products/beyond-retro-label-womens-tapered-suede-brown-patchwork-trousers-1-E00910986_a6baed64-2c45-4814-ac19-67a6afe6e8ca.jpg?v=1708501465',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Three Strap Distressed Wingtip Oxfords",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0229/0897/products/1980s_Three_Strap_Oxfords-002.jpg?v=1571266366',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s Tooled Leather Mexico Mini Purse",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__YrWMzb-compressed.png?v=1668963251',
+        },
+      ] as CuratedImage[],
+      whyMyNextFit: 'Pieces with enough edge and softness to hold the tension your eye is always after. The find that works in a context it wasn\'t designed for.',
+      accentColor: '#9B7EC8',
+    },
+    {
+      id: 'quiet_luxury_collector',
+      label: 'Quiet Luxury Collector',
+      tagline: 'You notice fabric, silhouette, and restraint before logos.',
+      description:
+        'There\'s a quiet confidence to how you dress that most people can\'t quite name. You understand that real luxury is about how something feels, not what\'s on the tag. You\'ve found designer pieces for $18 at the back of a rack, and you wear them better than the original buyer did.',
+      identityLines: [
+        'Understated is your power move.',
+        'Real quality needs no announcement.',
+        'You find things that outperform their price for life.',
+      ],
+      outfitDirections: [
+        'TOP — Cashmere crewneck or silk blouse in a soft neutral',
+        'BOTTOM — Tailored wide-leg trousers or straight-cut wool pants',
+        'SHOES — Leather loafers or classic pumps in cognac or black',
+        'ACCESSORY — Simple leather belt or structured bag with clean hardware',
+      ],
+      visualCards: [
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #1E1A14 0%, #141008 100%)', tags: ['cashmere / silk'], query: ['cat_tops', 'style_luxury', 'cond_secondhand'], titleKeywords: ['cashmere', 'silk', 'blouse', 'knit', 'sweater'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #1A1810 0%, #120E08 100%)', tags: ['tailored trousers'], query: ['cat_bottoms', 'style_luxury', 'cond_secondhand'], titleKeywords: ['trouser', 'wool', 'crepe', 'wide-leg'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1A10 0%, #14100A 100%)', tags: ['leather loafers'], query: ['cat_footwear', 'style_luxury', 'cond_secondhand'], titleKeywords: ['loafer', 'pump', 'mule', 'heel'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201E14 0%, #18140C 100%)', tags: ['structured bag'], query: ['cat_accessories', 'style_luxury', 'cond_secondhand'], titleKeywords: ['bag', 'tote', 'clutch', 'purse'] },
+      ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage Polo Ralph Lauren Plaid Flannel Shirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECSHI97249V_1.jpg?v=1773023873',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Calvin Klein Black Trousers",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-womens-calvin-klein-black-trousers-1-E00803206.jpg?v=1763693926',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Coach Monogram Heels",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/WOAFOO79030V_2546.jpg?v=1746415201',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s/80s Coach Crossbody Leather Bag",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/il_fullxfull.4124999698_6hze.png?v=1666894795',
+        },
+      ] as CuratedImage[],
+      whyMyNextFit: 'The pieces that reach you earned their place. Designer-quality fabric, no logo noise — found before the obvious crowd gets there.',
+      accentColor: '#D4C5A0',
+    },
+    {
+      id: 'downtown_treasure_hunter',
+      label: 'Workwear Classicist',
+      tagline: 'You dress in pieces built to last — utilitarian heritage, worn naturally.',
+      description:
+        'You\'ve always had an instinct for places others overlook. The back-of-the-rack find. The estate sale blazer. The thrift store gem that turns heads at dinner. Your wardrobe is a map of everywhere you\'ve looked — and found something real.',
+      identityLines: [
+        'Chore coats. Selvedge denim. Canvas that ages correctly.',
+        'Your wardrobe looks like it was assembled over decades, not seasons.',
+        'You know the difference between workwear that works and workwear that performs.',
+      ],
+      outfitDirections: [
+        'TOP — Vintage structured coat or heavy wool overshirt',
+        'BOTTOM — Slim or tapered vintage denim or corduroy',
+        'SHOES — Worn-in leather boots or heritage sneakers',
+        'ACCESSORY — Vintage watch or a beat-up canvas bag with character',
+      ],
+      visualCards: [
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #1A1612 0%, #100E08 100%)', tags: ['vintage coat'], query: ['cat_tops', 'style_workwear', 'cond_vintage'], titleKeywords: ['coat', 'jacket', 'blazer', 'overshirt', 'chore'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #141820 0%, #0E1018 100%)', tags: ['tapered denim'], query: ['cat_bottoms', 'style_workwear', 'cond_vintage'], titleKeywords: ['denim', 'jean', 'corduroy', 'chino'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #1A1410 0%, #120E08 100%)', tags: ['heritage boots'], query: ['cat_footwear', 'style_workwear', 'cond_vintage'], titleKeywords: ['boot', 'oxford', 'derby'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #1C1810 0%, #14100A 100%)', tags: ['vintage watch'], query: ['cat_accessories', 'style_workwear', 'cond_vintage'], titleKeywords: ['watch', 'canvas', 'belt', 'wallet'] },
+      ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage 80s Pendleton Heavyweight Wool Shirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECSHI70588V_1.jpg?v=1733368795',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Levi's Wide Leg Carpenter Trousers",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECTRO98109V_1.jpg?v=1774233520',
+        },
+        {
+          slot: 'SHOES',
+          title: "Tony Lama Vintage Western Leather Cowboy Boots",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/2651/4700/products/IMG_0189.JPG?v=1563752534',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s Braided and Tooled Leather Belt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__ird4CY-compressed.png?v=1668616208',
+        },
+      ] as CuratedImage[],
+      whyMyNextFit: 'A feed that keeps pace with your instinct — the back-of-the-rack gem, the estate sale score, the thing that makes people stop and ask.',
+      accentColor: '#8B7355',
+    },
+    {
+      id: 'hidden_gem_collector',
+      label: 'Understated Vintage',
+      tagline: 'You dress in things people can\'t quite place — but always look at twice.',
+      description:
+        'You have a rare kind of patience. You\'re not looking for labels — you\'re looking for something that just feels right. And when you find it, you know immediately. Your eye is trained on what most people walk past, which is exactly why your wardrobe looks like nobody else\'s.',
+      identityLines: [
+        'Your best pieces have no visible label and no explanation needed.',
+        'Texture before color. Drape before cut. Fabric before everything.',
+        'The fit you get the most compliments on cost less than dinner.',
+      ],
+      outfitDirections: [
+        'TOP — An overlooked vintage piece — interesting texture, odd detail, perfectly cut',
+        'BOTTOM — Simple wide-leg or straight-leg pants that feel almost expensive',
+        'SHOES — Understated vintage boots or simple leather mules',
+        'ACCESSORY — One strange or beautiful piece that makes the whole look',
+      ],
+      visualCards: [
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #1A1820 0%, #10101A 100%)', tags: ['textured top'], query: ['cat_tops', 'style_minimalist', 'cond_vintage'], titleKeywords: ['knit', 'blouse', 'sweater', 'cardigan', 'linen'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #181820 0%, #101018 100%)', tags: ['wide-leg'], query: ['cat_bottoms', 'style_minimalist', 'cond_vintage'], titleKeywords: ['trouser', 'wide', 'linen', 'corduroy'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #1A1818 0%, #121010 100%)', tags: ['simple boots'], query: ['cat_footwear', 'style_minimalist', 'cond_vintage'], titleKeywords: ['boot', 'mule', 'loafer'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #1C1A20 0%, #141218 100%)', tags: ['statement piece'], query: ['cat_accessories', 'style_minimalist', 'cond_vintage'], titleKeywords: ['necklace', 'ring', 'earring', 'brooch'] },
+      ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage 90s Nygard Floral Top",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/WOCTOP94695V_1.jpg?v=1768962879',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Striped Grey Midi Skirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-womens-striped-grey-midi-skirt-1-E00882627.jpg?v=1763674699',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Coach Monogram Moccasin Boots",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/WOCFOO90354V_7206.jpg?v=1761359751',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "80s/90s Modernist Triangle Earrings",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__MFW7Az-compressed.png?v=1668812786',
+        },
+      ] as CuratedImage[],
+      whyMyNextFit: 'Pieces most people walk right past. Your eye catches what others miss — the feed reflects that, not the other way around.',
+      accentColor: '#7B9E87',
+    },
+    {
+      id: 'designer_score_seeker',
+      label: 'Designer Score Seeker',
+      tagline: 'You love the thrill of finding luxury where nobody else was looking.',
+      description:
+        'You understand the game. The designer blazer at a fraction of retail. The bag that goes for $800 found for $40. You\'re not buying secondhand because you have to — you\'re buying secondhand because you\'ve cracked the code. The thrill of the find is part of the point.',
+      identityLines: [
+        'You\'ve found $800 bags for $40.',
+        'You know what something is worth before you see the price tag.',
+        'The hunt is half the reason.',
+      ],
+      outfitDirections: [
+        'TOP — Designer or luxury-brand vintage blazer, knit, or shirt',
+        'BOTTOM — Tailored designer trousers or high-quality vintage denim',
+        'SHOES — Heritage designer boots or loafers built to last decades',
+        'ACCESSORY — A designer bag or belt worn like it\'s the most natural thing',
+      ],
+      visualCards: [
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #1E1A10 0%, #141008 100%)', tags: ['designer top'], query: ['cat_tops', 'style_luxury', 'cond_vintage'], titleKeywords: ['blazer', 'jacket', 'coat', 'cashmere', 'silk'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #1A1810 0%, #12100A 100%)', tags: ['tailored'], query: ['cat_bottoms', 'style_luxury', 'cond_vintage'], titleKeywords: ['trouser', 'wide-leg', 'wool', 'crepe'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1A12 0%, #141008 100%)', tags: ['heritage footwear'], query: ['cat_footwear', 'style_luxury', 'cond_vintage'], titleKeywords: ['boot', 'loafer', 'pump', 'heel'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201C12 0%, #16120C 100%)', tags: ['designer bag'], query: ['cat_accessories', 'style_luxury', 'cond_vintage'], titleKeywords: ['bag', 'clutch', 'purse', 'tote'] },
+      ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage Ralph Lauren Polo Shirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-womens-ralph-lauren-shirt-1-E00925856.jpg?v=1745184676',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Kenneth Cole Pencil Skirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-womens-kenneth-cole-pencil-skirt-1-E00978176.jpg?v=1741208740',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Y2K Coach Monogram Ballet Flats",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/WOAFOO79023V_2562.jpg?v=1746328667',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "Vintage Chanel Red Head Scarf",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/1659/8101/files/beyond-retro-label-unisex-chanel-red-head-scarf-1-E00939297.jpg?v=1779735322',
+        },
+      ] as CuratedImage[],
+      whyMyNextFit: 'The thrill is the find. Rare designer pieces at prices that shouldn\'t exist — the kind your eye spots before anyone else does.',
+      accentColor: '#D4A830',
+    },
+    {
+      id: 'soft_vintage_curator',
+      label: 'Soft Vintage',
+      tagline: 'You buy things that look like they were already worn by someone interesting.',
+      description:
+        'You\'re drawn to things that feel lived-in, loved, and quietly beautiful. The faded floral. The soft knit washed a hundred times. The blouse that looks like it has a history. Your wardrobe has a warmth to it that people feel before they can describe it.',
+      identityLines: [
+        'Faded florals. Worn linen. Earrings that belonged to someone\'s grandmother.',
+        'Your closet looks like a film still from 1974.',
+        'Softness is a point of view, not a style category.',
+      ],
+      outfitDirections: [
+        'TOP — Worn floral blouse or soft vintage knit in a faded, warm tone',
+        'BOTTOM — High-waisted vintage jeans or a flowy linen skirt',
+        'SHOES — Soft leather sandals or well-worn canvas shoes',
+        'ACCESSORY — Delicate vintage jewelry — a locket, pearl earrings, or thin layered chains',
+      ],
+      visualCards: [
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #201614 0%, #160E0C 100%)', tags: ['floral / knit'], query: ['cat_tops', 'style_bohemian', 'cond_vintage'], titleKeywords: ['blouse', 'knit', 'floral', 'sweater', 'cardigan'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #1A1C14 0%, #10120E 100%)', tags: ['linen / denim'], query: ['cat_bottoms', 'style_bohemian', 'cond_vintage'], titleKeywords: ['linen', 'denim', 'jean', 'skirt', 'midi'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #1C1814 0%, #14100C 100%)', tags: ['canvas / sandals'], query: ['cat_footwear', 'style_bohemian', 'cond_vintage'], titleKeywords: ['sandal', 'canvas', 'mule', 'clog'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #201A14 0%, #16100E 100%)', tags: ['vintage jewelry'], query: ['cat_accessories', 'style_bohemian', 'cond_vintage'], titleKeywords: ['necklace', 'earring', 'locket', 'pearl', 'chain'] },
+      ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage 1970s Lee Embroidered Denim Trucker Jacket",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECOUT101307V_1.jpg?v=1780108427',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage Suede Embroidered Festival Skirt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/static-a9ba1ed2-9030-4fa4-94ba-c037dd1811f4.png?v=1668549469',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Three Strap Distressed Wingtip Oxfords",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0229/0897/products/1980s_Three_Strap_Oxfords-002.jpg?v=1571266366',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "70s/80s Braided and Tooled Leather Belt",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/product-image__ird4CY-compressed.png?v=1668616208',
+        },
+      ] as CuratedImage[],
+      whyMyNextFit: 'The worn-in blouse that feels like it was always yours. The faded knit you can\'t explain. Pieces with warmth that shows before you can describe it.',
+      accentColor: '#C4907A',
+    },
+    {
+      id: 'eclectic_archivist',
+      label: 'Eclectic Archivist',
+      tagline: 'You make unrelated pieces feel like they belong together.',
+      description:
+        'Your wardrobe shouldn\'t work on paper, but it does. The 70s blazer with the 90s graphic tee. The silk slip under a heavyweight coat. You\'ve developed an internal logic that most people can\'t decode — and that\'s entirely the point. You dress for yourself, and it shows.',
+      identityLines: [
+        'Your outfits are impossible to replicate.',
+        'You have an internal logic nobody else can decode.',
+        '"Hard to categorize" is your favorite compliment.',
+      ],
+      outfitDirections: [
+        'TOP — Oversized vintage graphic tee or band shirt, worn with confidence',
+        'BOTTOM — Vintage wide-leg or baggy jeans, slightly worn',
+        'SHOES — Chunky vintage boots or completely unexpected sneakers',
+        'ACCESSORY — One bold, strange piece that anchors the whole look',
+      ],
+      visualCards: [
+        { label: 'TOP', gradient: 'linear-gradient(145deg, #141420 0%, #0C0C18 100%)', tags: ['graphic tee'], query: ['cat_tops', 'style_streetwear', 'cond_vintage'], titleKeywords: ['graphic', 'band', 'print', 'jersey', 'tee'] },
+        { label: 'BOTTOM', gradient: 'linear-gradient(145deg, #12141E 0%, #0C0E16 100%)', tags: ['wide-leg denim'], query: ['cat_bottoms', 'style_streetwear', 'cond_vintage'], titleKeywords: ['denim', 'jean', 'baggy', 'wide'] },
+        { label: 'SHOES', gradient: 'linear-gradient(145deg, #161420 0%, #0E0C18 100%)', tags: ['chunky boots'], query: ['cat_footwear', 'style_streetwear', 'cond_vintage'], titleKeywords: ['boot', 'sneaker', 'platform', 'chunky'] },
+        { label: 'ACCESSORY', gradient: 'linear-gradient(145deg, #181420 0%, #100C18 100%)', tags: ['bold accessory'], query: ['cat_accessories', 'style_streetwear', 'cond_vintage'], titleKeywords: ['necklace', 'ring', 'earring', 'pendant'] },
+      ],
+      curatedImages: [
+        {
+          slot: 'TOP',
+          title: "Vintage Outback Leather Patina Bomber Jacket",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECOUT95325V_1.jpg?v=1769999626',
+        },
+        {
+          slot: 'BOTTOM',
+          title: "Vintage 90s Carhartt Carpenter Shorts",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECSHO75732V_1.jpg?v=1740972383',
+        },
+        {
+          slot: 'SHOES',
+          title: "Vintage Dr Martens Fur Lined Chelsea Boots",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0574/6851/8600/files/MECFOO71192V_132.jpg?v=1734923785',
+        },
+        {
+          slot: 'ACCESSORY',
+          title: "Deadstock Vintage Sterling Feather Pin",
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0118/0132/9723/products/il_fullxfull.4246419654_hkzf-cropped__kk6Vcw.png?v=1668033220',
+        },
+      ] as CuratedImage[],
+      whyMyNextFit: 'Pieces with enough character that your combinations keep surprising even you. The find from a different world that somehow completes the look.',
+      accentColor: '#7B8FD0',
+    },
+  ],
+};

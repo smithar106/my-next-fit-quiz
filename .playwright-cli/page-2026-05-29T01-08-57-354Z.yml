@@ -1,9 +1,0 @@
-- generic [active] [ref=e1]:
-  - generic [ref=e3]:
-    - generic [ref=e4]: My Next Thrift
-    - generic [ref=e5]:
-      - heading "What does your style say about you when you're not trying?" [level=1] [ref=e6]
-      - paragraph [ref=e7]: 6 questions to decode the style identity you already have.
-    - button "Decode My Style →" [ref=e8] [cursor=pointer]
-    - paragraph [ref=e9]: 30 seconds · Free · 8 archetypes
-  - alert [ref=e10]
